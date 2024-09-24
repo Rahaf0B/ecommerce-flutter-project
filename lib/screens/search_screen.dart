@@ -117,7 +117,6 @@ class _SearchScreenState extends State<SearchScreen> {
     return SafeArea(
         child: Scaffold(
       appBar: SearchBarComponent(),
-      // backgroundColor: KPageBackGroundColor,
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: ListView(

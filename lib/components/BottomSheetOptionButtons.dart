@@ -6,11 +6,11 @@ import '../Constants/Constant.dart';
 class BottomSheetOptionButtons extends StatefulWidget {
   const BottomSheetOptionButtons(
       {super.key,
-      required this.left_btn_img_url,
-      required this.right_btn_img_url,
+       this.left_btn_img_url,
+       this.right_btn_img_url,
       required this.btn_text});
-  final String left_btn_img_url;
-  final String right_btn_img_url;
+  final String ? left_btn_img_url;
+  final String ? right_btn_img_url;
   final String btn_text;
 
   @override
@@ -31,7 +31,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
+          widget.left_btn_img_url==null ? SizedBox() : Container(
             alignment: Alignment.center,
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
@@ -40,7 +40,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
             child: IconButton(
                 onPressed: () {},
                 icon: SvgPicture.asset(
-                  widget.left_btn_img_url,
+                  widget.left_btn_img_url!,
                   width: MediaQuery.of(context).size.width * 0.5 * 0.15,
                 )),
           ),
@@ -52,6 +52,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                     iconAlignment: IconAlignment.start,
                     style: ButtonStyle(
                         alignment: Alignment.center,
+                        iconSize: WidgetStateProperty.all( widget.right_btn_img_url==null ? 0 : 20) ,
                         backgroundColor: WidgetStateProperty.all(KPrimaryColor),
                         shape: WidgetStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)))),
@@ -61,8 +62,9 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: KTextBrightColor),
                     ),
+
                     icon: SvgPicture.asset(
-                      widget.right_btn_img_url,
+                      widget.right_btn_img_url!,
                     ))),
           )
         ],
