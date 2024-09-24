@@ -92,7 +92,6 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     int productCount = 255;
     return SafeArea(
       child: Scaffold(
-          backgroundColor: KPageBackGroundColor,
           appBar: PagesAppBar(
             leadingWidget: appBarLeadingWidget,
             title: appBarTitle,
@@ -153,7 +152,8 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
                   decoration: BoxDecoration(
                       color: KPageBackGroundColor,
                       borderRadius: BorderRadius.circular(KBorderRadius)),
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 20, horizontal: KPageHorizontalPadding),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

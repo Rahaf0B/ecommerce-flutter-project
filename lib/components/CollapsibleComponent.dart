@@ -26,7 +26,10 @@ class _HomeFooterState extends State<CollapsibleComponent> {
     return Container(
       constraints: BoxConstraints(maxHeight: showChildComponent ? 680 : 60),
       padding: EdgeInsets.all(0),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      child: ListView(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true
+      ,children: [
         Container(
           padding: EdgeInsets.symmetric(vertical: 0, horizontal: KPageHorizontalPadding),
           child: Row(
@@ -60,7 +63,7 @@ class _HomeFooterState extends State<CollapsibleComponent> {
         ),
         showChildComponent
             ? Flexible(
-                child: widget.child,
+                child: Container(padding: EdgeInsets.only(bottom: 20,top: 10),child:widget.child),
               )
             : Container(
                 height: 0,
