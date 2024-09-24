@@ -6,7 +6,7 @@ import 'ProductSubInfo.dart';
 class Productcontainer extends StatefulWidget {
   const Productcontainer(
       {Key? key,
-      required this.width,
+      required this.widthPercentage,
       required this.title,
       required this.subTitle,
       required this.img_url,
@@ -15,7 +15,7 @@ class Productcontainer extends StatefulWidget {
       required this.containerAxis,
       this.onTap})
       : super(key: key);
-  final double width;
+  final double widthPercentage;
   final String img_url;
   final String title;
   final String subTitle;
@@ -34,7 +34,7 @@ class _ProductcontainerState extends State<Productcontainer> {
   Widget build(BuildContext context) {
     return Container(
       // height: 20,
-      width: MediaQuery.of(context).size.width * 0.5 * widget.width,
+      width: MediaQuery.of(context).size.width * 0.5 * widget.widthPercentage,
       child: Flex(
         direction: widget.containerAxis == ComponentDirection.vertical
             ? Axis.vertical
@@ -61,7 +61,7 @@ class _ProductcontainerState extends State<Productcontainer> {
           ),
           ProductSubInfo(
             elementType: ElementType.card,
-            width: widget.width - 0.1,
+            width: widget.widthPercentage - 0.1,
             marginTop: 5,
             title: widget.title,
             subTitle: widget.subTitle,

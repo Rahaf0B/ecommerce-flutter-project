@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _productsData = [
       Productcontainer(
-        width: 0.7,
+        widthPercentage: 0.7,
         title: "Grande",
         containerAxis: ComponentDirection.vertical,
         subTitle: "Blossom Pouch",
@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: productItemOnTap,
       ),
       Productcontainer(
-        width: 0.7,
+        widthPercentage: 0.7,
         title: "Grande",
         subTitle: "Blossom Pouch",
         img_url: KImagesPath + "bag1.png",
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
         containerAxis: ComponentDirection.vertical,
       ),
       Productcontainer(
-        width: 0.7,
+        widthPercentage: 0.7,
         title: "Grande",
         containerAxis: ComponentDirection.vertical,
         subTitle: "Blossom Pouch",
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: productItemOnTap,
       ),
       Productcontainer(
-        width: 0.7,
+        widthPercentage: 0.7,
         title: "Grande",
         subTitle: "Blossom Pouch",
         img_url: KImagesPath + "bag1.png",
@@ -111,14 +111,14 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: productItemOnTap,
       ),
       Productcontainer(
-          width: 0.7,
+          widthPercentage: 0.7,
           containerAxis: ComponentDirection.vertical,
           title: "Grande",
           subTitle: "Blossom Pouch",
           img_url: KImagesPath + "bag1.png",
           price: 39.49),
       Productcontainer(
-          width: 0.7,
+          widthPercentage: 0.7,
           containerAxis: ComponentDirection.vertical,
           title: "Grande",
           subTitle: "Blossom Pouch",
@@ -248,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _scrollController,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -313,7 +313,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 24,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
                 child: Column(
                   children: [
                     TitleComponentContainer(
