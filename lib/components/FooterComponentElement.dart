@@ -17,7 +17,7 @@ class FooterComponentElement extends StatelessWidget {
       child: Column(children: [
         Container(
           margin: EdgeInsets.only(top: 20),
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -110,7 +110,7 @@ class FooterComponentElement extends StatelessWidget {
         ),
         Divider(color: KPrimaryTintColor, thickness: 1),
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

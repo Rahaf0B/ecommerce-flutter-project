@@ -10,3 +10,5 @@ const KMiniCardBrandWidth = 115.0;
 
 const String KImagesPath="utils/images/";
 const String KIconsPath="utils/icons/";
+
+const double KPageHorizontalPadding=20;

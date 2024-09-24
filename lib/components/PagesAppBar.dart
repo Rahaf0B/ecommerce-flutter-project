@@ -20,7 +20,7 @@ class PagesAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20, left: 20),
+      padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
       child: AppBar(
         title: Text(
           title ?? "",

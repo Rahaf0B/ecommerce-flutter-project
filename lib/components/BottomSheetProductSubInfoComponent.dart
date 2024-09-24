@@ -32,67 +32,70 @@ class _BottomSheetProductSubInfoComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: KPageBackGroundColor,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(KBorderRadius),
-          topRight: Radius.circular(KBorderRadius),
+      color:   KshowModalBottomSheetBackgroundColor,
+      child: Container(
+        decoration: BoxDecoration(
+          color: KPageBackGroundColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(KBorderRadius),
+            topRight: Radius.circular(KBorderRadius),
+          ),
         ),
-      ),
-      // color: Colors.red,
-      height: MediaQuery.of(context).size.height * 0.5 * .8 + 35,
-      padding: EdgeInsets.all(20),
-      // child: Container(
-      // width: double.infinity,
-      child: Column(
-        children: [
-          Container(
-            // width: 120,
-            child: Row(children: [
-              Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(KBorderRadius),
-                  child: Image.asset(
-                    widget.img_url,
-                    width: 120,
-                    height: 120,
+        // color: Colors.red,
+        height: MediaQuery.of(context).size.height * 0.5 * .8 + 35,
+        padding: EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
+        // child: Container(
+        // width: double.infinity,
+        child: Column(
+          children: [
+            Container(
+              // width: 120,
+              child: Row(children: [
+                Container(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(KBorderRadius),
+                    child: Image.asset(
+                      widget.img_url,
+                      width: 120,
+                      height: 120,
+                    ),
                   ),
+                  // width: double.infinity,
                 ),
-                // width: double.infinity,
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              ProductSubInfo(
-                elementType: ElementType.page,
-                width: 1,
-                marginTop: 5,
-                title: widget.title,
-                subTitle: widget.subTitle,
-                price: widget.price,
-              )
-            ]),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          AvgRatingComponent(
-            show_icon: true,
-            numberOfReviews: widget.numberOfReviews,
-            rating: widget.rating,
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          BottomSheetOptionButtons(
-            btn_text: "Add to Bag",
-            right_btn_img_url: KIconsPath + "bagIconOutline.svg",
-            left_btn_img_url: KIconsPath + "placeholder.svg",
-          )
-        ],
-      ),
+                SizedBox(
+                  width: 20,
+                ),
+                ProductSubInfo(
+                  elementType: ElementType.page,
+                  width: 1,
+                  marginTop: 5,
+                  title: widget.title,
+                  subTitle: widget.subTitle,
+                  price: widget.price,
+                )
+              ]),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            AvgRatingComponent(
+              show_icon: true,
+              numberOfReviews: widget.numberOfReviews,
+              rating: widget.rating,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            BottomSheetOptionButtons(
+              btn_text: "Add to Bag",
+              right_btn_img_url: KIconsPath + "bagIconOutline.svg",
+              left_btn_img_url: KIconsPath + "placeholder.svg",
+            )
+          ],
+        ),
 
-      // ),
+        // ),
+      ),
     );
   }
 }

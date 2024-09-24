@@ -22,16 +22,18 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      padding: EdgeInsets.symmetric(
+          vertical: 15),
       height: 80,
+      width: double.infinity,
       color: KPageBackGroundColor,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             alignment: Alignment.center,
-            width: 60,
+            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
                 color: KMiniCardColor,
                 borderRadius: BorderRadius.circular(KBorderRadius)),
@@ -39,27 +41,30 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                 onPressed: () {},
                 icon: SvgPicture.asset(
                   widget.left_btn_img_url,
-                  width: MediaQuery.of(context).size.width * 0.5 * 0.13,
+                  width: MediaQuery.of(context).size.width * 0.5 * 0.15,
                 )),
           ),
-          Container(
-              width: MediaQuery.of(context).size.width * 0.5 * 1.2,
-              child: TextButton.icon(
-                  iconAlignment: IconAlignment.start,
-                  style: ButtonStyle(
-                      alignment: Alignment.center,
-                      backgroundColor: WidgetStateProperty.all(KPrimaryColor),
-                      shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)))),
-                  onPressed: () {},
-                  label: Text(
-                    widget.btn_text,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: KTextBrightColor),
-                  ),
-                  icon: SvgPicture.asset(
-                    widget.right_btn_img_url,
-                  )))
+          SizedBox(width: 15,)
+ ,         Expanded(
+            child: Container(
+
+                child: TextButton.icon(
+                    iconAlignment: IconAlignment.start,
+                    style: ButtonStyle(
+                        alignment: Alignment.center,
+                        backgroundColor: WidgetStateProperty.all(KPrimaryColor),
+                        shape: WidgetStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)))),
+                    onPressed: () {},
+                    label: Text(
+                      widget.btn_text,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: KTextBrightColor),
+                    ),
+                    icon: SvgPicture.asset(
+                      widget.right_btn_img_url,
+                    ))),
+          )
         ],
       ),
     );

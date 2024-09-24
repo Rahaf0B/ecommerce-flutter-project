@@ -11,3 +11,4 @@ const KPrimaryTintColor = Color(0xFF639599);
 const KGreyBackGroundColor = Color(0xFFF1F1F1);
 const KOrangeColor = Color(0xFFFF8C4B);
 const KSubTextColor = Color(0xFFB6B6B6);
+const KshowModalBottomSheetBackgroundColor =Color(0xff757575);

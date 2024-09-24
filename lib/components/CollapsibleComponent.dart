@@ -28,7 +28,7 @@ class _HomeFooterState extends State<CollapsibleComponent> {
       padding: EdgeInsets.all(0),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Container(
-          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+          padding: EdgeInsets.symmetric(vertical: 0, horizontal: KPageHorizontalPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

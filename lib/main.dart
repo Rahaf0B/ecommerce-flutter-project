@@ -1,4 +1,5 @@
 import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
+import 'package:ecommerce/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Constants/Colors.dart';
@@ -24,6 +25,7 @@ class EcommerceApp extends StatelessWidget {
       routes: {
         PagesContainerWithNavigator.route: (context) =>
             PagesContainerWithNavigator(),
+        SearchScreen.route: (context) => SearchScreen(),
       },
       theme: ThemeData(
           bottomSheetTheme: BottomSheetThemeData(
@@ -38,7 +40,8 @@ class EcommerceApp extends StatelessWidget {
             toolbarHeight: 80,
             scrolledUnderElevation: 0,
             color: KPageBackGroundColor,
-          )),
+          ),
+      ),
     );
   }
 }

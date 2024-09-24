@@ -43,7 +43,7 @@ class _HandpickedState extends State<Handpicked> {
       height: 480,
       width: double.infinity,
       color: KPrimaryColor,
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
