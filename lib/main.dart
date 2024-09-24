@@ -1,6 +1,44 @@
+import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'Constants/Colors.dart';
+import 'Constants/Constant.dart';
+
 
 void main() {
-  runApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  runApp(EcommerceApp());
 }
 
+class EcommerceApp extends StatelessWidget {
+  const EcommerceApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: PagesContainerWithNavigator.route,
+      debugShowCheckedModeBanner: false,
+      routes: {
+        PagesContainerWithNavigator.route: (context) =>
+            PagesContainerWithNavigator(),
+      },
+      theme: ThemeData(
+          bottomSheetTheme: BottomSheetThemeData(
+              shape: OutlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              backgroundColor: KPageBackGroundColor),
+          fontFamily: KTextFont,
+          scaffoldBackgroundColor: KPageBackGroundColor,
+          bottomAppBarTheme: BottomAppBarTheme(color: KPageBackGroundColor),
+          appBarTheme: AppBarTheme(
+            toolbarHeight: 80,
+            scrolledUnderElevation: 0,
+            color: KPageBackGroundColor,
+          )),
+    );
+  }
+}
