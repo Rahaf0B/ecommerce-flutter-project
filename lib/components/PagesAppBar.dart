@@ -25,7 +25,7 @@ class PagesAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(
           title ?? "",
           style: TextStyle(
-              fontFamily: KTextFont, fontSize: 25, color: KPrimaryColor),
+              fontFamily: KTextFont, fontSize: 24, color: KPrimaryColor),
         ),
         actions: actionsWidgets,
         leading: leadingWidget,
