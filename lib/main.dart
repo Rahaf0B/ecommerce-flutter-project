@@ -1,5 +1,6 @@
 import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
 import 'package:ecommerce/screens/search_screen.dart';
+import 'package:ecommerce/screens/sub_categories_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Constants/Colors.dart';
@@ -20,12 +21,13 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: PagesContainerWithNavigator.route,
+      initialRoute: SubCategoriesScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
             PagesContainerWithNavigator(),
         SearchScreen.route: (context) => SearchScreen(),
+        SubCategoriesScreen.route:(context)=>SubCategoriesScreen()
       },
       theme: ThemeData(
           bottomSheetTheme: BottomSheetThemeData(

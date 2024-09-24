@@ -33,7 +33,6 @@ class _ProductcontainerState extends State<Productcontainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 20,
       width: MediaQuery.of(context).size.width * 0.5 * widget.widthPercentage,
       child: Flex(
         direction: widget.containerAxis == ComponentDirection.vertical
@@ -53,6 +52,7 @@ class _ProductcontainerState extends State<Productcontainer> {
                   borderRadius: BorderRadius.circular(KBorderRadius),
                   child: Image.asset(
                     widget.img_url,
+                    fit: BoxFit.contain,
                   )),
             ),
           ),
