@@ -1,4 +1,5 @@
 
+import 'package:ecommerce/screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<PagesContainerWithNavigator> {
   final List<Widget> _children = [
     HomeScreen(),
     Container(),
+    CartScreen()
 
   ];
   // int _currentIndex=0;
