@@ -1,5 +1,6 @@
 import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
 import 'package:ecommerce/screens/product_screen.dart';
+import 'package:ecommerce/screens/reviews_screen.dart';
 import 'package:ecommerce/screens/search_screen.dart';
 import 'package:ecommerce/screens/sub_categories_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +23,15 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: ProductScreen.route,
+      initialRoute: SearchScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
             PagesContainerWithNavigator(),
         SearchScreen.route: (context) => SearchScreen(),
         SubCategoriesScreen.route:(context)=>SubCategoriesScreen(),
-        ProductScreen.route:(context)=>ProductScreen()
+        ProductScreen.route:(context)=>ProductScreen(),
+        ReviewsScreen.route: (context) => ReviewsScreen(),
       },
       theme: ThemeData(
           bottomSheetTheme: BottomSheetThemeData(

@@ -1,3 +1,4 @@
+import 'package:ecommerce/Models/Product.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
+import '../Models/Figure.dart';
 import '../components/AvgRatingComponent.dart';
 import '../components/BottomSheetOptionButtons.dart';
 import '../components/BottomSheetProductSubInfoComponent.dart';
@@ -23,99 +25,157 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  late List<Productcontainer> _productsData;
+  late List<Product> _productsData;
   late List<ProductImgContainer> _productImages;
-  void productItemOnTap() {
+  void productItemOnTap(Product product) {
     showModalBottomSheet(
         backgroundColor: KPageBackGroundColor,
         context: context,
         isScrollControlled: true,
         builder: (context) => SingleChildScrollView(
                 child: BottomSheetProductSubInfoComponent(
-              title: "Grande",
-              img_url: KImagesPath + "bag1.png",
-              price: 39.49,
-              subTitle: "Blossom Pouch",
-              rating: 4.5,
-              numberOfReviews: 43,
+              title: product.name,
+              img_url: product.images.firstWhere((img) => img.type == true).url,
+              price: product.price,
+              subTitle: product.sub_title,
+              rating: product.ratings,
+              numberOfReviews: product.number_of_ratings,
             )));
   }
 
+  late Product _productInfo;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    //TODO GET THIS FROM API
     _productsData = [
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        containerAxis: ComponentDirection.vertical,
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        price: 39.49,
-        onTap: productItemOnTap,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: true,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        price: 39.49,
-        onTap: productItemOnTap,
-        containerAxis: ComponentDirection.vertical,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: false,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        containerAxis: ComponentDirection.vertical,
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        price: 39.49,
-        onTap: productItemOnTap,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: true,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        containerAxis: ComponentDirection.vertical,
-        price: 39.49,
-        onTap: productItemOnTap,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: false,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-          widthPercentage: 0.7,
-          containerAxis: ComponentDirection.vertical,
-          title: "Grande",
-          subTitle: "Blossom Pouch",
-          img_url: KImagesPath + "bag1.png",
-          price: 39.49),
-      Productcontainer(
-          widthPercentage: 0.7,
-          containerAxis: ComponentDirection.vertical,
-          title: "Grande",
-          subTitle: "Blossom Pouch",
-          img_url: KImagesPath + "bag1.png",
-          price: 39.49)
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: false,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
+      ),
     ];
 
-    _productImages = [
-      ProductImgContainer(
-        img_url: KImagesPath + "bag-thumbnail.png",
-      ),
-      ProductImgContainer(
-        img_url: KImagesPath + "bag-thumbnail.png",
-      ),
-      ProductImgContainer(
-        img_url: KImagesPath + "bag-thumbnail.png",
-      )
-    ];
+    _productInfo = Product(
+      product_id: 1,
+      name: 'Grande',
+      sub_title: "Blossom Pouch",
+      price: 39.45,
+      description:
+          "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+      discount_value: 20,
+      quantity: 10,
+      category_id: 1,
+      brand_id: 2,
+      is_liked: true,
+      number_of_ratings: 20,
+      ratings: 4.2,
+      images: [
+        Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+        Figure(
+            image_id: 1, url: KImagesPath + "bag-thumbnail.png", type: false),
+        Figure(image_id: 1, url: KImagesPath + "bag-thumbnail.png", type: false)
+      ],
+    );
   }
 
-//TODO GET THIS FROM API
-  String productName = "Grande";
-  String productSubTitle = "Blossom Pouch";
-  String productDescription =
-      "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.";
   @override
   Widget build(BuildContext context) {
     ScrollController _scrollController = ScrollController();
@@ -155,7 +215,14 @@ class _ProductScreenState extends State<ProductScreen> {
                             borderRadius: BorderRadius.circular(15)),
                         child: SliderView(
                           number_of_items: 3,
-                          children: _productImages,
+                          children: _productInfo == null
+                              ? []
+                              : [
+                                  for (var item in _productInfo!.images)
+                                    ProductImgContainer(
+                                      img_url: item.url,
+                                    ),
+                                ],
                           height: MediaQuery.of(context).size.height *
                               (50 / 100) *
                               0.4,
@@ -164,11 +231,16 @@ class _ProductScreenState extends State<ProductScreen> {
                       ProductSubInfo(
                           width: 1,
                           elementType: ElementType.page,
-                          title: productName,
-                          subTitle: productSubTitle,
+                          title: _productInfo == null ? "" : _productInfo.name,
+                          subTitle: _productInfo == null
+                              ? ""
+                              : _productInfo.sub_title,
                           marginTop: 10,
-                          price: 39.49,
-                          discountValue: 50),
+                          price:
+                              _productInfo == null ? 0.0 : _productInfo.price,
+                          discountValue: _productInfo == null
+                              ? 0.0
+                              : _productInfo.discount_value),
                       SizedBox(
                         height: 15,
                       ),
@@ -192,7 +264,9 @@ class _ProductScreenState extends State<ProductScreen> {
                           horizontal: KPageHorizontalPadding),
                       child: Text(
                           style: TextStyle(color: KGreyColor),
-                          productDescription)),
+                          _productInfo == null
+                              ? ""
+                              : _productInfo.description)),
                   scrollController: _scrollController),
             ])),
             Divider(
@@ -244,7 +318,24 @@ class _ProductScreenState extends State<ProductScreen> {
                   SliderView(
                     number_of_items:
                         _productsData == null ? 0 : _productsData.length,
-                    children: _productsData == null ? [] : _productsData,
+                    children: _productsData == null
+                        ? []
+                        : [
+                            for (Product item in _productsData!)
+                              Productcontainer(
+                                widthPercentage: 0.7,
+                                title: item.name,
+                                containerAxis: ComponentDirection.vertical,
+                                subTitle: item.sub_title,
+                                img_url: item.images
+                                    .firstWhere((img) => img.type == true)
+                                    .url,
+                                price: item.price,
+                                onTap: (Product item) => productItemOnTap(item),
+                                liked: item.is_liked,
+                                product: item,
+                              )
+                          ],
                     height: MediaQuery.of(context).size.height * 0.5 * 0.7 - 60,
                   )
                 ],

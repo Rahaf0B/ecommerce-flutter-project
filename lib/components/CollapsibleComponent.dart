@@ -27,48 +27,49 @@ class _HomeFooterState extends State<CollapsibleComponent> {
       constraints: BoxConstraints(maxHeight: showChildComponent ? 680 : 60),
       padding: EdgeInsets.all(0),
       child: ListView(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true
-      ,children: [
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 0, horizontal: KPageHorizontalPadding),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Text(
-                  widget.title,
-                  style: TextStyle(
-                      color: KTextDarkColor, fontWeight: FontWeight.w500),
-                ),
-              ),
-              IconButton(
-                  onPressed: () {
-                    if (!showChildComponent) {
-                      widget.scrollController.jumpTo(
-                          widget.scrollController.position.pixels + 50.0);
-                    }
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(
+                  vertical: 0, horizontal: KPageHorizontalPadding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      widget.title,
+                      style: TextStyle(
+                          color: KTextDarkColor, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        if (!showChildComponent) {
+                          widget.scrollController.jumpTo(
+                              widget.scrollController.position.pixels + 50.0);
+                        }
 
-                    setState(() {
-                      showChildComponent = !showChildComponent;
-                    });
-                  },
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  icon: SvgPicture.asset(showChildComponent
-                      ? KIconsPath + "arrowup.svg"
-                      : KIconsPath + "arrowDown.svg"))
-            ],
-          ),
-        ),
-        showChildComponent
-            ? Flexible(
-                child: Container(padding: EdgeInsets.only(bottom: 20,top: 10),child:widget.child),
-              )
-            : Container(
-                height: 0,
+                        setState(() {
+                          showChildComponent = !showChildComponent;
+                        });
+                      },
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      icon: SvgPicture.asset(showChildComponent
+                          ? KIconsPath + "arrowup.svg"
+                          : KIconsPath + "arrowDown.svg"))
+                ],
               ),
-      ]),
+            ),
+            showChildComponent
+                ? Container(
+                    padding: EdgeInsets.only(bottom: 20, top: 10),
+                    child: widget.child)
+                : Container(
+                    height: 0,
+                  ),
+          ]),
     );
   }
 }

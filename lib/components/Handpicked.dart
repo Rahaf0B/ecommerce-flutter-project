@@ -2,6 +2,8 @@ import 'package:ecommerce/components/GridViewCreator.dart';
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
+import '../Models/Category.dart';
+import '../Models/Figure.dart';
 import 'CollectionCard.dart';
 
 class Handpicked extends StatefulWidget {
@@ -12,28 +14,30 @@ class Handpicked extends StatefulWidget {
 }
 
 class _HandpickedState extends State<Handpicked> {
-  late List<Collectioncard> cardCollectionData = [];
+  late List<Category> _cardCollectionData;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    cardCollectionData = [
-      Collectioncard(
-        title: "Handbags",
-        img_url: KImagesPath + "handbag.png",
-      ),
-      Collectioncard(
-        title: "Handbags",
-        img_url: KImagesPath + "handbag.png",
-      ),
-      Collectioncard(
-        title: "Handbags",
-        img_url: KImagesPath + "handbag.png",
-      ),
-      Collectioncard(
-        title: "Handbags",
-        img_url: KImagesPath + "handbag.png",
-      )
+
+    _cardCollectionData = [
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          category_id: 1),
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          category_id: 1),
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          category_id: 1),
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          category_id: 1),
     ];
   }
 
@@ -43,7 +47,8 @@ class _HandpickedState extends State<Handpicked> {
       height: 480,
       width: double.infinity,
       color: KPrimaryColor,
-      padding: EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
+      padding: EdgeInsets.symmetric(
+          vertical: 20, horizontal: KPageHorizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -58,9 +63,16 @@ class _HandpickedState extends State<Handpicked> {
             height: 15,
           ),
           Gridviewcreator(
-            children: cardCollectionData!,
+            children: [
+              for (var item in _cardCollectionData)
+                Collectioncard(
+                  id: item.category_id,
+                  title: item.name,
+                  img_url: item.image.url,
+                ),
+            ],
             numberOfColumns: 2,
-            numberOfRows: (cardCollectionData!.length / 2).toInt(),
+            numberOfRows: (_cardCollectionData!.length / 2).toInt(),
           )
         ],
       ),
