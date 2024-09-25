@@ -1,4 +1,5 @@
 import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
+import 'package:ecommerce/screens/add_review_screen.dart';
 import 'package:ecommerce/screens/product_screen.dart';
 import 'package:ecommerce/screens/reviews_screen.dart';
 import 'package:ecommerce/screens/search_screen.dart';
@@ -23,7 +24,7 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: SearchScreen.route,
+      initialRoute: AddReviewScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
@@ -32,6 +33,7 @@ class EcommerceApp extends StatelessWidget {
         SubCategoriesScreen.route:(context)=>SubCategoriesScreen(),
         ProductScreen.route:(context)=>ProductScreen(),
         ReviewsScreen.route: (context) => ReviewsScreen(),
+        AddReviewScreen.route: (context) => AddReviewScreen(),
       },
       theme: ThemeData(
           bottomSheetTheme: BottomSheetThemeData(
