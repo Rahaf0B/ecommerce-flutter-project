@@ -9,6 +9,7 @@ class CardCategoryBrand extends StatefulWidget {
       required this.img_url,
       required this.containerHeight,
       required this.containerWidth,
+      required this.id,
       this.text,
       this.onTap});
   final String img_url;
@@ -16,6 +17,7 @@ class CardCategoryBrand extends StatefulWidget {
   final double containerHeight;
   final double containerWidth;
   final Function? onTap;
+  final int id;
   @override
   State<CardCategoryBrand> createState() => _CardCategoryBrandState();
 }

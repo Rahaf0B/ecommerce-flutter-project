@@ -1,9 +1,13 @@
+import 'package:ecommerce/Models/Brand.dart';
+import 'package:ecommerce/Models/Category.dart';
+import 'package:ecommerce/Models/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
+import '../Models/Figure.dart';
 import '../components/BannerContent.dart';
 import '../components/BottomSheetProductSubInfoComponent.dart';
 import '../components/CardBanner.dart';
@@ -29,26 +33,26 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   ScrollController _scrollController = ScrollController();
-  void productItemOnTap() {
+  void productItemOnTap(Product product) {
     showModalBottomSheet(
         backgroundColor: KPageBackGroundColor,
         context: context,
         isScrollControlled: true,
         builder: (context) => SingleChildScrollView(
                 child: BottomSheetProductSubInfoComponent(
-              title: "Grande",
-              img_url: KImagesPath + "bag1.png",
-              price: 39.49,
-              subTitle: "Blossom Pouch",
-              rating: 4.5,
-              numberOfReviews: 43,
+              title: product.name,
+              img_url: product.images.firstWhere((img) => img.type == true).url,
+              price: product.price,
+              subTitle: product.sub_title,
+              rating: product.ratings,
+              numberOfReviews: product.number_of_ratings,
             )));
   }
 
   late List<CardBanner> _cardBannerData;
-  late List<Productcontainer> _productsData;
-  late List<CardCategoryBrand> _cardBrandData;
-  late List<CardCategoryBrand> _cardCategoryData;
+  late List<Product> _productsData;
+  late List<Brand> _cardBrandData;
+  late List<Category> _cardCategoryData;
 
   @override
   void initState() {
@@ -72,117 +76,175 @@ class _HomeScreenState extends State<HomeScreen> {
               title: "Carry your Funk",
               subTitle: "Trendy handbags collection for your party animal"))
     ];
-
     _productsData = [
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        containerAxis: ComponentDirection.vertical,
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        price: 39.49,
-        onTap: productItemOnTap,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: true,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        price: 39.49,
-        onTap: productItemOnTap,
-        containerAxis: ComponentDirection.vertical,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: false,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        containerAxis: ComponentDirection.vertical,
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        price: 39.49,
-        onTap: productItemOnTap,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: true,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-        widthPercentage: 0.7,
-        title: "Grande",
-        subTitle: "Blossom Pouch",
-        img_url: KImagesPath + "bag1.png",
-        containerAxis: ComponentDirection.vertical,
-        price: 39.49,
-        onTap: productItemOnTap,
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: false,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
       ),
-      Productcontainer(
-          widthPercentage: 0.7,
-          containerAxis: ComponentDirection.vertical,
-          title: "Grande",
-          subTitle: "Blossom Pouch",
-          img_url: KImagesPath + "bag1.png",
-          price: 39.49),
-      Productcontainer(
-          widthPercentage: 0.7,
-          containerAxis: ComponentDirection.vertical,
-          title: "Grande",
-          subTitle: "Blossom Pouch",
-          img_url: KImagesPath + "bag1.png",
-          price: 39.49)
+      Product(
+        product_id: 1,
+        name: 'Grande',
+        sub_title: "Blossom Pouch",
+        price: 39.45,
+        description:
+            "Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.",
+        discount_value: 20,
+        quantity: 10,
+        category_id: 1,
+        brand_id: 2,
+        is_liked: false,
+        number_of_ratings: 20,
+        ratings: 4.2,
+        images: [
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
+          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+        ],
+      ),
     ];
-
     _cardBrandData = [
-      CardCategoryBrand(
-          img_url: KIconsPath + "Zara_Logo.svg",
-          containerWidth: KMiniCardBrandWidth,
-          containerHeight: KMiniCardBrandHeight),
-      CardCategoryBrand(
-          img_url: KIconsPath + "Zara_Logo.svg",
-          containerWidth: KMiniCardBrandWidth,
-          containerHeight: KMiniCardBrandHeight),
-      CardCategoryBrand(
-          img_url: KIconsPath + "Zara_Logo.svg",
-          containerWidth: KMiniCardBrandWidth,
-          containerHeight: KMiniCardBrandHeight),
-      CardCategoryBrand(
-          img_url: KIconsPath + "Zara_Logo.svg",
-          containerWidth: KMiniCardBrandWidth,
-          containerHeight: KMiniCardBrandHeight),
-      CardCategoryBrand(
-          img_url: KIconsPath + "Zara_Logo.svg",
-          containerWidth: KMiniCardBrandWidth,
-          containerHeight: KMiniCardBrandHeight),
-      CardCategoryBrand(
-          img_url: KIconsPath + "Zara_Logo.svg",
-          containerWidth: KMiniCardBrandWidth,
-          containerHeight: KMiniCardBrandHeight)
+      Brand(
+          brand_id: 1,
+          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          name: "Zara"),
+      Brand(
+          brand_id: 1,
+          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          name: "Zara"),
+      Brand(
+          brand_id: 1,
+          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          name: "Zara"),
+      Brand(
+          brand_id: 1,
+          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          name: "Zara"),
+      Brand(
+          brand_id: 1,
+          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          name: "Zara"),
+      Brand(
+          brand_id: 1,
+          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          name: "Zara")
     ];
     _cardCategoryData = [
-      CardCategoryBrand(
-        img_url: KIconsPath + "icon-bag.svg",
-        text: "Handbags",
-        containerHeight: KMiniCardCategoryHeight,
-        containerWidth: KMiniCardCategoryWidth,
-      ),
-      CardCategoryBrand(
-        img_url: KIconsPath + "icon-bag.svg",
-        text: "Handbags",
-        containerHeight: KMiniCardCategoryHeight,
-        containerWidth: KMiniCardCategoryWidth,
-      ),
-      CardCategoryBrand(
-        img_url: KIconsPath + "icon-watch.svg",
-        text: "Watches",
-        containerHeight: KMiniCardCategoryHeight,
-        containerWidth: KMiniCardCategoryWidth,
-      ),
-      CardCategoryBrand(
-        img_url: KIconsPath + "icon-bag.svg",
-        text: "Handbags",
-        containerHeight: KMiniCardCategoryHeight,
-        containerWidth: KMiniCardCategoryWidth,
-      ),
-      CardCategoryBrand(
-        img_url: KIconsPath + "icon-watch.svg",
-        text: "Watches",
-        containerHeight: KMiniCardCategoryHeight,
-        containerWidth: KMiniCardCategoryWidth,
-      )
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          category_id: 1),
+      Category(
+          name: "Watches",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          category_id: 1),
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          category_id: 1),
+      Category(
+          name: "Watches",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          category_id: 1),
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          category_id: 1),
+      Category(
+          name: "Watches",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          category_id: 1),
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          category_id: 1),
+      Category(
+          name: "Watches",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          category_id: 1),
+      Category(
+          name: "Handbags",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          category_id: 1),
+      Category(
+          name: "Watches",
+          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          category_id: 1),
     ];
 
     super.initState();
@@ -248,7 +310,8 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _scrollController,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                padding:
+                    EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -274,7 +337,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           SliderView(
                             number_of_items: _cardCategoryData!.length,
-                            children: _cardCategoryData!,
+                            children: [
+                              for (var item in _cardCategoryData)
+                                CardCategoryBrand(
+                                  img_url: item.image.url,
+                                  text: item.name,
+                                  id: item.category_id,
+                                  containerHeight: KMiniCardCategoryHeight,
+                                  containerWidth: KMiniCardCategoryWidth,
+                                ),
+                            ],
                             height:
                                 MediaQuery.of(context).size.height * 0.5 * 0.4 -
                                     70,
@@ -295,8 +367,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             number_of_items: _productsData == null
                                 ? 0
                                 : _productsData.length,
-                            children:
-                                _productsData == null ? [] : _productsData,
+                            children: (_productsData == null
+                                ? []
+                                : [
+                                    for (Product item in _productsData)
+                                      Productcontainer(
+                                        widthPercentage: 0.7,
+                                        title: item.name,
+                                        containerAxis:
+                                            ComponentDirection.vertical,
+                                        subTitle: item.sub_title,
+                                        img_url: item.images
+                                            .firstWhere(
+                                                (img) => img.type == true)
+                                            .url,
+                                        price: item.price,
+                                        onTap: (Product item) =>
+                                            productItemOnTap(item),
+                                        liked: item.is_liked,
+                                        product: item,
+                                      )
+                                  ]),
                             height:
                                 MediaQuery.of(context).size.height * 0.5 * 0.7 -
                                     60,
@@ -313,7 +404,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 24,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                padding:
+                    EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
                 child: Column(
                   children: [
                     TitleComponentContainer(
@@ -321,7 +413,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           SectionTitle(text: "Shop by Brands", showView: true),
                           Gridviewcreator(
-                            children: _cardBrandData,
+                            children: [
+                              for (var item in _cardBrandData)
+                                CardCategoryBrand(
+                                    id: item.brand_id,
+                                    img_url: item.image.url,
+                                    containerWidth: KMiniCardBrandWidth,
+                                    containerHeight: KMiniCardBrandHeight),
+                            ],
                             height:
                                 MediaQuery.of(context).size.height * 0.5 * 0.8 -
                                     70,

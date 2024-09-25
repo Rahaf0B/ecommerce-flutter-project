@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
+import '../Models/Product.dart';
 import 'ProductSubInfo.dart';
 
 class Productcontainer extends StatefulWidget {
@@ -13,17 +14,21 @@ class Productcontainer extends StatefulWidget {
       required this.price,
       this.discountValue,
       required this.containerAxis,
-      this.onTap})
+      this.onTap,
+      this.liked,
+      this.product})
       : super(key: key);
   final double widthPercentage;
   final String img_url;
   final String title;
   final String subTitle;
   final double price;
-  final int? discountValue;
-  final Function? onTap;
-
+  final double? discountValue;
+  final Function(Product)? onTap;
+  final bool? liked;
   final ComponentDirection containerAxis;
+  //TODO CHANGE THIS
+  final Product? product;
 
   @override
   State<Productcontainer> createState() => _ProductcontainerState();
@@ -46,7 +51,7 @@ class _ProductcontainerState extends State<Productcontainer> {
               onTap: widget.onTap == null
                   ? () {}
                   : () {
-                      widget.onTap!();
+                      widget.onTap!(widget.product!);
                     },
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(KBorderRadius),
@@ -66,7 +71,9 @@ class _ProductcontainerState extends State<Productcontainer> {
             title: widget.title,
             subTitle: widget.subTitle,
             price: widget.price,
-            discountValue: widget.discountValue,
+            discountValue:
+                widget.discountValue == null ? null : widget.discountValue!,
+            liked: widget.liked == null ? false : widget.liked!,
           )
         ],
       ),

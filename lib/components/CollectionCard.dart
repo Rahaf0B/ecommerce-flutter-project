@@ -3,10 +3,15 @@ import '../Constants/Constant.dart';
 
 class Collectioncard extends StatefulWidget {
   const Collectioncard(
-      {super.key, required this.title, required this.img_url, this.onTap});
+      {super.key,
+      required this.title,
+      required this.img_url,
+      this.onTap,
+      required this.id});
   final String img_url;
   final String title;
   final Function? onTap;
+  final int id;
   @override
   State<Collectioncard> createState() => _CollectioncardState();
 }

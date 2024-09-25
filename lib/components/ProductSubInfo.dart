@@ -14,7 +14,8 @@ class ProductSubInfo extends StatefulWidget {
       required this.price,
       this.discountValue,
       required this.elementType,
-      this.subComponent})
+      this.subComponent,
+      this.liked})
       : super(key: key);
 
   final ElementType elementType;
@@ -24,8 +25,9 @@ class ProductSubInfo extends StatefulWidget {
   final String title;
   final String subTitle;
   final double price;
-  final int? discountValue;
+  final double? discountValue;
   final Widget? subComponent;
+  final bool? liked;
   @override
   State<ProductSubInfo> createState() => _ProductSubInfoState();
 }
@@ -33,6 +35,10 @@ class ProductSubInfo extends StatefulWidget {
 class _ProductSubInfoState extends State<ProductSubInfo> {
   @override
   Widget build(BuildContext context) {
+    Color _favIconColor = widget.liked != null && widget.liked == true
+        ? Colors.red
+        : Colors.black;
+
     double priceAfterDiscount = widget.discountValue == null
         ? 0.0
         : (widget.discountValue! * widget.price).round() / 100;
@@ -93,7 +99,7 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
                       widget.discountValue == null
                           ? SizedBox()
                           : Text(
-                              widget.discountValue.toString() + "% OFF",
+                              widget.discountValue!.toString() + "% OFF",
                               style: widget.elementType == ElementType.card
                                   ? productSubInfoDiscountStyleCard
                                   : productSubInfoDiscountStylePage,
@@ -109,8 +115,13 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
                   child: IconButton(
                       padding: EdgeInsets.all(0),
                       onPressed: () {},
-                      icon: SvgPicture.asset(KIconsPath + "wishlist.svg",
-                          height: _favIconSize, width: _favIconSize)),
+                      icon: SvgPicture.asset(
+                        KIconsPath + "wishlist.svg",
+                        height: _favIconSize,
+                        width: _favIconSize,
+                        colorFilter:
+                            ColorFilter.mode(_favIconColor, BlendMode.srcIn),
+                      )),
                 )
               : SizedBox(
                   // width: 0,

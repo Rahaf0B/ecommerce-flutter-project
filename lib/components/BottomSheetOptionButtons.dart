@@ -6,11 +6,11 @@ import '../Constants/Constant.dart';
 class BottomSheetOptionButtons extends StatefulWidget {
   const BottomSheetOptionButtons(
       {super.key,
-       this.left_btn_img_url,
-       this.right_btn_img_url,
+      this.left_btn_img_url,
+      this.right_btn_img_url,
       required this.btn_text});
-  final String ? left_btn_img_url;
-  final String ? right_btn_img_url;
+  final String? left_btn_img_url;
+  final String? right_btn_img_url;
   final String btn_text;
 
   @override
@@ -22,8 +22,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-          vertical: 15),
+      padding: EdgeInsets.symmetric(vertical: 15),
       height: 80,
       width: double.infinity,
       color: KPageBackGroundColor,
@@ -31,28 +30,34 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          widget.left_btn_img_url==null ? SizedBox() : Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-                color: KMiniCardColor,
-                borderRadius: BorderRadius.circular(KBorderRadius)),
-            child: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(
-                  widget.left_btn_img_url!,
-                  width: MediaQuery.of(context).size.width * 0.5 * 0.15,
-                )),
-          ),
-          SizedBox(width: 15,)
- ,         Expanded(
+          widget.left_btn_img_url == null
+              ? SizedBox()
+              : Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      color: KMiniCardColor,
+                      borderRadius: BorderRadius.circular(KBorderRadius)),
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        widget.left_btn_img_url!,
+                        width: MediaQuery.of(context).size.width * 0.5 * 0.15,
+                      )),
+                ),
+          widget.left_btn_img_url == null
+              ? SizedBox()
+              : SizedBox(
+                  width: 15,
+                ),
+          Expanded(
             child: Container(
-
                 child: TextButton.icon(
                     iconAlignment: IconAlignment.start,
                     style: ButtonStyle(
                         alignment: Alignment.center,
-                        iconSize: WidgetStateProperty.all( widget.right_btn_img_url==null ? 0 : 20) ,
+                        iconSize: WidgetStateProperty.all(
+                            widget.right_btn_img_url == null ? 0 : 20),
                         backgroundColor: WidgetStateProperty.all(KPrimaryColor),
                         shape: WidgetStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)))),
@@ -62,7 +67,6 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: KTextBrightColor),
                     ),
-
                     icon: SvgPicture.asset(
                       widget.right_btn_img_url!,
                     ))),
