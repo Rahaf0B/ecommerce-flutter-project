@@ -24,7 +24,7 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: AddReviewScreen.route,
+      initialRoute: PagesContainerWithNavigator.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
@@ -34,6 +34,7 @@ class EcommerceApp extends StatelessWidget {
         ProductScreen.route:(context)=>ProductScreen(),
         ReviewsScreen.route: (context) => ReviewsScreen(),
         AddReviewScreen.route: (context) => AddReviewScreen(),
+
       },
       theme: ThemeData(
           bottomSheetTheme: BottomSheetThemeData(
@@ -43,6 +44,7 @@ class EcommerceApp extends StatelessWidget {
               backgroundColor: KPageBackGroundColor),
           fontFamily: KTextFont,
           scaffoldBackgroundColor: KPageBackGroundColor,
+
           bottomAppBarTheme: BottomAppBarTheme(color: KPageBackGroundColor),
           appBarTheme: AppBarTheme(
             toolbarHeight: 80,

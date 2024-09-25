@@ -41,7 +41,7 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
 
     double priceAfterDiscount = widget.discountValue == null
         ? 0.0
-        : (widget.discountValue! * widget.price).round() / 100;
+        : (widget.discountValue! * widget.price).roundToDouble();
 
     double _favIconSize = 20;
     return Container(
