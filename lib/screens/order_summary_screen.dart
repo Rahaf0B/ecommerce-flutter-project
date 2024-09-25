@@ -23,8 +23,8 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
   double subTotalValue = 0.0;
   double discountValue = 0.0;
   double deliveryFeeValue = 0.0;
-  String selectedMainAddress = "Ruby S Snively";
-  String selectedSubAddress = "1460  Jenric Lane, Ashmor Drive";
+  String selectedUserNameForAddress = "Ruby S Snively";
+  String selectedAddress = "1460  Jenric Lane, Ashmor Drive";
   @override
   void initState() {
     // TODO: implement initState
@@ -50,23 +50,17 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
 
     address = [
       AddressDataContainer(
-        mainAddress: "Vincent Lobo",
-        subAddress: "3068  Woodlawn Drive",
-        street: "Milwaukee",
+        userNameForAddress: "Ruby S Snively",
+        location: "1460  Jenric Lane, Ashmor Drive ",
+
         phoneNumber: "414-672-5388",
       ),
       AddressDataContainer(
-        mainAddress: "Vincent Lobo",
-        subAddress: "3068  Woodlawn Drive",
-        street: "Milwaukee",
+        userNameForAddress: "Vincent Lobo",
+        location: "3068  Woodlawn Drive",
         phoneNumber: "414-672-5388",
       ),
-      AddressDataContainer(
-        mainAddress: "Vincent Lobo",
-        subAddress: "3068  Woodlawn Drive",
-        street: "Milwaukee",
-        phoneNumber: "414-672-5388",
-      )
+
     ];
   }
 
@@ -208,11 +202,12 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      selectedMainAddress,
+                                      selectedUserNameForAddress,
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: KTextDarkColor, fontSize: 15),
                                     ),
-                                    Text(selectedSubAddress,
+                                    Text(selectedAddress,
                                         style: TextStyle(
                                             color: KGreyColor, fontSize: 15)),
                                   ]),
@@ -275,15 +270,13 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
 class AddressDataContainer extends StatelessWidget {
   const AddressDataContainer({
     super.key,
-    required this.mainAddress,
-    required this.subAddress,
-    required this.street,
+    required this.userNameForAddress,
+    required this.location,
     required this.phoneNumber,
   });
 
-  final String mainAddress;
-  final String subAddress;
-  final String street;
+  final String userNameForAddress;
+  final String location;
   final String phoneNumber;
   @override
   Widget build(BuildContext context) {
@@ -293,7 +286,7 @@ class AddressDataContainer extends StatelessWidget {
         Row(
           children: [
             Text(
-              mainAddress,
+              userNameForAddress,
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: KTextDarkColor),
             ),
@@ -309,8 +302,8 @@ class AddressDataContainer extends StatelessWidget {
             ),
           ],
         ),
-        Text(subAddress),
-        Text(street),
+        Text(location,overflow: TextOverflow.ellipsis,),
+
         Text(phoneNumber),
       ],
     );
