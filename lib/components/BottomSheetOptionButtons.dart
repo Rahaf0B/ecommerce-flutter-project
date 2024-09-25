@@ -67,8 +67,9 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: KTextBrightColor),
                     ),
-                    icon: SvgPicture.asset(
-                      widget.right_btn_img_url!,
+                    icon:  widget.right_btn_img_url==null ?
+                        null: SvgPicture.asset(
+                      widget.right_btn_img_url!
                     ))),
           )
         ],
