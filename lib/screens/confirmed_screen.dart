@@ -12,7 +12,7 @@ class ConfirmedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            appBar: PagesAppBar(
+            appBar: const PagesAppBar(
               title: "Order Placed",
               leadingWidget: Icon(
                 Icons.close_outlined,
@@ -21,11 +21,11 @@ class ConfirmedScreen extends StatelessWidget {
               ),
             ),
             body: Container(
-              padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
               child: ListView(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(top: 100),
+                    padding: const EdgeInsets.only(top: 100),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -37,12 +37,12 @@ class ConfirmedScreen extends StatelessWidget {
                               "${KImagesPath}art.png",
                               fit: BoxFit.cover,
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
-                        Container(
+                        SizedBox(
                           width: MediaQuery.of(context).size.width * 0.6,
-                          child: Column(
+                          child: const Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
@@ -73,8 +73,8 @@ class ConfirmedScreen extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.5 * 0.4,
                 width: MediaQuery.of(context).size.width,
                 padding:
-                    EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-                child: Column(
+                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     BottomSheetOptionButtons(
