@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
+import '../components/MainAddressInfoContainer.dart';
 import '../components/OrderDetailsContainer.dart';
 import '../components/OrderProductContainer.dart';
 import '../components/SectionTitle.dart';
@@ -177,56 +178,9 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  TitleComponentContainer(
-                      height: MediaQuery.of(context).size.height * 0.5 * 0.35,
-                      children: [
-                        const SectionTitle(
-                          text: "Deliver To",
-                          showView: false,
-                          textColor: KGreyColor,
-                          titleFontSize: 18,
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: KGreyBackGroundColor,
-                              borderRadius:
-                                  BorderRadius.circular(KBorderRadius)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      selectedUserNameForAddress,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          color: KTextDarkColor, fontSize: 15),
-                                    ),
-                                    Text(selectedAddress,
-                                        style: const TextStyle(
-                                            color: KGreyColor, fontSize: 15)),
-                                  ]),
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: KPrimaryColor,
-                                      borderRadius:
-                                          BorderRadius.circular(KBorderRadius)),
-                                  child: IconButton(
-                                      onPressed: ChageAddressOnTap,
-                                      icon: SvgPicture.asset(
-                                          "${KIconsPath}edit.svg")))
-                            ],
-                          ),
-                        )
-                      ]),
+                  Mainaddressinfocontainer(ChageAddressOnTap:ChageAddressOnTap,selectedAddress: selectedAddress,selectedUserNameForAddress: selectedUserNameForAddress ,),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   Container(
                       child: TitleComponentContainer(children: [
