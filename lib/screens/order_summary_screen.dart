@@ -52,12 +52,13 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
       const AddressDataContainer(
         userNameForAddress: "Ruby S Snively",
         location: "1460  Jenric Lane, Ashmor Drive ",
-
+        email:"email@g.com",
         phoneNumber: "414-672-5388",
       ),
       const AddressDataContainer(
         userNameForAddress: "Vincent Lobo",
         location: "3068  Woodlawn Drive",
+        email:"email@g.com",
         phoneNumber: "414-672-5388",
       ),
 
@@ -273,11 +274,13 @@ class AddressDataContainer extends StatelessWidget {
     required this.userNameForAddress,
     required this.location,
     required this.phoneNumber,
+    required this.email,
   });
 
   final String userNameForAddress;
   final String location;
   final String phoneNumber;
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -303,7 +306,7 @@ class AddressDataContainer extends StatelessWidget {
           ],
         ),
         Text(location,overflow: TextOverflow.ellipsis,),
-
+        Text(email),
         Text(phoneNumber),
       ],
     );
