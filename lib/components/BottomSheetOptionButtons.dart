@@ -66,7 +66,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                             widget.right_btn_img_url == null ? 0 : 20),
                         backgroundColor: WidgetStateProperty.all(
                             widget.btn_backgroundColor ?? KPrimaryColor),
-                        side: WidgetStatePropertyAll( widget.text_color ==null ? BorderSide.none : BorderSide(color: widget.text_color!)),
+                        side: WidgetStatePropertyAll( widget.text_color ==null ? BorderSide.none : BorderSide(color: widget.text_color!,width: 2)),
                         shape: WidgetStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(KBorderRadius)))),
                     onPressed: () {},

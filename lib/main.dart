@@ -6,6 +6,7 @@ import 'package:ecommerce/screens/confirmed_screen.dart';
 import 'package:ecommerce/screens/order_summary_screen.dart';
 import 'package:ecommerce/screens/payments_screen.dart';
 import 'package:ecommerce/screens/product_screen.dart';
+import 'package:ecommerce/screens/profile_screen.dart';
 import 'package:ecommerce/screens/reviews_screen.dart';
 import 'package:ecommerce/screens/search_screen.dart';
 import 'package:ecommerce/screens/sub_categories_screen.dart';
@@ -28,7 +29,7 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: CategoriesBrandsProductsScreen.route,
+      initialRoute: ProfileScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
@@ -43,6 +44,7 @@ class EcommerceApp extends StatelessWidget {
         PaymentsScreen.route: (context) => const PaymentsScreen(),
         ConfirmedScreen.route: (context) => const ConfirmedScreen(),
         CategoriesBrandsProductsScreen.route: (context) => const CategoriesBrandsProductsScreen(),
+        ProfileScreen.route: (context) => const ProfileScreen(),
       },
       theme: ThemeData(
         bottomSheetTheme: const BottomSheetThemeData(
