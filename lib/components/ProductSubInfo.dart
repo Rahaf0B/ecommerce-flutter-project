@@ -65,6 +65,7 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
                   ? const SizedBox()
                   : widget.subComponent!,
               Container(
+
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,6 +76,7 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
                             ? productSubInfoPriceStylePage
                             : productSubInfoPriceStyleCard,
                       ),
+                      widget.discountValue == null ? const SizedBox() : const SizedBox(width: 10,),
                       widget.discountValue == null
                           ? const SizedBox()
                           : Text(
@@ -83,6 +85,7 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
                                   ? productSubInfoSubPriceStyleCard
                                   : productSubInfoSubPriceStylePage,
                             ),
+                      widget.discountValue == null ? const SizedBox() : const SizedBox(width: 10,),
                       widget.discountValue == null
                           ? const SizedBox()
                           : Text(

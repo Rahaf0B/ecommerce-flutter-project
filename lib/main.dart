@@ -11,6 +11,7 @@ import 'package:ecommerce/screens/profile_screen.dart';
 import 'package:ecommerce/screens/reviews_screen.dart';
 import 'package:ecommerce/screens/search_screen.dart';
 import 'package:ecommerce/screens/sub_categories_screen.dart';
+import 'package:ecommerce/screens/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Constants/Colors.dart';
@@ -30,7 +31,7 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: CategoriesScreen.route,
+      initialRoute: WishlistScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
@@ -47,6 +48,7 @@ class EcommerceApp extends StatelessWidget {
         CategoriesBrandsProductsScreen.route: (context) => const CategoriesBrandsProductsScreen(),
         ProfileScreen.route: (context) => const ProfileScreen(),
         CategoriesScreen.route: (context) =>  CategoriesScreen(),
+        WishlistScreen.route: (context) => const WishlistScreen()
       },
       theme: ThemeData(
         bottomSheetTheme: const BottomSheetThemeData(
