@@ -121,8 +121,8 @@ class _CartScreenState extends State<CartScreen> {
           ClipPath(
               clipper: MultipleRoundedCurveClipper(),
               child: Container(
-                padding:
-                    const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 70),
+                padding: const EdgeInsets.only(
+                    left: 20, right: 20, top: 20, bottom: 70),
                 color: KGreyBackGroundColor,
                 child: Container(
                   child: ListView.separated(
@@ -201,13 +201,14 @@ class CartBottomSheet extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.5 * 0.1,
               child: TextButton(
                   style: ButtonStyle(
-                      backgroundColor: const WidgetStatePropertyAll(KPrimaryColor),
+                      backgroundColor:
+                          const WidgetStatePropertyAll(KPrimaryColor),
                       shape: WidgetStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(KBorderRadius)))),
                   onPressed: () {},
                   child: const Text(
                     "Place Order",
-                    style: TextStyle(color: KTextBrightColor),
+                    style: TextStyle(color: KBrightColor),
                   )),
             ),
           )
