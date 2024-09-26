@@ -9,10 +9,14 @@ class CollapsibleComponent extends StatefulWidget {
     required this.title,
     required this.scrollController,
     required this.child,
+    this.IconDisable,
+    this.IconEnable,
   });
   final ScrollController scrollController;
   final Widget child;
   final String title;
+  final String? IconDisable;
+  final String? IconEnable;
 
   @override
   State<CollapsibleComponent> createState() => _HomeFooterState();
@@ -57,8 +61,12 @@ class _HomeFooterState extends State<CollapsibleComponent> {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       icon: SvgPicture.asset(showChildComponent
-                          ? "${KIconsPath}arrowup.svg"
-                          : "${KIconsPath}arrowDown.svg"))
+                          ? (widget.IconEnable == null
+                              ? "${KIconsPath}arrowup.svg"
+                              : widget.IconEnable!)
+                          : (widget.IconDisable == null
+                              ? "${KIconsPath}arrowDown.svg"
+                              : widget.IconDisable!)))
                 ],
               ),
             ),
