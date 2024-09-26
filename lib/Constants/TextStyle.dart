@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "Colors.dart";
 
 const KTextFooterMainTitleStyle = TextStyle(
-    color: KTextBrightColor, fontSize: 14, fontWeight: FontWeight.w500);
+    color: KBrightColor, fontSize: 14, fontWeight: FontWeight.w500);
 const KTextFooterSubTitleStyle = TextStyle(color: KSubTextColor, fontSize: 14);
 
 // product card info style

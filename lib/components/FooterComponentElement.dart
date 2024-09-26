@@ -133,7 +133,7 @@ class FooterComponentElement extends StatelessWidget {
                     ),
                     const Text(
                       "United States",
-                      style: TextStyle(color: KTextBrightColor, fontSize: 16),
+                      style: TextStyle(color: KBrightColor, fontSize: 16),
                     )
                   ]),
               const SizedBox(

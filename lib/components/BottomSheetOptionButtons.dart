@@ -8,10 +8,16 @@ class BottomSheetOptionButtons extends StatefulWidget {
       {super.key,
       this.left_btn_img_url,
       this.right_btn_img_url,
-      required this.btn_text});
+      required this.btn_text,
+      this.btn_backgroundColor,
+      this.text_color, 
+        this.border_color});
   final String? left_btn_img_url;
   final String? right_btn_img_url;
   final String btn_text;
+  final Color? btn_backgroundColor;
+  final Color? text_color;
+  final Color? border_color;
 
   @override
   State<BottomSheetOptionButtons> createState() =>
@@ -22,7 +28,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 15),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       height: 80,
       width: double.infinity,
       color: KPageBackGroundColor,
@@ -58,19 +64,25 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                         alignment: Alignment.center,
                         iconSize: WidgetStateProperty.all(
                             widget.right_btn_img_url == null ? 0 : 20),
-                        backgroundColor: WidgetStateProperty.all(KPrimaryColor),
+                        backgroundColor: WidgetStateProperty.all(
+                            widget.btn_backgroundColor == null
+                                ? KPrimaryColor
+                                : widget.btn_backgroundColor),
+                        side: WidgetStatePropertyAll( widget.text_color ==null ? BorderSide.none : BorderSide(color: widget.text_color!)),
                         shape: WidgetStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)))),
                     onPressed: () {},
                     label: Text(
                       widget.btn_text,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: KTextBrightColor),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: widget.text_color == null
+                              ? KBrightColor
+                              : widget.text_color),
                     ),
-                    icon:  widget.right_btn_img_url==null ?
-                        null: SvgPicture.asset(
-                      widget.right_btn_img_url!
-                    ))),
+                    icon: widget.right_btn_img_url == null
+                        ? null
+                        : SvgPicture.asset(widget.right_btn_img_url!))),
           )
         ],
       ),

@@ -57,7 +57,7 @@ class _HandpickedState extends State<Handpicked> {
             style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 14,
-                color: KTextBrightColor),
+                color: KBrightColor),
           ),
           const SizedBox(
             height: 15,
