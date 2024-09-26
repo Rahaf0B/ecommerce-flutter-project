@@ -65,7 +65,6 @@ class _ProductcontainerState extends State<Productcontainer> {
           ),
           ProductSubInfo(
             elementType: ElementType.card,
-            width: widget.widthPercentage - 0.1,
             marginTop: 5,
             title: widget.title,
             subTitle: widget.subTitle,

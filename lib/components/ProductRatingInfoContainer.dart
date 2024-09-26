@@ -47,7 +47,7 @@ class ProductRatingInfoContainer extends StatelessWidget {
               height: 50,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.5 * 0.3,
+
                   alignment: Alignment.center,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -75,8 +75,9 @@ class ProductRatingInfoContainer extends StatelessWidget {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ])),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5 * 1.6,
+          Container(
+            width: MediaQuery.of(context).size.width ,
+            padding: const EdgeInsets.only(right:45),
             child: RatingSummaryContainer(
                 numberOfFiveStarRating: numberOfFiveStarRating,
                 numberOfFourStarRating: numberOfFourStarRating,

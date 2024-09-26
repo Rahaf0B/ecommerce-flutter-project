@@ -7,7 +7,6 @@ import '../Constants/TextStyle.dart';
 class ProductSubInfo extends StatefulWidget {
   const ProductSubInfo(
       {super.key,
-      required this.width,
       required this.marginTop,
       required this.title,
       required this.subTitle,
@@ -18,8 +17,6 @@ class ProductSubInfo extends StatefulWidget {
       this.liked});
 
   final ElementType elementType;
-
-  final double width;
   final double marginTop;
   final String title;
   final String subTitle;
@@ -50,7 +47,6 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5 * widget.width,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
@@ -65,23 +61,16 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
                     ? productSubInfoSubTitleStylePage
                     : productSubInfoSubTitleStyleCard,
               ),
-              widget.subComponent == null ? const SizedBox() : widget.subComponent!,
+              widget.subComponent == null
+                  ? const SizedBox()
+                  : widget.subComponent!,
               Container(
-                constraints: BoxConstraints(
-                    maxWidth: widget.width != null
-                        ? (MediaQuery.of(context).size.width *
-                                0.5 *
-                                widget.width -
-                            favIconSize)
-                        : double.infinity),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "\$${widget.discountValue == null
-                                ? widget.price.toString()
-                                : priceAfterDiscount.toString()}",
+                        "\$${widget.discountValue == null ? widget.price.toString() : priceAfterDiscount.toString()}",
                         style: widget.elementType == ElementType.page
                             ? productSubInfoPriceStylePage
                             : productSubInfoPriceStyleCard,

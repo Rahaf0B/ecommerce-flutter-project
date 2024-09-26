@@ -26,7 +26,6 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   late List<Product> _productsData;
-  late List<ProductImgContainer> _productImages;
   void productItemOnTap(Product product) {
     showModalBottomSheet(
         backgroundColor: KPageBackGroundColor,
@@ -199,25 +198,22 @@ class _ProductScreenState extends State<ProductScreen> {
           controller: scrollController,
           children: [
             Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: KPageHorizontalPadding),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         margin: const EdgeInsets.only(top: 15),
                         padding: const EdgeInsets.all(0),
-                        height: MediaQuery.of(context).size.height *
-                            (50 / 100) *
-                            0.9,
-                        width: double.infinity,
+                        width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15)),
                         child: SliderView(
-                          number_of_items: 3,
+                          number_of_items: _productInfo.images.length,
                           height: MediaQuery.of(context).size.height *
                               (50 / 100) *
-                              0.4,
+                              0.9,
                           children: _productInfo == null
                               ? []
                               : [
@@ -229,7 +225,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         ),
                       ),
                       ProductSubInfo(
-                          width: 1,
+                          // width: 1,
                           elementType: ElementType.page,
                           title: _productInfo == null ? "" : _productInfo.name,
                           subTitle: _productInfo == null
@@ -353,11 +349,14 @@ class ProductImgContainer extends StatelessWidget {
   final String img_url;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-        borderRadius: BorderRadius.circular(KBorderRadius),
-        child: Image.asset(
-          fit: BoxFit.cover,
-          img_url,
-        ));
+    return SizedBox(
+      width: MediaQuery.of(context).size.width - (KPageHorizontalPadding * 2),
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(KBorderRadius),
+          child: Image.asset(
+            fit: BoxFit.cover,
+            img_url,
+          )),
+    );
   }
 }

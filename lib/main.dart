@@ -11,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'Constants/Colors.dart';
 import 'Constants/Constant.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
@@ -26,35 +25,33 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: AddNewAddressScreen.route,
+      initialRoute: OrderSummaryScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
             const PagesContainerWithNavigator(),
         SearchScreen.route: (context) => const SearchScreen(),
-        SubCategoriesScreen.route:(context)=>const SubCategoriesScreen(),
-        ProductScreen.route:(context)=>const ProductScreen(),
+        SubCategoriesScreen.route: (context) => const SubCategoriesScreen(),
+        ProductScreen.route: (context) => const ProductScreen(),
         ReviewsScreen.route: (context) => const ReviewsScreen(),
         AddReviewScreen.route: (context) => const AddReviewScreen(),
         OrderSummaryScreen.route: (context) => const OrderSummaryScreen(),
         AddNewAddressScreen.route: (context) => const AddNewAddressScreen()
-
       },
       theme: ThemeData(
-          bottomSheetTheme: const BottomSheetThemeData(
-              shape: OutlineInputBorder(
-                borderSide: BorderSide.none,
-              ),
-              backgroundColor: KPageBackGroundColor),
-          fontFamily: KTextFont,
-          scaffoldBackgroundColor: KPageBackGroundColor,
-
-          bottomAppBarTheme: const BottomAppBarTheme(color: KPageBackGroundColor),
-          appBarTheme: const AppBarTheme(
-            toolbarHeight: 80,
-            scrolledUnderElevation: 0,
-            color: KPageBackGroundColor,
-          ),
+        bottomSheetTheme: const BottomSheetThemeData(
+            shape: OutlineInputBorder(
+              borderSide: BorderSide.none,
+            ),
+            backgroundColor: KPageBackGroundColor),
+        fontFamily: KTextFont,
+        scaffoldBackgroundColor: KPageBackGroundColor,
+        bottomAppBarTheme: const BottomAppBarTheme(color: KPageBackGroundColor),
+        appBarTheme: const AppBarTheme(
+          toolbarHeight: 80,
+          scrolledUnderElevation: 0,
+          color: KPageBackGroundColor,
+        ),
       ),
     );
   }

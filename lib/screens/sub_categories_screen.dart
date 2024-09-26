@@ -212,21 +212,24 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                     numberOfRows: (_productsData.length / 2).round(),
                     children: [
                       for (Product item in _productsData)
-                        Productcontainer(
-                          widthPercentage: 0.85,
-                          title: item.name,
-                          containerAxis: ComponentDirection.vertical,
-                          subTitle: item.sub_title,
-                          img_url: item.images
-                              .firstWhere((img) => img.type == true)
-                              .url,
-                          liked: item.is_liked,
-                          price: item.price,
-                          discountValue: item.discount_value == null
-                              ? 0.0
-                              : item.discount_value!,
-                          onTap: (Product item) => productItemOnTap(item),
-                          product: item,
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 10),
+                          child: Productcontainer(
+                            widthPercentage: 1,
+                            title: item.name,
+                            containerAxis: ComponentDirection.vertical,
+                            subTitle: item.sub_title,
+                            img_url: item.images
+                                .firstWhere((img) => img.type == true)
+                                .url,
+                            liked: item.is_liked,
+                            price: item.price,
+                            discountValue: item.discount_value == null
+                                ? 0.0
+                                : item.discount_value!,
+                            onTap: (Product item) => productItemOnTap(item),
+                            product: item,
+                          ),
                         )
                     ])
               ]))),
@@ -280,6 +283,7 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
                           children: [
                             for (var i = 0; i < SortOption.length; i++)
                               RadioListTile(
+                                activeColor: KPrimaryColor,
                                   title: Text(SortOption[i]),
                                   value: i,
                                   groupValue: SelectedSortOption,

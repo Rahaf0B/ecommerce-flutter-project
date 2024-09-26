@@ -52,16 +52,15 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
       const AddressDataContainer(
         userNameForAddress: "Ruby S Snively",
         location: "1460  Jenric Lane, Ashmor Drive ",
-        email:"email@g.com",
+        email: "email@g.com",
         phoneNumber: "414-672-5388",
       ),
       const AddressDataContainer(
         userNameForAddress: "Vincent Lobo",
         location: "3068  Woodlawn Drive",
-        email:"email@g.com",
+        email: "email@g.com",
         phoneNumber: "414-672-5388",
       ),
-
     ];
   }
 
@@ -76,7 +75,8 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
               builder: (BuildContext context, StateSetter widgetState) =>
                   SingleChildScrollView(
                       child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20)
+                    .copyWith(top: 10, bottom: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -290,8 +290,8 @@ class AddressDataContainer extends StatelessWidget {
           children: [
             Text(
               userNameForAddress,
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, color: KTextDarkColor),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: KTextDarkColor),
             ),
             const SizedBox(
               width: 10,
@@ -305,7 +305,10 @@ class AddressDataContainer extends StatelessWidget {
             ),
           ],
         ),
-        Text(location,overflow: TextOverflow.ellipsis,),
+        Text(
+          location,
+          overflow: TextOverflow.ellipsis,
+        ),
         Text(email),
         Text(phoneNumber),
       ],

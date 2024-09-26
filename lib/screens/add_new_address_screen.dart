@@ -47,6 +47,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                 ),
                 const Divider(
                   color: KGreyBackGroundColor,
+                  thickness: 2,
                 ),
                 const SizedBox(
                   height: 15,
@@ -100,14 +101,20 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                             ),
                             alignment: Alignment.center,
                             child: CountryCodePicker(
-                              mode: CountryCodePickerMode.dialog,
+                              mode: CountryCodePickerMode.bottomSheet,
+                              barrierColor: Colors.transparent,
+
+boxDecoration: BoxDecoration(borderRadius: BorderRadius.circular(KBorderRadius)),
                               onChanged: (country) {
                                 print('Country code selected: ${country.code}');
                               },
                               initialSelection: 'PS',
                               showFlag: false,
+
+                              // boxDecoration: BoxDecoration(),
                               showDropDownButton: true,
-                              padding: const EdgeInsets.only(top: 0,bottom: 0,left: 10,right: 0),
+                              padding: const EdgeInsets.only(
+                                  top: 0, bottom: 0, left: 10, right: 0),
                             ),
                           ),
                           const SizedBox(
@@ -120,7 +127,6 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                               width:
                                   MediaQuery.of(context).size.width * 0.5 * 0.9,
                             ),
-
                           ),
                         ],
                       ),
@@ -144,6 +150,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                 ),
                 const Divider(
                   color: KGreyBackGroundColor,
+                  thickness: 2,
                 ),
                 const SizedBox(
                   height: 10,

@@ -55,7 +55,6 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
               ),
               ProductSubInfo(
                 elementType: ElementType.cart,
-                width: 1,
                 marginTop: 5,
                 title: widget.title,
                 subTitle: widget.subtitle,

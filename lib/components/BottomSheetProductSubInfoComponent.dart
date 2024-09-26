@@ -32,7 +32,7 @@ class _BottomSheetProductSubInfoComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      color:   KshowModalBottomSheetBackgroundColor,
+      color: KshowModalBottomSheetBackgroundColor,
       child: Container(
         decoration: const BoxDecoration(
           color: KPageBackGroundColor,
@@ -41,15 +41,11 @@ class _BottomSheetProductSubInfoComponentState
             topRight: Radius.circular(KBorderRadius),
           ),
         ),
-        // color: Colors.red,
-        height: MediaQuery.of(context).size.height * 0.5 * .8 + 35,
-        padding: const EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
-        // child: Container(
-        // width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding)
+            .copyWith(top: 30, bottom: 10),
         child: Column(
           children: [
             Container(
-              // width: 120,
               child: Row(children: [
                 Container(
                   child: ClipRRect(
@@ -67,7 +63,6 @@ class _BottomSheetProductSubInfoComponentState
                 ),
                 ProductSubInfo(
                   elementType: ElementType.page,
-                  width: 1,
                   marginTop: 5,
                   title: widget.title,
                   subTitle: widget.subTitle,
@@ -93,8 +88,6 @@ class _BottomSheetProductSubInfoComponentState
             )
           ],
         ),
-
-        // ),
       ),
     );
   }

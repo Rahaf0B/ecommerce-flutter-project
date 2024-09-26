@@ -14,8 +14,6 @@ class BannerContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
       alignment: Alignment.centerRight,
       margin: const EdgeInsets.only(top: 10, bottom: 10),
       child: Container(

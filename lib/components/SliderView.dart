@@ -20,6 +20,7 @@ class SliderView extends StatelessWidget {
                 width: 15,
               );
             },
+            shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: number_of_items,
             itemBuilder: (context, i) {
