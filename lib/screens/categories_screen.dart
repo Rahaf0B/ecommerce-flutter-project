@@ -3,9 +3,7 @@ import 'package:ecommerce/Constants/Constant.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 
-import '../Constants/Enums.dart';
 import '../components/CardBanner.dart';
-import '../components/UpperContentBannerCategory.dart';
 
 class CategoriesScreen extends StatelessWidget {
   static String route = "categories";
@@ -34,16 +32,16 @@ class CategoriesScreen extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
-      appBar: PagesAppBar(
+      appBar: const PagesAppBar(
         title: "Categories",
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: ListView(
           children: [
             for (var item in cards) ...[
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 child: CardCatComponent(
                   id: item.keys.first,
                   title: item.values.first.entries.first.key,
@@ -76,13 +74,13 @@ class CardCatComponent extends StatelessWidget {
         height: 145,
         image_url: img_url,
         upperComponent: Container(
-          padding: EdgeInsets.only(right: 20),
+          padding: const EdgeInsets.only(right: 20),
           width: double.infinity,
+          alignment: Alignment.centerRight,
           child: Text(
             title,
-            style: TextStyle(color: KBrightColor, fontSize: 22),
+            style: const TextStyle(color: KBrightColor, fontSize: 22),
           ),
-          alignment: Alignment.centerRight,
         ));
   }
 }
