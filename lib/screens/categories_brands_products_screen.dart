@@ -1,33 +1,72 @@
-import 'package:ecommerce/components/GridViewCreator.dart';
+import 'package:ecommerce/Constants/Colors.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../Constants/Colors.dart';
+import 'package:flutter_svg/svg.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
 import '../Constants/SubCatergoryScreenData.dart';
 import '../Models/Figure.dart';
 import '../Models/Product.dart';
 import '../components/BottomSheetProductSubInfoComponent.dart';
+import '../components/GridViewCreator.dart';
 import '../components/ProductContainer.dart';
 
-class SubCategoriesScreen extends StatefulWidget {
-  static const route = "sub-category";
-  const SubCategoriesScreen({super.key});
+class CategoriesBrandsProductsScreen extends StatefulWidget {
+  static String route = "cat-brand-products";
+  const CategoriesBrandsProductsScreen({super.key});
 
   @override
-  State<SubCategoriesScreen> createState() => _SubCategoriesScreenState();
+  State<CategoriesBrandsProductsScreen> createState() =>
+      _CategoriesBrandsProductsScreenState();
 }
 
-class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
-  late List<Product> _productsData;
+class _CategoriesBrandsProductsScreenState
+    extends State<CategoriesBrandsProductsScreen> {
+  Widget appBarLeadingWidget = IconButton(
+    icon: const Icon(Icons.arrow_back_ios_new_outlined),
+    onPressed: () {},
+  );
 
+  List<Widget> appBarActions = [
+    IconButton(
+      onPressed: () {},
+      icon: SvgPicture.asset(
+        "${KIconsPath}wishlistHeaderIcon.svg",
+        width: 30,
+        fit: BoxFit.cover,
+      ),
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+    ),
+    IconButton(
+      onPressed: () {},
+      icon: SvgPicture.asset(
+        "${KIconsPath}search.svg",
+        width: 30,
+        fit: BoxFit.cover,
+      ),
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      style: const ButtonStyle(iconColor: WidgetStatePropertyAll(KPrimaryColor)),
+    ),
+    IconButton(
+      onPressed: () {},
+      icon: SvgPicture.asset(
+        "${KIconsPath}bagHeaderIcon.svg",
+        width: 30,
+        fit: BoxFit.cover,
+      ),
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+    )
+  ];
+
+  late List<Product> _productsData;
+  int productCount = 255;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
     _productsData = [
       Product(
         product_id: 1,
@@ -172,68 +211,89 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
               )));
     }
 
-    Widget appBarLeadingWidget = const Icon(
-      Icons.arrow_back_ios_new_outlined,
-      color: KPrimaryColor,
-    );
-
-    //TODO get these from the page parameters
-    String appBarTitle = "Handbags";
-    int productCount = 255;
     return SafeArea(
-      child: Scaffold(
-          appBar: PagesAppBar(
-            leadingWidget: appBarLeadingWidget,
-            title: appBarTitle,
-          ),
-          bottomSheet: SearchPageBottomBarOption(
-            Parentcontext: context,
-          ),
-          extendBodyBehindAppBar: false,
-          body: Container(
-              padding: const EdgeInsets.only(
-                bottom: 60,
-                left: KPageHorizontalPadding,
-                right: KPageHorizontalPadding,
-              ),
-              child: ListView(children: [
-                Text(
-                  "$productCount Products",
-                  style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: KGreyColor),
+        child: Scaffold(
+            appBar: PagesAppBar(
+              title: "Handbags",
+              leadingWidget: appBarLeadingWidget,
+              actionsWidgets: appBarActions,
+            ),
+            bottomSheet: SearchPageBottomBarOption(
+              Parentcontext: context,
+            ),
+            body: Container(
+                padding: const EdgeInsets.only(
+                  bottom: 60,
+                  left: KPageHorizontalPadding,
+                  right: KPageHorizontalPadding,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Gridviewcreator(
-                    numberOfColumns: 2,
-                    numberOfRows: (_productsData.length / 2).round(),
-                    children: [
-                      for (Product item in _productsData)
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: Productcontainer(
-                            widthPercentage: 1,
-                            title: item.name,
-                            containerAxis: ComponentDirection.vertical,
-                            subTitle: item.sub_title,
-                            img_url: item.images
-                                .firstWhere((img) => img.type == true)
-                                .url,
-                            liked: item.is_liked,
-                            price: item.price,
-                            discountValue: item.discount_value == null
-                                ? 0.0
-                                : item.discount_value!,
-                            onTap: (Product item) => productItemOnTap(item),
-                            product: item,
-                          ),
-                        )
-                    ])
-              ]))),
-    );
+                child: ListView(children: [
+                  Text(
+                    "$productCount Products",
+                    style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: KGreyColor),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Gridviewcreator(
+                      numberOfColumns: 2,
+                      numberOfRows: (_productsData.length / 2).round(),
+                      children: [
+                        for (Product item in _productsData) ...[
+                          Column(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 10),
+                                child: Productcontainer(
+                                  widthPercentage: 1,
+                                  title: item.name,
+                                  containerAxis: ComponentDirection.vertical,
+                                  subTitle: item.sub_title,
+                                  img_url: item.images
+                                      .firstWhere((img) => img.type == true)
+                                      .url,
+                                  liked: item.is_liked,
+                                  price: item.price,
+                                  discountValue: item.discount_value == null
+                                      ? 0.0
+                                      : item.discount_value!,
+                                  onTap: (Product item) =>
+                                      productItemOnTap(item),
+                                  product: item,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                child: TextButton.icon(
+                                    style: ButtonStyle(
+                                        shape: WidgetStateProperty.all(
+                                            RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        KBorderRadius))),
+                                        side: const WidgetStatePropertyAll(
+                                            BorderSide(color: KPrimaryColor))),
+                                    icon: SvgPicture.asset(
+                                      "${KIconsPath}bagHeaderIcon.svg",
+                                      colorFilter: const ColorFilter.mode(
+                                          KPrimaryColor, BlendMode.srcIn),
+                                    ),
+                                    onPressed: () {},
+                                    label: const Text(
+                                      "Add to bag",
+                                      style: TextStyle(
+                                          color: KPrimaryColor,
+                                          fontWeight: FontWeight.w500),
+                                    )),
+                              )
+                            ],
+                          )
+                        ]
+                      ])
+                ]))));
   }
 }
 
@@ -258,50 +318,54 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
                   builder: (BuildContext context, StateSetter widgetState) {
                 return SingleChildScrollView(
                     child: Container(
-                      height: 360,
-                      color: KshowModalBottomSheetBackgroundColor,
-
-                    child: Container(
                   height: 360,
-                  decoration: BoxDecoration(
-                      color: KPageBackGroundColor,
-                      borderRadius: BorderRadius.circular(KBorderRadius)),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 20, horizontal: KPageHorizontalPadding),
-                  child: ListView(
-shrinkWrap: true,
-                    children: [
-                      const Text(
-                        "Sort By",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: KGreyColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const Divider(
-                        color: KGreyColor,
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: Column(
-                          children: [
-                            for (var i = 0; i < SortOption.length; i++)
-                              RadioListTile(
-                                activeColor: KPrimaryColor,
-                                  title: Text(SortOption[i]),
-                                  value: i,
-                                  groupValue: SelectedSortOption,
-                                  onChanged: (value) {
-                                    widgetState(() {
-                                      SelectedSortOption = value!;
-                                    });
-                                  })
-                          ],
+                  color: KshowModalBottomSheetBackgroundColor,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: KPageBackGroundColor,
+                        borderRadius: BorderRadius.circular(KBorderRadius)),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: KPageHorizontalPadding),
+                    child: ListView(
+                      children: [
+                        const Text(
+                          "Sort By",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: KGreyColor,
+                              fontWeight: FontWeight.bold),
                         ),
-                      )
-                    ],
+                        const Divider(
+                          color: KGreyColor,
+                          thickness: 0.5,
+                        ),
+                        Container(
+                          child: Column(
+                            children: [
+                              for (var i = 0;
+                                  i <
+                                      SortOptionForCategoriesBrandsProductsScreen
+                                          .length;
+                                  i++)
+                                RadioListTile(
+                                    activeColor: KPrimaryColor,
+                                    title: Text(
+                                        SortOptionForCategoriesBrandsProductsScreen[
+                                            i]),
+                                    value: i,
+                                    groupValue: SelectedSortOption,
+                                    onChanged: (value) {
+                                      widgetState(() {
+                                        SelectedSortOption = value!;
+                                      });
+                                    })
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                    )));
+                ));
               }));
     }
 

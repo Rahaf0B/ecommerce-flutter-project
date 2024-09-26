@@ -65,20 +65,16 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                         iconSize: WidgetStateProperty.all(
                             widget.right_btn_img_url == null ? 0 : 20),
                         backgroundColor: WidgetStateProperty.all(
-                            widget.btn_backgroundColor == null
-                                ? KPrimaryColor
-                                : widget.btn_backgroundColor),
+                            widget.btn_backgroundColor ?? KPrimaryColor),
                         side: WidgetStatePropertyAll( widget.text_color ==null ? BorderSide.none : BorderSide(color: widget.text_color!)),
                         shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)))),
+                            borderRadius: BorderRadius.circular(KBorderRadius)))),
                     onPressed: () {},
                     label: Text(
                       widget.btn_text,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: widget.text_color == null
-                              ? KBrightColor
-                              : widget.text_color),
+                          color: widget.text_color ?? KBrightColor),
                     ),
                     icon: widget.right_btn_img_url == null
                         ? null

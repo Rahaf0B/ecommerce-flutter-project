@@ -147,16 +147,16 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
 
     return SafeArea(
         child: Scaffold(
-      appBar: PagesAppBar(
+      appBar: const PagesAppBar(
         title: "Payments",
         leadingWidget: Icon(Icons.arrow_back_ios_new_outlined),
       ),
-      bottomSheet: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+      bottomSheet: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(btn_text: "Pay Now"),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
             horizontal: KPageHorizontalPadding, vertical: 10),
         child: ListView(
           controller: _scrollController,
@@ -166,14 +166,14 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
               selectedAddress: selectedAddress,
               selectedUserNameForAddress: selectedUserNameForAddress,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             const Divider(
               color: KGreyBackGroundColor,
               thickness: 10,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -182,9 +182,9 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   CollapsibleComponent(
                     title: "Debit Card/Credit Card",
                     scrollController: _scrollController,
-                    child: Container(),
                     IconDisable: "${KIconsPath}small-plus.svg",
                     IconEnable: "${KIconsPath}small-minus.svg",
+                    child: Container(),
                   ),
                   CollapsibleComponent(
                       title: "UPI",
@@ -202,7 +202,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                   Container(
                                       width: 50,
                                       height: 50,
-                                      padding: EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5),
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(
                                               KBorderRadius),
@@ -220,7 +220,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                 setState(() {
                                   SelectedPaymentOption = value!;
                                   print(
-                                      "Selected payment option${SelectedPaymentOption}");
+                                      "Selected payment option$SelectedPaymentOption");
                                 });
                               }),
                       ]))),
