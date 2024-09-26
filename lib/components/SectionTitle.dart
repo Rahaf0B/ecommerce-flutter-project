@@ -16,7 +16,7 @@ class SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,10 +31,10 @@ class SectionTitle extends StatelessWidget {
                 ? TextButton.icon(
                     onPressed: () {},
                     style: ButtonStyle(
-                        padding: WidgetStateProperty.all(EdgeInsets.all(0))),
-                    icon: Icon(Icons.keyboard_arrow_right_outlined,
+                        padding: WidgetStateProperty.all(const EdgeInsets.all(0))),
+                    icon: const Icon(Icons.keyboard_arrow_right_outlined,
                         color: KPrimaryColor),
-                    label: Text(
+                    label: const Text(
                       'View all',
                       style: TextStyle(color: KPrimaryColor),
                     ),

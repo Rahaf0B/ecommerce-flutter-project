@@ -17,11 +17,11 @@ class _RecentSearchState extends State<RecentSearch> {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(KBorderRadius),
           color: KGreyBackGroundColor),
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Text(
         widget.text,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(
+        style: const TextStyle(
             fontWeight: FontWeight.bold, color: KTextDarkColor, fontSize: 14),
       ),
     );

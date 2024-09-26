@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../Constants/Constant.dart';
-import 'BannerContent.dart';
 
 class CardBanner extends StatelessWidget {
   const CardBanner(
-      {Key? key,
+      {super.key,
       required this.image_url,
       required this.upperComponent,
       this.width,
-      this.height})
-      : super(key: key);
+      this.height});
   final String image_url;
   final Widget upperComponent;
   final double? width;
@@ -26,6 +24,10 @@ class CardBanner extends StatelessWidget {
           maxHeight: height == null ? double.infinity : height!),
       child: Card(
         color: Colors.transparent,
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(KBorderRadius),
+        ),
         child: Stack(
           children: [
             Image.asset(
@@ -36,10 +38,6 @@ class CardBanner extends StatelessWidget {
             ),
             upperComponent
           ],
-        ),
-        clipBehavior: Clip.antiAlias,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(KBorderRadius),
         ),
       ),
     );

@@ -10,7 +10,7 @@ import 'home_screen.dart';
 
 class PagesContainerWithNavigator extends StatefulWidget {
   static const route = "home";
-  const PagesContainerWithNavigator({Key? key}) : super(key: key);
+  const PagesContainerWithNavigator({super.key});
 
   @override
   State<PagesContainerWithNavigator> createState() => _HomeScreenState();
@@ -18,29 +18,29 @@ class PagesContainerWithNavigator extends StatefulWidget {
 
 class _HomeScreenState extends State<PagesContainerWithNavigator> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   int _currentIndexPage = 0;
   final List<Widget> _children = [
-    HomeScreen(),
+    const HomeScreen(),
     Container(),
-    CartScreen()
+    const CartScreen()
 
   ];
   // int _currentIndex=0;
-  List<BottomNavigationBarItem> _bottomNavigatorChildren=[
+  final List<BottomNavigationBarItem> _bottomNavigatorChildren=[
     BottomNavigationBarItem(
     icon: SvgPicture.asset(
-      KIconsPath+"home.svg",
+      "${KIconsPath}home.svg",
     ),
     label: 'Home',
   ),
     BottomNavigationBarItem(
-      icon: SvgPicture.asset( KIconsPath+"categories.svg"),
+      icon: SvgPicture.asset( "${KIconsPath}categories.svg"),
       label: 'Categories',
     ),
 
     BottomNavigationBarItem(
-      icon: SvgPicture.asset( KIconsPath+"bag.svg"),
+      icon: SvgPicture.asset( "${KIconsPath}bag.svg"),
       label: 'Cart',
     )];
   @override
@@ -66,11 +66,11 @@ class _HomeScreenState extends State<PagesContainerWithNavigator> {
 
 class BottomNavigator extends StatefulWidget {
   const BottomNavigator({
-    Key? key,
+    super.key,
     required this.currentIndexPage,
     required this.onPress,
     required this.navigatorTaps
-  }) : super(key: key);
+  });
    final int currentIndexPage;
 final Function onPress;
 final List<BottomNavigationBarItem> navigatorTaps;
@@ -82,13 +82,13 @@ class _BottomNavigatorState extends State<BottomNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    int _currentIndex=widget.currentIndexPage;
+    int currentIndex=widget.currentIndexPage;
 
     return BottomNavigationBar(
-      selectedIconTheme: IconThemeData(color: KPrimaryColor),
+      selectedIconTheme: const IconThemeData(color: KPrimaryColor),
       showUnselectedLabels: false,
       showSelectedLabels: true,
-      currentIndex: _currentIndex,
+      currentIndex: currentIndex,
       elevation: 0,
       selectedItemColor: KPrimaryColor,
       backgroundColor: KPageBackGroundColor,

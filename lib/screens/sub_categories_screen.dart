@@ -14,7 +14,7 @@ import '../components/ProductContainer.dart';
 
 class SubCategoriesScreen extends StatefulWidget {
   static const route = "sub-category";
-  const SubCategoriesScreen({Key? key}) : super(key: key);
+  const SubCategoriesScreen({super.key});
 
   @override
   State<SubCategoriesScreen> createState() => _SubCategoriesScreenState();
@@ -44,9 +44,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -64,9 +64,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -84,9 +84,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -104,9 +104,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -124,9 +124,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -144,9 +144,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       )
     ];
@@ -172,7 +172,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
               )));
     }
 
-    Widget appBarLeadingWidget = Icon(
+    Widget appBarLeadingWidget = const Icon(
       Icons.arrow_back_ios_new_outlined,
       color: KPrimaryColor,
     );
@@ -191,23 +191,25 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
           ),
           extendBodyBehindAppBar: false,
           body: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 bottom: 60,
                 left: KPageHorizontalPadding,
                 right: KPageHorizontalPadding,
               ),
               child: ListView(children: [
                 Text(
-                  productCount.toString() + " " + "Products",
-                  style: TextStyle(
+                  "$productCount Products",
+                  style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: KGreyColor),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Gridviewcreator(
+                    numberOfColumns: 2,
+                    numberOfRows: (_productsData.length / 2).round(),
                     children: [
                       for (Product item in _productsData)
                         Productcontainer(
@@ -226,17 +228,14 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                           onTap: (Product item) => productItemOnTap(item),
                           product: item,
                         )
-                    ],
-                    numberOfColumns: 2,
-                    numberOfRows: (_productsData.length / 2).round())
+                    ])
               ]))),
     );
   }
 }
 
 class SearchPageBottomBarOption extends StatefulWidget {
-  const SearchPageBottomBarOption({Key? key, required this.Parentcontext})
-      : super(key: key);
+  const SearchPageBottomBarOption({super.key, required this.Parentcontext});
   final BuildContext Parentcontext;
   @override
   State<SearchPageBottomBarOption> createState() =>
@@ -260,19 +259,19 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
                   decoration: BoxDecoration(
                       color: KPageBackGroundColor,
                       borderRadius: BorderRadius.circular(KBorderRadius)),
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                       vertical: 20, horizontal: KPageHorizontalPadding),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Sort By",
                         style: TextStyle(
                             fontSize: 16,
                             color: KGreyColor,
                             fontWeight: FontWeight.bold),
                       ),
-                      Divider(
+                      const Divider(
                         color: KGreyColor,
                         thickness: 0.5,
                       ),
@@ -305,7 +304,7 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           TextButton.icon(
-            label: Text(
+            label: const Text(
               "SORT",
               style: TextStyle(
                   color: KTextDarkColor,
@@ -313,10 +312,10 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
                   fontSize: 15),
             ),
             onPressed: onTap,
-            icon: SvgPicture.asset(KIconsPath + "sort.svg"),
+            icon: SvgPicture.asset("${KIconsPath}sort.svg"),
           ),
           TextButton.icon(
-            label: Text(
+            label: const Text(
               "FILTER",
               style: TextStyle(
                   color: KTextDarkColor,
@@ -324,7 +323,7 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
                   fontSize: 15),
             ),
             onPressed: onTap,
-            icon: SvgPicture.asset(KIconsPath + "filter.svg"),
+            icon: SvgPicture.asset("${KIconsPath}filter.svg"),
           )
         ],
       ),

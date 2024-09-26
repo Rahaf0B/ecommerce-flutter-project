@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TitleComponentContainer extends StatelessWidget {
-  const TitleComponentContainer({Key? key, required this.children, this.height})
-      : super(key: key);
+  const TitleComponentContainer({super.key, required this.children, this.height});
   final double? height;
   final List<Widget> children;
   @override

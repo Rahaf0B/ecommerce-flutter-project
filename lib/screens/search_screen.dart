@@ -16,7 +16,7 @@ import '../components/TitleComponentContainer.dart';
 
 class SearchScreen extends StatefulWidget {
   static String route = "search";
-  const SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({super.key});
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -51,13 +51,13 @@ class _SearchScreenState extends State<SearchScreen> {
 
     super.initState();
     recentSerachValue = [
-      RecentSearch(
+      const RecentSearch(
         text: "Womens Wrist Watches",
       ),
-      RecentSearch(
+      const RecentSearch(
         text: "Womens Wrist Watches",
       ),
-      RecentSearch(
+      const RecentSearch(
         text: "Womens Wrist Watches",
       )
     ];
@@ -77,9 +77,9 @@ class _SearchScreenState extends State<SearchScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -97,9 +97,9 @@ class _SearchScreenState extends State<SearchScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -117,9 +117,9 @@ class _SearchScreenState extends State<SearchScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -137,9 +137,9 @@ class _SearchScreenState extends State<SearchScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -157,9 +157,9 @@ class _SearchScreenState extends State<SearchScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
     ];
@@ -169,43 +169,44 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: SearchBarComponent(),
+      appBar: const SearchBarComponent(),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: ListView(
           children: [
             TitleComponentContainer(
               height: MediaQuery.of(context).size.height * 0.5 * 0.4,
               children: [
-                SectionTitle(
+                const SectionTitle(
                   text: "Recent Searchs",
                   showView: false,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Gridviewcreator(
                     numberOfColumns: 2,
                     numberOfRows: (recentSerachValue.length / 2).round(),
-                    children: recentSerachValue!),
+                    children: recentSerachValue),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             TitleComponentContainer(
               height: MediaQuery.of(context).size.height * 0.5 * 0.7,
               children: [
-                SectionTitle(
+                const SectionTitle(
                   text: "New Arrivals",
                   showView: false,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 SliderView(
                   number_of_items:
                       _productsData == null ? 0 : _productsData.length,
+                  height: MediaQuery.of(context).size.height * 0.5 * 0.7 - 60,
                   children: _productsData == null
                       ? []
                       : [
@@ -224,7 +225,6 @@ class _SearchScreenState extends State<SearchScreen> {
                               product: item,
                             )
                         ],
-                  height: MediaQuery.of(context).size.height * 0.5 * 0.7 - 60,
                 )
               ],
             ),

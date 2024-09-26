@@ -16,21 +16,21 @@ class FooterComponentElement extends StatelessWidget {
       color: KPrimaryColor,
       child: Column(children: [
         Container(
-          margin: EdgeInsets.only(top: 20),
-          padding: EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
+          margin: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Shop by Category",
                     style: KTextFooterMainTitleStyle,
                   ),
                   for (var item in shopCategory)
                     Padding(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.only(top: 5),
                       child: GestureDetector(
                         child: item,
                         onTap: () {},
@@ -38,17 +38,17 @@ class FooterComponentElement extends StatelessWidget {
                     )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Policy",
                     style: KTextFooterMainTitleStyle,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Wrap(
@@ -62,7 +62,7 @@ class FooterComponentElement extends StatelessWidget {
                             onTap: () {},
                           ),
                           i != policy.length - 1
-                              ? SizedBox(
+                              ? const SizedBox(
                                   height: 15,
                                   child: VerticalDivider(
                                     color: KSubTextColor,
@@ -74,17 +74,17 @@ class FooterComponentElement extends StatelessWidget {
                       ]),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 36,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "About",
                     style: KTextFooterMainTitleStyle,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Wrap(
@@ -94,7 +94,7 @@ class FooterComponentElement extends StatelessWidget {
                       children: [
                         for (var item in about) ...[
                           item,
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                             child: VerticalDivider(
                               color: KSubTextColor,
@@ -108,7 +108,7 @@ class FooterComponentElement extends StatelessWidget {
             ],
           ),
         ),
-        Divider(color: KPrimaryTintColor, thickness: 1),
+        const Divider(color: KPrimaryTintColor, thickness: 1),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
           child: Column(
@@ -117,7 +117,7 @@ class FooterComponentElement extends StatelessWidget {
               Row(
                 children: socialContact,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -125,21 +125,21 @@ class FooterComponentElement extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SvgPicture.asset(
-                      KIconsPath + "location.svg",
+                      "${KIconsPath}location.svg",
                       width: 30,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
-                    Text(
+                    const Text(
                       "United States",
                       style: TextStyle(color: KTextBrightColor, fontSize: 16),
                     )
                   ]),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "© 2021 | Cora Leviene All Rights Reserved",
                 style: TextStyle(color: KSubTextColor),
               )

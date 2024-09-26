@@ -18,7 +18,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10,horizontal: KPageHorizontalPadding),
+      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: KPageHorizontalPadding),
       height: 100,
       // color: KPageBackGroundColor,
       child: Row(
@@ -27,7 +27,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
             flex: 1,
             child: IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_ios_new_outlined,
                   size: 30,
                 )),
@@ -37,8 +37,8 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
             child: SearchBar(
               backgroundColor: WidgetStateProperty.all(KGreyBackGroundColor),
               hintText: "Search",
-              elevation: WidgetStatePropertyAll(0),
-              trailing: [
+              elevation: const WidgetStatePropertyAll(0),
+              trailing: const [
                 Icon(
                   Icons.search,
                   size: 30,
@@ -46,7 +46,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
               ],
               shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(KBorderRadius))),
-              constraints: BoxConstraints(minHeight: 50),
+              constraints: const BoxConstraints(minHeight: 50),
             ),
           )
         ],

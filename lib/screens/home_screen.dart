@@ -24,7 +24,7 @@ import '../components/SliderView.dart';
 import '../components/TitleComponentContainer.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -32,7 +32,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   void productItemOnTap(Product product) {
     showModalBottomSheet(
         backgroundColor: KPageBackGroundColor,
@@ -59,18 +59,18 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
 
     _cardBannerData = [
-      CardBanner(
+      const CardBanner(
         // height: 150,
-        image_url: KImagesPath + "shoulderGirl.png",
+        image_url: "${KImagesPath}shoulderGirl.png",
         upperComponent: BannerContent(
             width: 0.93,
             title: "Carry your Funk",
             subTitle: "Trendy handbags collection for your party animal"),
       ),
-      CardBanner(
+      const CardBanner(
 
           // height: 150,
-          image_url: KImagesPath + "shoulderGirl.png",
+          image_url: "${KImagesPath}shoulderGirl.png",
           upperComponent: BannerContent(
               width: 0.93,
               title: "Carry your Funk",
@@ -92,9 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -112,9 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -132,9 +132,9 @@ class _HomeScreenState extends State<HomeScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -152,9 +152,9 @@ class _HomeScreenState extends State<HomeScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -172,78 +172,78 @@ class _HomeScreenState extends State<HomeScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
     ];
     _cardBrandData = [
       Brand(
           brand_id: 1,
-          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}Zara_Logo.svg"),
           name: "Zara"),
       Brand(
           brand_id: 1,
-          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}Zara_Logo.svg"),
           name: "Zara"),
       Brand(
           brand_id: 1,
-          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}Zara_Logo.svg"),
           name: "Zara"),
       Brand(
           brand_id: 1,
-          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}Zara_Logo.svg"),
           name: "Zara"),
       Brand(
           brand_id: 1,
-          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}Zara_Logo.svg"),
           name: "Zara"),
       Brand(
           brand_id: 1,
-          image: Figure(image_id: 1, url: KIconsPath + "Zara_Logo.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}Zara_Logo.svg"),
           name: "Zara")
     ];
     _cardCategoryData = [
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
           category_id: 1),
       Category(
           name: "Watches",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
           category_id: 1),
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
           category_id: 1),
       Category(
           name: "Watches",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
           category_id: 1),
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
           category_id: 1),
       Category(
           name: "Watches",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
           category_id: 1),
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
           category_id: 1),
       Category(
           name: "Watches",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
           category_id: 1),
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-bag.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
           category_id: 1),
       Category(
           name: "Watches",
-          image: Figure(image_id: 1, url: KIconsPath + "icon-watch.svg"),
+          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
           category_id: 1),
     ];
 
@@ -253,19 +253,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     void toggleDrawer() {
-      if (_scaffoldKey!.currentState!.isDrawerOpen) {
-        _scaffoldKey!.currentState!.closeDrawer();
+      if (_scaffoldKey.currentState!.isDrawerOpen) {
+        _scaffoldKey.currentState!.closeDrawer();
       } else {
-        _scaffoldKey!.currentState!.openDrawer();
+        _scaffoldKey.currentState!.openDrawer();
       }
     }
 
-    Widget _appBarLeadingWidget = IconButton(
+    Widget appBarLeadingWidget = IconButton(
       onPressed: () {
         toggleDrawer();
       },
       icon: SvgPicture.asset(
-        KIconsPath + "leading-icon.svg",
+        "${KIconsPath}leading-icon.svg",
         fit: BoxFit.cover,
         width: 40,
       ),
@@ -273,11 +273,11 @@ class _HomeScreenState extends State<HomeScreen> {
       highlightColor: Colors.transparent,
     );
 
-    List<Widget> _appBarActions = [
+    List<Widget> appBarActions = [
       IconButton(
         onPressed: () {},
         icon: SvgPicture.asset(
-          KIconsPath + "search.svg",
+          "${KIconsPath}search.svg",
           width: 30,
           fit: BoxFit.cover,
         ),
@@ -287,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> {
       IconButton(
         onPressed: () {},
         icon: SvgPicture.asset(
-          KIconsPath + "ProfileIcon.svg",
+          "${KIconsPath}ProfileIcon.svg",
           width: 30,
           fit: BoxFit.cover,
         ),
@@ -298,11 +298,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(),
+      drawer: const Drawer(),
       appBar: PagesAppBar(
         title: "Home",
-        actionsWidgets: _appBarActions,
-        leadingWidget: _appBarLeadingWidget,
+        actionsWidgets: appBarActions,
+        leadingWidget: appBarLeadingWidget,
       ),
       body: Container(
         child: ListView(
@@ -311,32 +311,35 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Container(
                 padding:
-                    EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SliderView(
                         number_of_items: 2,
-                        children: _cardBannerData,
                         height: MediaQuery.of(context).size.height *
                             (50 / 100) *
                             0.4,
+                        children: _cardBannerData,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       TitleComponentContainer(
                         height: MediaQuery.of(context).size.height * 0.5 * 0.35,
                         children: [
-                          SectionTitle(
+                          const SectionTitle(
                             text: 'Top Categories',
                             showView: false,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           SliderView(
-                            number_of_items: _cardCategoryData!.length,
+                            number_of_items: _cardCategoryData.length,
+                            height:
+                                MediaQuery.of(context).size.height * 0.5 * 0.4 -
+                                    70,
                             children: [
                               for (var item in _cardCategoryData)
                                 CardCategoryBrand(
@@ -347,19 +350,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   containerWidth: KMiniCardCategoryWidth,
                                 ),
                             ],
-                            height:
-                                MediaQuery.of(context).size.height * 0.5 * 0.4 -
-                                    70,
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       TitleComponentContainer(
                         height: MediaQuery.of(context).size.height * 0.5 * 0.7,
                         children: [
-                          SectionTitle(
+                          const SectionTitle(
                             text: "New Arrivals",
                             showView: true,
                           ),
@@ -367,6 +367,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             number_of_items: _productsData == null
                                 ? 0
                                 : _productsData.length,
+                            height:
+                                MediaQuery.of(context).size.height * 0.5 * 0.7 -
+                                    60,
                             children: (_productsData == null
                                 ? []
                                 : [
@@ -388,31 +391,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                         product: item,
                                       )
                                   ]),
-                            height:
-                                MediaQuery.of(context).size.height * 0.5 * 0.7 -
-                                    60,
                           )
                         ],
                       ),
                     ]),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Handpicked(),
-              SizedBox(
+              const Handpicked(),
+              const SizedBox(
                 height: 24,
               ),
               Padding(
                 padding:
-                    EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
                 child: Column(
                   children: [
                     TitleComponentContainer(
                         height: MediaQuery.of(context).size.height * 0.5 * 0.8,
                         children: [
-                          SectionTitle(text: "Shop by Brands", showView: true),
+                          const SectionTitle(text: "Shop by Brands", showView: true),
                           Gridviewcreator(
+                            height:
+                                MediaQuery.of(context).size.height * 0.5 * 0.8 -
+                                    70,
+                            numberOfColumns: 3,
+                            numberOfRows: _cardBrandData.length ~/ 3,
                             children: [
                               for (var item in _cardBrandData)
                                 CardCategoryBrand(
@@ -421,19 +426,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     containerWidth: KMiniCardBrandWidth,
                                     containerHeight: KMiniCardBrandHeight),
                             ],
-                            height:
-                                MediaQuery.of(context).size.height * 0.5 * 0.8 -
-                                    70,
-                            numberOfColumns: 3,
-                            numberOfRows: (_cardBrandData.length / 3).toInt(),
                           )
                         ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     TitleComponentContainer(
                       height: MediaQuery.of(context).size.height * 0.5 * 1,
-                      children: [
+                      children: const [
                         SectionTitle(
                             text: "Makeup & Skincare", showView: false),
                         SizedBox(
@@ -442,7 +442,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         SectionCardBannerCategory(),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                   ],
@@ -451,7 +451,7 @@ class _HomeScreenState extends State<HomeScreen> {
               CollapsibleComponent(
                 scrollController: _scrollController,
                 title: "More about CORA’L",
-                child: FooterComponentElement(),
+                child: const FooterComponentElement(),
               ),
             ]),
       ),

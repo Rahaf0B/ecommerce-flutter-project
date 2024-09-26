@@ -36,8 +36,8 @@ class _CardCategoryBrandState extends State<CardCategoryBrand> {
           child: Container(
             width: widget.containerWidth,
             height: widget.containerHeight,
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.all(12),
+            decoration: const BoxDecoration(
                 color: KMiniCardColor,
                 borderRadius: BorderRadius.all(
                   Radius.circular(KBorderRadius),

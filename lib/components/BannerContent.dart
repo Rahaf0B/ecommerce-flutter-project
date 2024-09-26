@@ -17,10 +17,10 @@ class BannerContent extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       alignment: Alignment.centerRight,
-      margin: EdgeInsets.only(top: 10, bottom: 10),
+      margin: const EdgeInsets.only(top: 10, bottom: 10),
       child: Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
           color: Color(0xDEDEDEDE),
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(15), topLeft: Radius.circular(15)),
@@ -34,7 +34,7 @@ class BannerContent extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               title,
-              style: TextStyle(
+              style: const TextStyle(
                   color: KPrimaryColor,
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
@@ -44,7 +44,7 @@ class BannerContent extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 subTitle,
-                style: TextStyle(
+                style: const TextStyle(
                     color: KPrimaryColor, fontSize: 12, fontFamily: KTextFont))
           ],
         ),

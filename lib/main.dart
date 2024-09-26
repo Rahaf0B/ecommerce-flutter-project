@@ -16,11 +16,11 @@ void main() {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  runApp(EcommerceApp());
+  runApp(const EcommerceApp());
 }
 
 class EcommerceApp extends StatelessWidget {
-  const EcommerceApp({Key? key}) : super(key: key);
+  const EcommerceApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +29,18 @@ class EcommerceApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
-            PagesContainerWithNavigator(),
-        SearchScreen.route: (context) => SearchScreen(),
-        SubCategoriesScreen.route:(context)=>SubCategoriesScreen(),
-        ProductScreen.route:(context)=>ProductScreen(),
-        ReviewsScreen.route: (context) => ReviewsScreen(),
-        AddReviewScreen.route: (context) => AddReviewScreen(),
-        OrderSummaryScreen.route: (context) => OrderSummaryScreen(),
+            const PagesContainerWithNavigator(),
+        SearchScreen.route: (context) => const SearchScreen(),
+        SubCategoriesScreen.route:(context)=>const SubCategoriesScreen(),
+        ProductScreen.route:(context)=>const ProductScreen(),
+        ReviewsScreen.route: (context) => const ReviewsScreen(),
+        AddReviewScreen.route: (context) => const AddReviewScreen(),
+        OrderSummaryScreen.route: (context) => const OrderSummaryScreen(),
 
 
       },
       theme: ThemeData(
-          bottomSheetTheme: BottomSheetThemeData(
+          bottomSheetTheme: const BottomSheetThemeData(
               shape: OutlineInputBorder(
                 borderSide: BorderSide.none,
               ),
@@ -48,8 +48,8 @@ class EcommerceApp extends StatelessWidget {
           fontFamily: KTextFont,
           scaffoldBackgroundColor: KPageBackGroundColor,
 
-          bottomAppBarTheme: BottomAppBarTheme(color: KPageBackGroundColor),
-          appBarTheme: AppBarTheme(
+          bottomAppBarTheme: const BottomAppBarTheme(color: KPageBackGroundColor),
+          appBarTheme: const AppBarTheme(
             toolbarHeight: 80,
             scrolledUnderElevation: 0,
             color: KPageBackGroundColor,

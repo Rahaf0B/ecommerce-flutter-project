@@ -4,77 +4,77 @@ import 'Constant.dart';
 import 'TextStyle.dart';
 
 List<Widget> shopCategory = [
-  Text(
+  const Text(
     "Skincare",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Prsonal Care",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Handbags",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Apparels",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Watches",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Eye Wear",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Jewellery",
     style: KTextFooterSubTitleStyle,
   ),
 ];
 
 List<Widget> policy = [
-  Text(
+  const Text(
     "Return",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Terms of use",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Sitemap",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Security",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Privacy",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "EPR Compliance",
     style: KTextFooterSubTitleStyle,
   ),
 ];
 
 List<Widget> about = [
-  Text(
+  const Text(
     "Contact Us",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "About Us",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Careers",
     style: KTextFooterSubTitleStyle,
   ),
-  Text(
+  const Text(
     "Press",
     style: KTextFooterSubTitleStyle,
   ),
@@ -84,18 +84,18 @@ List<Widget> about = [
 List<Widget> socialContact= [
   IconButton(
     onPressed: () {},
-    icon: SvgPicture.asset(KIconsPath + "fblogo.svg",
+    icon: SvgPicture.asset("${KIconsPath}fblogo.svg",
         width: 38)),
     IconButton(
 onPressed: () {},
-icon: SvgPicture.asset(KIconsPath + "instalogo.svg",
+icon: SvgPicture.asset("${KIconsPath}instalogo.svg",
 width: 38)),
 IconButton(
 onPressed: () {},
-icon: SvgPicture.asset(KIconsPath + "twitter.svg",
+icon: SvgPicture.asset("${KIconsPath}twitter.svg",
 width: 38)),
 IconButton(
 onPressed: () {},
-icon: SvgPicture.asset(KIconsPath + "youtube.svg",
+icon: SvgPicture.asset("${KIconsPath}youtube.svg",
 width: 38))
 ];

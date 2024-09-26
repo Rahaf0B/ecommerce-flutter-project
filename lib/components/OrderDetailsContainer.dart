@@ -19,39 +19,39 @@ class OrderDetailsContainer extends StatelessWidget {
     double grandTotalValue =
         (subTotalValue - discountValue - deliveryFeeValue).roundToDouble();
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      margin: EdgeInsets.only(top: 20, bottom: 80),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.only(top: 20, bottom: 80),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Order Details"),
-          SizedBox(
+          const Text("Order Details"),
+          const SizedBox(
             height: 10,
           ),
           ListTileComponent(
             title: "Sub Total",
-            value: "\$" + subTotalValue.toString(),
+            value: "\$$subTotalValue",
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ListTileComponent(
             title: "Discount",
-            value: "-\$" + discountValue.toString(),
+            value: "-\$$discountValue",
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ListTileComponent(
             title: "Delivery Fee",
-            value: "-\$" + deliveryFeeValue.toString(),
+            value: "-\$$deliveryFeeValue",
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ListTileComponent(
             title: "Grand Total",
-            value: "\$" + grandTotalValue.toString(),
+            value: "\$$grandTotalValue",
             mainTitle: true,
           )
         ],
@@ -78,7 +78,7 @@ class ListTileComponent extends StatelessWidget {
       ),
       Text(
         value,
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       )
     ]);
   }

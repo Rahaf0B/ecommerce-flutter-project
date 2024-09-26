@@ -1,13 +1,11 @@
-import 'package:ecommerce/components/CardBanner.dart';
 import 'package:flutter/material.dart';
 
 class SliderView extends StatelessWidget {
   const SliderView(
-      {Key? key,
+      {super.key,
       required this.number_of_items,
       required this.children,
-      required this.height})
-      : super(key: key);
+      required this.height});
   final int number_of_items;
   final List<Widget> children;
   final double height;
@@ -18,7 +16,7 @@ class SliderView extends StatelessWidget {
         height: height,
         child: ListView.separated(
             separatorBuilder: (context, i) {
-              return SizedBox(
+              return const SizedBox(
                 width: 15,
               );
             },

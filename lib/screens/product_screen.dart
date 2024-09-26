@@ -18,7 +18,7 @@ import '../components/SliderView.dart';
 import '../components/TitleComponentContainer.dart';
 
 class ProductScreen extends StatefulWidget {
-  const ProductScreen({Key? key}) : super(key: key);
+  const ProductScreen({super.key});
   static const route = "product";
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -66,9 +66,9 @@ class _ProductScreenState extends State<ProductScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -86,9 +86,9 @@ class _ProductScreenState extends State<ProductScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -106,9 +106,9 @@ class _ProductScreenState extends State<ProductScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -126,9 +126,9 @@ class _ProductScreenState extends State<ProductScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
       Product(
@@ -146,9 +146,9 @@ class _ProductScreenState extends State<ProductScreen> {
         number_of_ratings: 20,
         ratings: 4.2,
         images: [
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false),
-          Figure(image_id: 1, url: KImagesPath + "bag1.png", type: false)
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false),
+          Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: false)
         ],
       ),
     ];
@@ -168,45 +168,45 @@ class _ProductScreenState extends State<ProductScreen> {
       number_of_ratings: 20,
       ratings: 4.2,
       images: [
-        Figure(image_id: 1, url: KImagesPath + "bag1.png", type: true),
+        Figure(image_id: 1, url: "${KImagesPath}bag1.png", type: true),
         Figure(
-            image_id: 1, url: KImagesPath + "bag-thumbnail.png", type: false),
-        Figure(image_id: 1, url: KImagesPath + "bag-thumbnail.png", type: false)
+            image_id: 1, url: "${KImagesPath}bag-thumbnail.png", type: false),
+        Figure(image_id: 1, url: "${KImagesPath}bag-thumbnail.png", type: false)
       ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    ScrollController _scrollController = ScrollController();
-    Widget _leadAppBarWidget = Icon(
+    ScrollController scrollController = ScrollController();
+    Widget leadAppBarWidget = const Icon(
       Icons.arrow_back_ios_new_outlined,
       color: KPrimaryColor,
     );
     return SafeArea(
         child: Scaffold(
-      appBar: PagesAppBar(leadingWidget: _leadAppBarWidget),
+      appBar: PagesAppBar(leadingWidget: leadAppBarWidget),
       bottomSheet: Container(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-        child: BottomSheetOptionButtons(
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        child: const BottomSheetOptionButtons(
           btn_text: "Add to Bag",
-          right_btn_img_url: KIconsPath + "bagIconOutline.svg",
-          left_btn_img_url: KIconsPath + "wishlist.svg",
+          right_btn_img_url: "${KIconsPath}bagIconOutline.svg",
+          left_btn_img_url: "${KIconsPath}wishlist.svg",
         ),
       ),
       body: Container(
         child: ListView(
-          controller: _scrollController,
+          controller: scrollController,
           children: [
             Container(
                 padding:
-                    EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 15),
-                        padding: EdgeInsets.all(0),
+                        margin: const EdgeInsets.only(top: 15),
+                        padding: const EdgeInsets.all(0),
                         height: MediaQuery.of(context).size.height *
                             (50 / 100) *
                             0.9,
@@ -215,17 +215,17 @@ class _ProductScreenState extends State<ProductScreen> {
                             borderRadius: BorderRadius.circular(15)),
                         child: SliderView(
                           number_of_items: 3,
+                          height: MediaQuery.of(context).size.height *
+                              (50 / 100) *
+                              0.4,
                           children: _productInfo == null
                               ? []
                               : [
-                                  for (var item in _productInfo!.images)
+                                  for (var item in _productInfo.images)
                                     ProductImgContainer(
                                       img_url: item.url,
                                     ),
                                 ],
-                          height: MediaQuery.of(context).size.height *
-                              (50 / 100) *
-                              0.4,
                         ),
                       ),
                       ProductSubInfo(
@@ -241,47 +241,47 @@ class _ProductScreenState extends State<ProductScreen> {
                           discountValue: _productInfo == null
                               ? 0.0
                               : _productInfo.discount_value),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      AvgRatingComponent(
+                      const AvgRatingComponent(
                         show_icon: false,
                         rating: 4.5,
                         numberOfReviews: 24,
                       ),
                     ])),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
                 child: Column(children: [
-              Divider(
+              const Divider(
                 color: KGreyBackGroundColor,
                 thickness: 10,
               ),
               CollapsibleComponent(
                   title: "Product Description",
+                  scrollController: scrollController,
                   child: Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           horizontal: KPageHorizontalPadding),
                       child: Text(
-                          style: TextStyle(color: KGreyColor),
+                          style: const TextStyle(color: KGreyColor),
                           _productInfo == null
                               ? ""
-                              : _productInfo.description)),
-                  scrollController: _scrollController),
+                              : _productInfo.description))),
             ])),
-            Divider(
+            const Divider(
               color: KGreyBackGroundColor,
               thickness: 10,
             ),
             Container(
               height: 60,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                   vertical: 0, horizontal: KPageHorizontalPadding),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
                       "Ratings & Reviews",
                       style: TextStyle(
@@ -292,36 +292,37 @@ class _ProductScreenState extends State<ProductScreen> {
                     onPressed: () {},
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
-                    icon: SvgPicture.asset(KIconsPath + "arrowRight.svg"),
+                    icon: SvgPicture.asset("${KIconsPath}arrowRight.svg"),
                   )
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               color: KGreyBackGroundColor,
               thickness: 10,
             ),
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                   vertical: 20, horizontal: KPageHorizontalPadding),
-              margin: EdgeInsets.only(bottom: 70),
+              margin: const EdgeInsets.only(bottom: 70),
               child: TitleComponentContainer(
                 height: MediaQuery.of(context).size.height * 0.5 * 0.65,
                 children: [
-                  SectionTitle(
+                  const SectionTitle(
                     text: "You Might Also Like",
                     showView: false,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SliderView(
                     number_of_items:
                         _productsData == null ? 0 : _productsData.length,
+                    height: MediaQuery.of(context).size.height * 0.5 * 0.7 - 60,
                     children: _productsData == null
                         ? []
                         : [
-                            for (Product item in _productsData!)
+                            for (Product item in _productsData)
                               Productcontainer(
                                 widthPercentage: 0.7,
                                 title: item.name,
@@ -336,7 +337,6 @@ class _ProductScreenState extends State<ProductScreen> {
                                 product: item,
                               )
                           ],
-                    height: MediaQuery.of(context).size.height * 0.5 * 0.7 - 60,
                   )
                 ],
               ),

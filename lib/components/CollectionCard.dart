@@ -28,7 +28,7 @@ class _CollectioncardState extends State<Collectioncard> {
               },
         child: SizedBox(
           child: Card(
-            margin: EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
             color: Colors.transparent,
             child: Stack(children: [
               ClipRRect(
@@ -37,13 +37,13 @@ class _CollectioncardState extends State<Collectioncard> {
                     widget.img_url,
                   )),
               Container(
-                  padding: EdgeInsets.only(left: 10, bottom: 10),
+                  padding: const EdgeInsets.only(left: 10, bottom: 10),
                   height: double.infinity,
+                  alignment: Alignment.bottomLeft,
                   child: Text(
                     widget.title,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  alignment: Alignment.bottomLeft)
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ))
             ]),
           ),
         ),

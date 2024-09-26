@@ -34,7 +34,7 @@ class _BottomSheetProductSubInfoComponentState
     return Container(
       color:   KshowModalBottomSheetBackgroundColor,
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: KPageBackGroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(KBorderRadius),
@@ -43,7 +43,7 @@ class _BottomSheetProductSubInfoComponentState
         ),
         // color: Colors.red,
         height: MediaQuery.of(context).size.height * 0.5 * .8 + 35,
-        padding: EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
+        padding: const EdgeInsets.symmetric(vertical: 20,horizontal: KPageHorizontalPadding),
         // child: Container(
         // width: double.infinity,
         child: Column(
@@ -62,7 +62,7 @@ class _BottomSheetProductSubInfoComponentState
                   ),
                   // width: double.infinity,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 ProductSubInfo(
@@ -75,7 +75,7 @@ class _BottomSheetProductSubInfoComponentState
                 )
               ]),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             AvgRatingComponent(
@@ -83,13 +83,13 @@ class _BottomSheetProductSubInfoComponentState
               numberOfReviews: widget.numberOfReviews,
               rating: widget.rating,
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            BottomSheetOptionButtons(
+            const BottomSheetOptionButtons(
               btn_text: "Add to Bag",
-              right_btn_img_url: KIconsPath + "bagIconOutline.svg",
-              left_btn_img_url: KIconsPath + "placeholder.svg",
+              right_btn_img_url: "${KIconsPath}bagIconOutline.svg",
+              left_btn_img_url: "${KIconsPath}placeholder.svg",
             )
           ],
         ),

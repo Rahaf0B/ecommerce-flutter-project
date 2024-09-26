@@ -30,19 +30,19 @@ class ProductRatingInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(productName),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(subTitle),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Container(
+          SizedBox(
               width: double.infinity,
               height: 50,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -55,11 +55,11 @@ class ProductRatingInfoContainer extends StatelessWidget {
                     children: [
                       Text(
                         avgRating.toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(width: 5),
-                      Icon(
+                      const SizedBox(width: 5),
+                      const Icon(
                         size: 30,
                         Icons.star_rounded,
                         color: Colors.orange,
@@ -67,15 +67,15 @@ class ProductRatingInfoContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
-                Text(
+                const Text(
                   "Average Rating",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ])),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.5 * 1.6,
             child: RatingSummaryContainer(
                 numberOfFiveStarRating: numberOfFiveStarRating,

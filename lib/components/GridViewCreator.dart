@@ -3,12 +3,11 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 class Gridviewcreator extends StatelessWidget {
   const Gridviewcreator(
-      {Key? key,
+      {super.key,
       required this.children,
       this.height,
       required this.numberOfColumns,
-      required this.numberOfRows})
-      : super(key: key);
+      required this.numberOfRows});
   final double? height;
   final List<Widget> children;
   final int numberOfColumns;

@@ -11,15 +11,15 @@ class UserReviewContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(children: [
             Container(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   color: KMiniCardColor,
@@ -30,10 +30,10 @@ class UserReviewContainer extends StatelessWidget {
                 children: [
                   Text(
                     review.rating_value.toString(),
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(width: 5),
-                  Icon(
+                  const SizedBox(width: 5),
+                  const Icon(
                     size: 30,
                     Icons.star_rounded,
                     color: KOrangeColor,
@@ -41,7 +41,7 @@ class UserReviewContainer extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             Container(
@@ -50,21 +50,21 @@ class UserReviewContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    review.fisrt_name + " " + review.last_name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    "${review.fisrt_name} ${review.last_name}",
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Text(review.date,
-                      style: TextStyle(fontSize: 16, color: KGreyColor))
+                      style: const TextStyle(fontSize: 16, color: KGreyColor))
                 ],
               ),
             ),
           ]),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
             review.comment,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.w400, fontSize: 15, color: KGreyColor),
           )
         ],

@@ -1,4 +1,3 @@
-import "package:flutter/material.dart";
 
 const KTextFont = "Salsa";
 const KBorderRadius = 15.0;

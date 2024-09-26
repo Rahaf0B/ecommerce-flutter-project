@@ -11,7 +11,7 @@ import '../components/TitleComponentContainer.dart';
 
 class OrderSummaryScreen extends StatefulWidget {
   static String route = "order-summary";
-  const OrderSummaryScreen({Key? key}) : super(key: key);
+  const OrderSummaryScreen({super.key});
 
   @override
   State<OrderSummaryScreen> createState() => _OrderSummaryScreenState();
@@ -34,14 +34,14 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
     discountValue = 13.40;
     deliveryFeeValue = 0.0;
     products = [
-      OrderProductContainer(
-        img_url: KImagesPath + "bag1.png",
+      const OrderProductContainer(
+        img_url: "${KImagesPath}bag1.png",
         title: "Coach",
         date: "08 Dec",
         subtitle: "Leather Coach Bag",
       ),
-      OrderProductContainer(
-        img_url: KImagesPath + "bag1.png",
+      const OrderProductContainer(
+        img_url: "${KImagesPath}bag1.png",
         title: "Coach",
         date: "08 Dec",
         subtitle: "Leather Coach Bag",
@@ -49,13 +49,13 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
     ];
 
     address = [
-      AddressDataContainer(
+      const AddressDataContainer(
         userNameForAddress: "Ruby S Snively",
         location: "1460  Jenric Lane, Ashmor Drive ",
 
         phoneNumber: "414-672-5388",
       ),
-      AddressDataContainer(
+      const AddressDataContainer(
         userNameForAddress: "Vincent Lobo",
         location: "3068  Woodlawn Drive",
         phoneNumber: "414-672-5388",
@@ -75,7 +75,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
               builder: (BuildContext context, StateSetter widgetState) =>
                   SingleChildScrollView(
                       child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -83,22 +83,22 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Select Delivery Address",
                             style: TextStyle(color: KGreyColor),
                           ),
                           TextButton.icon(
                             onPressed: () {},
-                            label: Text(
+                            label: const Text(
                               "Add Address",
                               style: TextStyle(color: KPrimaryColor),
                             ),
-                            icon: SvgPicture.asset(KIconsPath + "plus.svg"),
+                            icon: SvgPicture.asset("${KIconsPath}plus.svg"),
                           )
                         ],
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       color: KGreyBackGroundColor,
                       thickness: 2,
                     ),
@@ -127,7 +127,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                                       });
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   address[index]
@@ -135,7 +135,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                               ),
                               TextButton(
                                   onPressed: () {},
-                                  child: Text(
+                                  child: const Text(
                                     "Edit",
                                     style: TextStyle(
                                         color: KPrimaryColor,
@@ -143,7 +143,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                                   ))
                             ],
                           )),
-                          separatorBuilder: (context, index) => SizedBox(
+                          separatorBuilder: (context, index) => const SizedBox(
                             height: 10,
                           ),
                         )
@@ -160,36 +160,36 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: KPageBackGroundColor,
-      appBar: PagesAppBar(
+      appBar: const PagesAppBar(
         leadingWidget: Icon(Icons.arrow_back_ios_new_outlined),
         title: "Order Summary",
       ),
-      bottomSheet: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+      bottomSheet: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(btn_text: "Proceed to Payments"),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: ListView(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   TitleComponentContainer(
                       height: MediaQuery.of(context).size.height * 0.5 * 0.35,
                       children: [
-                        SectionTitle(
+                        const SectionTitle(
                           text: "Deliver To",
                           showView: false,
                           textColor: KGreyColor,
                           titleFontSize: 18,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Container(
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
                               color: KGreyBackGroundColor,
                               borderRadius:
@@ -204,11 +204,11 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                                     Text(
                                       selectedUserNameForAddress,
                                       overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: KTextDarkColor, fontSize: 15),
                                     ),
                                     Text(selectedAddress,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: KGreyColor, fontSize: 15)),
                                   ]),
                               Container(
@@ -219,31 +219,31 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                                   child: IconButton(
                                       onPressed: ChageAddressOnTap,
                                       icon: SvgPicture.asset(
-                                          KIconsPath + "edit.svg")))
+                                          "${KIconsPath}edit.svg")))
                             ],
                           ),
                         )
                       ]),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
                       child: TitleComponentContainer(children: [
-                    SectionTitle(
+                    const SectionTitle(
                       text: "Expected Delivery",
                       showView: false,
                       textColor: KGreyColor,
                       titleFontSize: 18,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Container(
                       child: ListView.separated(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) => products[index],
-                          separatorBuilder: (context, index) => SizedBox(
+                          separatorBuilder: (context, index) => const SizedBox(
                                 height: 10,
                               ),
                           itemCount: products.length),
@@ -252,7 +252,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             OrderDetailsContainer(
@@ -288,17 +288,17 @@ class AddressDataContainer extends StatelessWidget {
             Text(
               userNameForAddress,
               style:
-                  TextStyle(fontWeight: FontWeight.bold, color: KTextDarkColor),
+                  const TextStyle(fontWeight: FontWeight.bold, color: KTextDarkColor),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Container(
-              padding: EdgeInsets.all(7),
+              padding: const EdgeInsets.all(7),
               decoration: BoxDecoration(
                   color: KGreyBackGroundColor,
                   borderRadius: BorderRadius.circular(KBorderRadius)),
-              child: Text("Home"),
+              child: const Text("Home"),
             ),
           ],
         ),

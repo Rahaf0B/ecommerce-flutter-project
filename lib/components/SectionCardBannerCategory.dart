@@ -5,18 +5,18 @@ import 'CardBanner.dart';
 import 'UpperContentBannerCategory.dart';
 
 class SectionCardBannerCategory extends StatelessWidget {
-  const SectionCardBannerCategory({Key? key}) : super(key: key);
+  const SectionCardBannerCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 350,
       child: Column(
         children: [
           CardBanner(
               width: double.infinity,
               height: 180,
-              image_url: KImagesPath + "lifestyle.png",
+              image_url: "${KImagesPath}lifestyle.png",
               upperComponent: UpperContentBannerCategory(
                 direction: Direction.left,
                 title: "LIFESTYLE",
@@ -38,7 +38,7 @@ class SectionCardBannerCategory extends StatelessWidget {
                 child: CardBanner(
                     width: 190,
                     height: 150,
-                    image_url: KImagesPath + "skincare.png",
+                    image_url: "${KImagesPath}skincare.png",
                     upperComponent: UpperContentBannerCategory(
                       direction: Direction.right,
                       subTitle: "Skincare Essentials",
@@ -53,7 +53,7 @@ class SectionCardBannerCategory extends StatelessWidget {
                 child: CardBanner(
                     width: 190,
                     height: 150,
-                    image_url: KImagesPath + "skincare.png",
+                    image_url: "${KImagesPath}skincare.png",
                     upperComponent: UpperContentBannerCategory(
                       direction: Direction.right,
                       subTitle: "Skincare Essentials",

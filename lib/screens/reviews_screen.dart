@@ -1,10 +1,8 @@
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:rating_summary/rating_summary.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
-import '../Constants/TextStyle.dart';
 import '../Models/Review.dart';
 import '../components/ProductRatingInfoContainer.dart';
 import '../components/UserReviewContainer.dart';
@@ -77,17 +75,17 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
 
     /***/
     Widget appBarLeadingWidget = IconButton(
-        onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new_outlined));
+        onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new_outlined));
     return SafeArea(
         child: Scaffold(
       appBar: PagesAppBar(
         leadingWidget: appBarLeadingWidget,
       ),
       bottomSheet: Container(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-        child: BottomSheetOptionButtons(
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        child: const BottomSheetOptionButtons(
           btn_text: "Write a Review",
-          right_btn_img_url: KIconsPath + "Pluswhite.svg",
+          right_btn_img_url: "${KIconsPath}Pluswhite.svg",
         ),
       ),
       body: Container(
@@ -102,25 +100,25 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                 numberOfThreeStarRating: numberOfThreeStarRating,
                 numberOfTwoStarRating: numberOfTwoStarRating,
                 numberOfOneStarRating: numberOfOneStarRating),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Divider(
+            const Divider(
               color: KGreyBackGroundColor,
               thickness: 10,
             ),
             ListView.separated(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) => UserReviewContainer(
                 review: usersReviews[index],
               ),
-              separatorBuilder: (context, index) => SizedBox(
+              separatorBuilder: (context, index) => const SizedBox(
                 height: 20,
               ),
               itemCount: usersReviews.length,
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
           ],

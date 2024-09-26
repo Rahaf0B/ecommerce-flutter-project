@@ -5,11 +5,11 @@ import '../Constants/Constant.dart';
 
 class CollapsibleComponent extends StatefulWidget {
   const CollapsibleComponent({
-    Key? key,
+    super.key,
     required this.title,
     required this.scrollController,
     required this.child,
-  }) : super(key: key);
+  });
   final ScrollController scrollController;
   final Widget child;
   final String title;
@@ -25,13 +25,13 @@ class _HomeFooterState extends State<CollapsibleComponent> {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(maxHeight: showChildComponent ? 680 : 60),
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       child: ListView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                   vertical: 0, horizontal: KPageHorizontalPadding),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +39,7 @@ class _HomeFooterState extends State<CollapsibleComponent> {
                   Expanded(
                     child: Text(
                       widget.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: KTextDarkColor, fontWeight: FontWeight.w500),
                     ),
                   ),
@@ -57,14 +57,14 @@ class _HomeFooterState extends State<CollapsibleComponent> {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       icon: SvgPicture.asset(showChildComponent
-                          ? KIconsPath + "arrowup.svg"
-                          : KIconsPath + "arrowDown.svg"))
+                          ? "${KIconsPath}arrowup.svg"
+                          : "${KIconsPath}arrowDown.svg"))
                 ],
               ),
             ),
             showChildComponent
                 ? Container(
-                    padding: EdgeInsets.only(bottom: 20, top: 10),
+                    padding: const EdgeInsets.only(bottom: 20, top: 10),
                     child: widget.child)
                 : Container(
                     height: 0,

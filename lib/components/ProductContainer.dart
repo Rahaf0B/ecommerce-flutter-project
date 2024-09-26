@@ -6,7 +6,7 @@ import 'ProductSubInfo.dart';
 
 class Productcontainer extends StatefulWidget {
   const Productcontainer(
-      {Key? key,
+      {super.key,
       required this.widthPercentage,
       required this.title,
       required this.subTitle,
@@ -16,8 +16,7 @@ class Productcontainer extends StatefulWidget {
       required this.containerAxis,
       this.onTap,
       this.liked,
-      this.product})
-      : super(key: key);
+      this.product});
   final double widthPercentage;
   final String img_url;
   final String title;
@@ -37,7 +36,7 @@ class Productcontainer extends StatefulWidget {
 class _ProductcontainerState extends State<Productcontainer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.5 * widget.widthPercentage,
       child: Flex(
         direction: widget.containerAxis == ComponentDirection.vertical
@@ -72,7 +71,7 @@ class _ProductcontainerState extends State<Productcontainer> {
             subTitle: widget.subTitle,
             price: widget.price,
             discountValue:
-                widget.discountValue == null ? null : widget.discountValue!,
+                widget.discountValue,
             liked: widget.liked == null ? false : widget.liked!,
           )
         ],

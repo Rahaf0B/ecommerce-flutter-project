@@ -9,7 +9,7 @@ import '../components/TitleComponentContainer.dart';
 
 class AddReviewScreen extends StatefulWidget {
   static String route = "add-review";
-  const AddReviewScreen({Key? key}) : super(key: key);
+  const AddReviewScreen({super.key});
 
   @override
   State<AddReviewScreen> createState() => _AddReviewScreenState();
@@ -18,7 +18,7 @@ class AddReviewScreen extends StatefulWidget {
 class _AddReviewScreenState extends State<AddReviewScreen> {
   TextEditingController textarea = TextEditingController();
 
-  Widget appBarLeading = Icon(
+  Widget appBarLeading = const Icon(
     Icons.close_outlined,
     size: 40,
     color: KPrimaryColor,
@@ -32,23 +32,23 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
         leadingWidget: appBarLeading,
         title: "Add Review",
       ),
-      bottomSheet: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+      bottomSheet: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(
           btn_text: "Submit Review",
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: ListView(children: [
           TitleComponentContainer(
             height: MediaQuery.of(context).size.height * 0.5 * 0.2,
             children: [
-              SectionTitle(
+              const SectionTitle(
                 text: "Product Rating",
                 showView: false,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               RatingBar.builder(
@@ -59,8 +59,8 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                 itemCount: 5,
                 glow: false,
                 maxRating: 5,
-                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) => Icon(
+                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                itemBuilder: (context, _) => const Icon(
                   Icons.star_rounded,
                   color: KOrangeColor,
                   size: 20,
@@ -71,17 +71,17 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           TitleComponentContainer(
               height: MediaQuery.of(context).size.height * 0.5 * 0.5,
               children: [
-                SectionTitle(
+                const SectionTitle(
                   text: "Review Description",
                   showView: false,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextField(
@@ -90,16 +90,16 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                     keyboardType: TextInputType.multiline,
                     decoration: InputDecoration(
                       hintText: "Enter Description",
-                      hintStyle: TextStyle(fontSize: 16),
+                      hintStyle: const TextStyle(fontSize: 16),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(KBorderRadius),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           width: 0,
                           style: BorderStyle.none,
                         ),
                       ),
                       filled: true,
-                      contentPadding: EdgeInsets.all(16),
+                      contentPadding: const EdgeInsets.all(16),
                       fillColor: KGreyBackGroundColor,
                     ))
               ]),

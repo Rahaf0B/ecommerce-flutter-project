@@ -21,7 +21,7 @@ class OrderProductContainer extends StatelessWidget {
     return Container(
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 70,
             height: 70,
             child: ClipRRect(
@@ -30,7 +30,7 @@ class OrderProductContainer extends StatelessWidget {
                   img_url,
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Column(

@@ -7,14 +7,13 @@ import "ProductSubInfo.dart";
 
 class ProductCartContainer extends StatefulWidget {
   const ProductCartContainer(
-      {Key? key,
+      {super.key,
       required this.img_url,
       required this.title,
       required this.subtitle,
       required this.price,
       required this.quantity,
-      this.discountValue})
-      : super(key: key);
+      this.discountValue});
 
   final String img_url;
   final String title;
@@ -31,7 +30,7 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(KBorderRadius),
         color: KPageBackGroundColor,
@@ -40,7 +39,7 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
         child: Column(
           children: [
             Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5 * 0.6,
                 height: MediaQuery.of(context).size.height * 0.5 * 0.3,
                 child: ClipRRect(
@@ -51,7 +50,7 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               ProductSubInfo(
@@ -65,14 +64,14 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
                 subComponent: Selector(quantity: widget.quantity),
               )
             ]),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               color: KGreyColor,
               thickness: 0.6,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -81,16 +80,16 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
                 Expanded(
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                        padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
+                        alignment: Alignment.center),
+                    child: const Text(
                       "Move to Wishlist",
                       style: TextStyle(fontSize: 18, color: KPrimaryColor),
                     ),
-                    style: ButtonStyle(
-                        padding: WidgetStateProperty.all(EdgeInsets.all(0)),
-                        alignment: Alignment.center),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                   child: VerticalDivider(
                     color: KGreyColor,
@@ -100,13 +99,13 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
                 Expanded(
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                        padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
+                        alignment: Alignment.center),
+                    child: const Text(
                       "Remove",
                       style: TextStyle(fontSize: 18, color: KPrimaryColor),
                     ),
-                    style: ButtonStyle(
-                        padding: WidgetStateProperty.all(EdgeInsets.all(0)),
-                        alignment: Alignment.center),
                   ),
                 ),
               ],
@@ -119,7 +118,7 @@ class _ProductCartContainerState extends State<ProductCartContainer> {
 }
 
 class Selector extends StatefulWidget {
-  const Selector({Key? key, required this.quantity}) : super(key: key);
+  const Selector({super.key, required this.quantity});
   final int quantity;
 
   @override
@@ -129,32 +128,32 @@ class Selector extends StatefulWidget {
 class _SelectorState extends State<Selector> {
   @override
   Widget build(BuildContext context) {
-    int _productQuantity = widget.quantity;
-    double _btn_size = 25;
+    int productQuantity = widget.quantity;
+    double btnSize = 25;
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: _btn_size,
+          SizedBox(
+            width: btnSize,
             child: IconButton(
-              style: ButtonStyle(
+              style: const ButtonStyle(
                   minimumSize: WidgetStatePropertyAll(
                 Size.zero,
               )),
               constraints:
-                  BoxConstraints(minWidth: _btn_size, maxWidth: _btn_size),
+                  BoxConstraints(minWidth: btnSize, maxWidth: btnSize),
               onPressed: () {
                 setState(() {
-                  _productQuantity += 1;
-                  print(_productQuantity);
+                  productQuantity += 1;
+                  print(productQuantity);
                 });
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
               ),
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               alignment: Alignment.center,
             ),
           ),
@@ -164,20 +163,20 @@ class _SelectorState extends State<Selector> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(KBorderRadius),
                 color: KGreyBackGroundColor),
-            padding: EdgeInsets.all(10),
-            child: Text(_productQuantity.toString()),
+            padding: const EdgeInsets.all(10),
+            child: Text(productQuantity.toString()),
           ),
-          Container(
-              width: _btn_size,
+          SizedBox(
+              width: btnSize,
               child: IconButton(
                 constraints:
-                    BoxConstraints(minWidth: _btn_size, maxWidth: _btn_size),
+                    BoxConstraints(minWidth: btnSize, maxWidth: btnSize),
                 onPressed: () {
                   setState(() {
-                    if (_productQuantity > 1) _productQuantity -= 1;
+                    if (productQuantity > 1) productQuantity -= 1;
                   });
                 },
-                icon: Icon(Icons.minimize_outlined),
+                icon: const Icon(Icons.minimize_outlined),
                 alignment: Alignment.center,
                 padding: EdgeInsets.zero,
               )),

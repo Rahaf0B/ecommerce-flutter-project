@@ -6,7 +6,7 @@ import '../Constants/TextStyle.dart';
 
 class ProductSubInfo extends StatefulWidget {
   const ProductSubInfo(
-      {Key? key,
+      {super.key,
       required this.width,
       required this.marginTop,
       required this.title,
@@ -15,8 +15,7 @@ class ProductSubInfo extends StatefulWidget {
       this.discountValue,
       required this.elementType,
       this.subComponent,
-      this.liked})
-      : super(key: key);
+      this.liked});
 
   final ElementType elementType;
 
@@ -35,7 +34,7 @@ class ProductSubInfo extends StatefulWidget {
 class _ProductSubInfoState extends State<ProductSubInfo> {
   @override
   Widget build(BuildContext context) {
-    Color _favIconColor = widget.liked != null && widget.liked == true
+    Color favIconColor = widget.liked != null && widget.liked == true
         ? Colors.red
         : Colors.black;
 
@@ -43,14 +42,14 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
         ? 0.0
         : (widget.discountValue! * widget.price).roundToDouble();
 
-    double _favIconSize = 20;
+    double favIconSize = 20;
     return Container(
       margin: EdgeInsets.only(top: widget.marginTop),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.5 * widget.width,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -66,40 +65,39 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
                     ? productSubInfoSubTitleStylePage
                     : productSubInfoSubTitleStyleCard,
               ),
-              widget.subComponent == null ? SizedBox() : widget.subComponent!,
+              widget.subComponent == null ? const SizedBox() : widget.subComponent!,
               Container(
                 constraints: BoxConstraints(
                     maxWidth: widget.width != null
                         ? (MediaQuery.of(context).size.width *
                                 0.5 *
-                                widget.width! -
-                            _favIconSize)
+                                widget.width -
+                            favIconSize)
                         : double.infinity),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "\$" +
-                            (widget.discountValue == null
+                        "\$${widget.discountValue == null
                                 ? widget.price.toString()
-                                : priceAfterDiscount.toString()),
+                                : priceAfterDiscount.toString()}",
                         style: widget.elementType == ElementType.page
                             ? productSubInfoPriceStylePage
                             : productSubInfoPriceStyleCard,
                       ),
                       widget.discountValue == null
-                          ? SizedBox()
+                          ? const SizedBox()
                           : Text(
-                              "\$" + (widget.price).toString(),
+                              "\$${widget.price}",
                               style: widget.elementType == ElementType.card
                                   ? productSubInfoSubPriceStyleCard
                                   : productSubInfoSubPriceStylePage,
                             ),
                       widget.discountValue == null
-                          ? SizedBox()
+                          ? const SizedBox()
                           : Text(
-                              widget.discountValue!.toString() + "% OFF",
+                              "${widget.discountValue!}% OFF",
                               style: widget.elementType == ElementType.card
                                   ? productSubInfoDiscountStyleCard
                                   : productSubInfoDiscountStylePage,
@@ -110,20 +108,20 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
           ),
           widget.elementType == ElementType.card
               ? SizedBox(
-                  width: _favIconSize,
-                  height: _favIconSize,
+                  width: favIconSize,
+                  height: favIconSize,
                   child: IconButton(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       onPressed: () {},
                       icon: SvgPicture.asset(
-                        KIconsPath + "wishlist.svg",
-                        height: _favIconSize,
-                        width: _favIconSize,
+                        "${KIconsPath}wishlist.svg",
+                        height: favIconSize,
+                        width: favIconSize,
                         colorFilter:
-                            ColorFilter.mode(_favIconColor, BlendMode.srcIn),
+                            ColorFilter.mode(favIconColor, BlendMode.srcIn),
                       )),
                 )
-              : SizedBox(
+              : const SizedBox(
                   // width: 0,
                   )
         ],

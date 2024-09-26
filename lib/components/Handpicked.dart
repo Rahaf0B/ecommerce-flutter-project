@@ -24,19 +24,19 @@ class _HandpickedState extends State<Handpicked> {
     _cardCollectionData = [
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          image: Figure(image_id: 1, url: "${KImagesPath}handbag.png"),
           category_id: 1),
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          image: Figure(image_id: 1, url: "${KImagesPath}handbag.png"),
           category_id: 1),
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          image: Figure(image_id: 1, url: "${KImagesPath}handbag.png"),
           category_id: 1),
       Category(
           name: "Handbags",
-          image: Figure(image_id: 1, url: KImagesPath + "handbag.png"),
+          image: Figure(image_id: 1, url: "${KImagesPath}handbag.png"),
           category_id: 1),
     ];
   }
@@ -47,22 +47,24 @@ class _HandpickedState extends State<Handpicked> {
       height: 480,
       width: double.infinity,
       color: KPrimaryColor,
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
           vertical: 20, horizontal: KPageHorizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Handpicked Collections",
             style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 14,
                 color: KTextBrightColor),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Gridviewcreator(
+            numberOfColumns: 2,
+            numberOfRows: _cardCollectionData.length ~/ 2,
             children: [
               for (var item in _cardCollectionData)
                 Collectioncard(
@@ -71,8 +73,6 @@ class _HandpickedState extends State<Handpicked> {
                   img_url: item.image.url,
                 ),
             ],
-            numberOfColumns: 2,
-            numberOfRows: (_cardCollectionData!.length / 2).toInt(),
           )
         ],
       ),

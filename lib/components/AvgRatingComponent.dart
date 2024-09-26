@@ -20,7 +20,7 @@ class AvgRatingComponent extends StatefulWidget {
 class _AvgRatingComponentState extends State<AvgRatingComponent> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 60,
       child: Row(
@@ -41,10 +41,10 @@ class _AvgRatingComponentState extends State<AvgRatingComponent> {
                 children: [
                   Text(
                     widget.rating.toString(),
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(width: 5),
-                  Icon(
+                  const SizedBox(width: 5),
+                  const Icon(
                     size: 40,
                     Icons.star_rounded,
                     color: Colors.orange,
@@ -52,7 +52,7 @@ class _AvgRatingComponentState extends State<AvgRatingComponent> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             Container(
@@ -60,12 +60,12 @@ class _AvgRatingComponentState extends State<AvgRatingComponent> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Average Rating",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  Text(widget.numberOfReviews.toString() + " Ratings & Reviews",
-                      style: TextStyle(fontSize: 16, color: KGreyColor))
+                  Text("${widget.numberOfReviews} Ratings & Reviews",
+                      style: const TextStyle(fontSize: 16, color: KGreyColor))
                 ],
               ),
             ),
@@ -75,7 +75,7 @@ class _AvgRatingComponentState extends State<AvgRatingComponent> {
                   onPressed: () {},
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
-                  icon: SvgPicture.asset(KIconsPath + "arrowRight.svg"))
+                  icon: SvgPicture.asset("${KIconsPath}arrowRight.svg"))
               : Container()
         ],
       ),

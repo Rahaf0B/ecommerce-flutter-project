@@ -22,7 +22,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       height: 80,
       width: double.infinity,
       color: KPageBackGroundColor,
@@ -31,10 +31,10 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           widget.left_btn_img_url == null
-              ? SizedBox()
+              ? const SizedBox()
               : Container(
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       color: KMiniCardColor,
                       borderRadius: BorderRadius.circular(KBorderRadius)),
@@ -46,8 +46,8 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                       )),
                 ),
           widget.left_btn_img_url == null
-              ? SizedBox()
-              : SizedBox(
+              ? const SizedBox()
+              : const SizedBox(
                   width: 15,
                 ),
           Expanded(
@@ -64,7 +64,7 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                     onPressed: () {},
                     label: Text(
                       widget.btn_text,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold, color: KTextBrightColor),
                     ),
                     icon:  widget.right_btn_img_url==null ?
