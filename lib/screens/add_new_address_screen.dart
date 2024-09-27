@@ -4,6 +4,7 @@ import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
+import '../components/InputTextFieldComponent.dart';
 import '../components/SectionTitle.dart';
 import '../components/TitleComponentContainer.dart';
 
@@ -206,42 +207,3 @@ boxDecoration: BoxDecoration(borderRadius: BorderRadius.circular(KBorderRadius))
   }
 }
 
-class InputTextFieldComponent extends StatefulWidget {
-  const InputTextFieldComponent(
-      {super.key,
-      required this.hintText,
-      required this.width,
-      required this.height});
-  final String hintText;
-  final double width;
-  final double height;
-  @override
-  State<InputTextFieldComponent> createState() =>
-      _InputTextFieldComponentState();
-}
-
-class _InputTextFieldComponentState extends State<InputTextFieldComponent> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: widget.height,
-      width: widget.width,
-      child: TextField(
-          maxLines: 1,
-          decoration: InputDecoration(
-            hintText: widget.hintText,
-            hintStyle: const TextStyle(fontSize: 16),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(KBorderRadius),
-              borderSide: const BorderSide(
-                width: 0,
-                style: BorderStyle.none,
-              ),
-            ),
-            filled: true,
-            contentPadding: const EdgeInsets.all(16),
-            fillColor: KGreyBackGroundColor,
-          )),
-    );
-  }
-}
