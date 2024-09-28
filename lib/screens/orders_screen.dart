@@ -26,7 +26,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
         child: Scaffold(
       appBar: PagesAppBar(
         title: "My Orders",
-        leadingWidget: Icon(
+        leadingWidget: const Icon(
           Icons.arrow_back_ios_new_outlined,
           color: KPrimaryColor,
         ),
@@ -46,11 +46,11 @@ class _OrdersScreenState extends State<OrdersScreen> {
       body: DefaultTabController(
         length: 3,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+          padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
           height: MediaQuery.of(context).size.height,
           child: ListView(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -59,7 +59,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 child: TabBar(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
 
-                  padding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(0),
                   tabAlignment: TabAlignment.fill,
                   indicatorWeight: 0.1,
                   dividerColor: Colors.transparent,
@@ -94,18 +94,18 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: TabBarView(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 30),
+                      margin: const EdgeInsets.only(top: 30),
                       child: ListView(shrinkWrap: true, children: [
-                        Text(
+                        const Text(
                           "4 Order(s)",
                           style: TextStyle(color: KGreyColor),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         for (var item in orders) ...[
@@ -163,11 +163,11 @@ class OrderDataContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
           color: KGreyBackGroundColor,
           borderRadius: BorderRadius.circular(KBorderRadius)),
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -177,16 +177,16 @@ class OrderDataContainer extends StatelessWidget {
             children: [
               Text(
                 date,
-                style: TextStyle(color: KGreyColor),
+                style: const TextStyle(color: KGreyColor),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text("#${number}"),
-              SizedBox(
+              Text("#$number"),
+              const SizedBox(
                 height: 5,
               ),
-              Text("\$${price}")
+              Text("\$$price")
             ],
           ),
           IconButton(
@@ -213,16 +213,16 @@ class Tap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // width: 80,
-      padding: EdgeInsets.symmetric(horizontal: 17, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 7),
+
+      decoration: BoxDecoration(
+          color: selectedTap == id ? KPrimaryColor : Colors.transparent,
+          borderRadius: BorderRadius.circular(KBorderRadius)),
       child: Text(
         title,
         style: TextStyle(
             fontSize: 12, color: selectedTap == id ? KBrightColor : KGreyColor),
       ),
-
-      decoration: BoxDecoration(
-          color: selectedTap == id ? KPrimaryColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(KBorderRadius)),
     );
   }
 }

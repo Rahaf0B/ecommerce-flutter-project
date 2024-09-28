@@ -1,9 +1,12 @@
 import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
 import 'package:ecommerce/screens/add_new_address_screen.dart';
 import 'package:ecommerce/screens/add_review_screen.dart';
+import 'package:ecommerce/screens/cart_screen.dart';
 import 'package:ecommerce/screens/categories_brands_products_screen.dart';
 import 'package:ecommerce/screens/categories_screen.dart';
 import 'package:ecommerce/screens/confirmed_screen.dart';
+import 'package:ecommerce/screens/home_screen.dart';
+import 'package:ecommerce/screens/items_ordered_screen.dart';
 import 'package:ecommerce/screens/order_summary_screen.dart';
 import 'package:ecommerce/screens/orders_screen.dart';
 import 'package:ecommerce/screens/payments_screen.dart';
@@ -34,11 +37,12 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: OrdersScreen.route,
+      initialRoute: ItemsOrderedScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
             const PagesContainerWithNavigator(),
+        HomeScreen.route: (context) => const HomeScreen(),
         SearchScreen.route: (context) => const SearchScreen(),
         SubCategoriesScreen.route: (context) => const SubCategoriesScreen(),
         ProductScreen.route: (context) => const ProductScreen(),
@@ -46,6 +50,7 @@ class EcommerceApp extends StatelessWidget {
         AddReviewScreen.route: (context) => const AddReviewScreen(),
         OrderSummaryScreen.route: (context) => const OrderSummaryScreen(),
         AddNewAddressScreen.route: (context) => const AddNewAddressScreen(),
+        CartScreen.route: (context) => const CartScreen(),
         PaymentsScreen.route: (context) => const PaymentsScreen(),
         ConfirmedScreen.route: (context) => const ConfirmedScreen(),
         CategoriesBrandsProductsScreen.route: (context) =>
@@ -57,6 +62,7 @@ class EcommerceApp extends StatelessWidget {
         AccountLoginOptionScreen.route: (context) =>
             const AccountLoginOptionScreen(),
         OrdersScreen.route: (context) => const OrdersScreen(),
+        ItemsOrderedScreen.route: (context) => const ItemsOrderedScreen(),
       },
       theme: ThemeData(
         bottomSheetTheme: const BottomSheetThemeData(
