@@ -22,7 +22,6 @@ import '../components/ProductContainer.dart';
 import '../components/SectionCardBannerCategory.dart';
 import '../components/SectionTitle.dart';
 import '../components/SliderView.dart';
-import '../components/TitleArrowNavigator.dart';
 import '../components/TitleComponentContainer.dart';
 
 class HomeScreen extends StatefulWidget {

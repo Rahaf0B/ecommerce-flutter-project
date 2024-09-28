@@ -78,7 +78,7 @@ class EcommerceApp extends StatelessWidget {
           scrolledUnderElevation: 0,
           color: KPageBackGroundColor,
         ),
-        drawerTheme: DrawerThemeData(backgroundColor: KPageBackGroundColor)
+        drawerTheme: const DrawerThemeData(backgroundColor: KPageBackGroundColor)
       ),
     );
   }

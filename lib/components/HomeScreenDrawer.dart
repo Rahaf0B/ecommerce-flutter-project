@@ -48,20 +48,20 @@ class HomeScreenDrawer extends StatelessWidget {
                             ),
                             radius: 20.0,
                           )),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
-                        "Hello, ${userName}",
-                        style: TextStyle(fontSize: 16, color: KTextDarkColor),
+                        "Hello, $userName",
+                        style: const TextStyle(fontSize: 16, color: KTextDarkColor),
                       )
                     ],
                   ),
-                  Container(
+                  SizedBox(
                       height: 20,
                       width: 20,
                       child: IconButton(
-                          padding: EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(0),
                           onPressed: () {},
                           icon: SvgPicture.asset(
                               "${KIconsPath}arrowRight.svg")))
@@ -74,17 +74,17 @@ class HomeScreenDrawer extends StatelessWidget {
             ),
             Container(
               padding:
-              EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-              margin: EdgeInsets.symmetric(vertical: 10),
+              const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+              margin: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Top Categories",
                     style: TextStyle(color: KGreyColor),
                   ),
                   ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) => TitleArrowNavigator(
                         title: topCategoriesElement[index].values.first,
@@ -100,24 +100,24 @@ class HomeScreenDrawer extends StatelessWidget {
             ),
             Container(
               padding:
-              EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-              margin: EdgeInsets.symmetric(vertical: 10),
+              const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+              margin: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Contact Us",
                     style: TextStyle(color: KGreyColor),
                   ),
                   ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) => TitleArrowNavigator(
                         title: contactElement[index].values.first,
                         marginTop: 10,
                       ),
                       itemCount: contactElement.length),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   )
                 ],
