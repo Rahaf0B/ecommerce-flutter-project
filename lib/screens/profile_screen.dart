@@ -5,6 +5,8 @@ import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../components/TitleArrowNavigator.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
   static String route = "profile";
@@ -89,22 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             for (String item in btn_text)
-              Container(
-                margin: const EdgeInsets.only(top: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(item),
-                    IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          "${KIconsPath}arrowRight.svg",
-                          height: 20,
-                          width: 20,
-                        ))
-                  ],
-                ),
-              )
+              TitleArrowNavigator(title: item,marginTop: 25,)
           ],
         ),
       ),

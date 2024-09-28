@@ -16,15 +16,17 @@ import '../components/CollapsibleComponent.dart';
 import '../components/FooterComponentElement.dart';
 import '../components/GridViewCreator.dart';
 import '../components/Handpicked.dart';
+import '../components/HomeScreenDrawer.dart';
 import '../components/PagesAppBar.dart';
 import '../components/ProductContainer.dart';
 import '../components/SectionCardBannerCategory.dart';
 import '../components/SectionTitle.dart';
 import '../components/SliderView.dart';
+import '../components/TitleArrowNavigator.dart';
 import '../components/TitleComponentContainer.dart';
 
 class HomeScreen extends StatefulWidget {
-  static String route="home";
+  static String route = "home";
   const HomeScreen({super.key});
 
   @override
@@ -251,6 +253,25 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  String userName = "Tina";
+
+  String user_img_url = "${KImagesPath}userImg.png";
+
+  List<Map<int, String>> topCategoriesElement = [
+    {1: "Skincare"},
+    {2: "Apparels"},
+    {3: "Jwellery"},
+    {4: "Handbags"},
+    {5: "Eyeware"},
+    {6: "Fragrance"},
+    {7: "Watches"}
+  ];
+
+  List<Map<int, String>> contactElement = [
+    {1: "Help & Support"},
+    {2: "Feedback & Suggestions"},
+    {3: "Visit Websites"}
+  ];
   @override
   Widget build(BuildContext context) {
     void toggleDrawer() {
@@ -299,7 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const Drawer(),
+      drawer: HomeScreenDrawer(user_img_url: user_img_url, userName: userName, topCategoriesElement: topCategoriesElement, contactElement: contactElement),
       appBar: PagesAppBar(
         title: "Home",
         actionsWidgets: appBarActions,
@@ -311,8 +332,8 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _scrollController,
             children: [
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: KPageHorizontalPadding),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -405,14 +426,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 24,
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: KPageHorizontalPadding),
                 child: Column(
                   children: [
                     TitleComponentContainer(
                         height: MediaQuery.of(context).size.height * 0.5 * 0.8,
                         children: [
-                          const SectionTitle(text: "Shop by Brands", showView: true),
+                          const SectionTitle(
+                              text: "Shop by Brands", showView: true),
                           Gridviewcreator(
                             height:
                                 MediaQuery.of(context).size.height * 0.5 * 0.8 -
@@ -459,3 +481,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

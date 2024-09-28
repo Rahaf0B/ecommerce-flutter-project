@@ -37,7 +37,7 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: ItemsOrderedScreen.route,
+      initialRoute: PagesContainerWithNavigator.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
@@ -78,6 +78,7 @@ class EcommerceApp extends StatelessWidget {
           scrolledUnderElevation: 0,
           color: KPageBackGroundColor,
         ),
+        drawerTheme: DrawerThemeData(backgroundColor: KPageBackGroundColor)
       ),
     );
   }
