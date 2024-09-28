@@ -2,12 +2,10 @@ import 'package:ecommerce/Constants/Constant.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
-import '../Constants/Enums.dart';
 import '../Models/Cart.dart';
 import '../Models/Figure.dart';
 import '../Models/Product.dart';
 import '../components/OrderItemInfoContainer.dart';
-import '../components/ProductSubInfo.dart';
 
 class ItemsOrderedScreen extends StatefulWidget {
   static String route = "order-items";
