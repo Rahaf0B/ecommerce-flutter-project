@@ -6,6 +6,7 @@ import '../Constants/Enums.dart';
 import '../Models/Cart.dart';
 import '../Models/Figure.dart';
 import '../Models/Product.dart';
+import '../components/OrderItemInfoContainer.dart';
 import '../components/ProductSubInfo.dart';
 
 class ItemsOrderedScreen extends StatefulWidget {
@@ -127,7 +128,8 @@ class _ItemsOrderedScreenState extends State<ItemsOrderedScreen> {
                     children: [
                       Text(
                         "Order #$orderNumber",
-                        style: const TextStyle(color: KTextDarkColor, fontSize: 18),
+                        style: const TextStyle(
+                            color: KTextDarkColor, fontSize: 18),
                       ),
                       const SizedBox(
                         height: 20,
@@ -138,7 +140,8 @@ class _ItemsOrderedScreenState extends State<ItemsOrderedScreen> {
                       ),
                       Text(
                         orderDate,
-                        style: const TextStyle(color: KTextDarkColor, fontSize: 16),
+                        style: const TextStyle(
+                            color: KTextDarkColor, fontSize: 16),
                       )
                     ],
                   ),
@@ -148,7 +151,8 @@ class _ItemsOrderedScreenState extends State<ItemsOrderedScreen> {
                         padding: const WidgetStatePropertyAll(
                             EdgeInsetsDirectional.symmetric(
                                 horizontal: 15, vertical: 10)),
-                        backgroundColor: const WidgetStatePropertyAll(KPrimaryColor),
+                        backgroundColor:
+                            const WidgetStatePropertyAll(KPrimaryColor),
                         shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.circular(KBorderRadius)))),
@@ -174,78 +178,17 @@ class _ItemsOrderedScreenState extends State<ItemsOrderedScreen> {
                   ListView.separated(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemBuilder: (context, index) => Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width *
-                                      0.5 *
-                                      0.6,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.5 *
-                                      0.3,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.circular(KBorderRadius),
-                                    child: Image.asset(
-                                      _productItems[index]
-                                          .product
-                                          .images
-                                          .firstOrNull!
-                                          .url,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ProductSubInfo(
-                                        elementType: ElementType.rowComponent,
-                                        marginTop: 5,
-                                        title:
-                                            _productItems[index].product.name,
-                                        subTitle: _productItems[index]
-                                            .product
-                                            .sub_title,
-                                        price:
-                                            _productItems[index].product.price,
-                                        subComponent: Text(
-                                          "Qty- ${_productItems[index].quantity}",
-                                          style: const TextStyle(color: KGreyColor),
-                                        ),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        style: ButtonStyle(
-                                            padding: const WidgetStatePropertyAll(
-                                                EdgeInsetsDirectional.symmetric(
-                                                    horizontal: 40)),
-                                            backgroundColor:
-                                                const WidgetStatePropertyAll(
-                                                    KPageBackGroundColor),
-                                            shape: WidgetStatePropertyAll(
-                                                RoundedRectangleBorder(
-                                                    side: const BorderSide(
-                                                        color: KPrimaryColor),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            KBorderRadius)))),
-                                        child: const Text(
-                                          "Add to bag",
-                                          style:
-                                              TextStyle(color: KPrimaryColor),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ]),
+                      itemBuilder: (context, index) => OrderItemInfoContainer(
+                            img_url: _productItems[index]
+                                .product
+                                .images
+                                .firstOrNull!
+                                .url,
+                            title: _productItems[index].product.name,
+                            subTitle: _productItems[index].product.sub_title,
+                            price: _productItems[index].product.price,
+                            quantity: _productItems[index].quantity,
+                          ),
                       separatorBuilder: (context, index) => const SizedBox(
                             height: 15,
                           ),
