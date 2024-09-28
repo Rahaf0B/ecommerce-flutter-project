@@ -24,6 +24,7 @@ import '../components/SliderView.dart';
 import '../components/TitleComponentContainer.dart';
 
 class HomeScreen extends StatefulWidget {
+  static String route="home";
   const HomeScreen({super.key});
 
   @override

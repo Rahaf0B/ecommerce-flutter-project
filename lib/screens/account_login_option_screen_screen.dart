@@ -26,7 +26,7 @@ class _AccountLoginOptionScreenState extends State<AccountLoginOptionScreen> {
           children: [
             ClipPath(
               clipper: WaveClipperTwo(),
-              child: Container(
+              child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5 * 0.55,
                 child: Stack(
                   children: [
