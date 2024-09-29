@@ -28,11 +28,11 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
         children: [
           Flexible(
             flex: 1,
-            child: Container(
+            child: SizedBox(
               width: iconSize,
               height: iconSize,
               child: IconButton(
-                  padding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(0),
                   onPressed: () {
                     Navigator.pop(context);
                   },

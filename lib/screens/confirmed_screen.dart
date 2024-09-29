@@ -38,7 +38,7 @@ class _ConfirmedScreenState extends State<ConfirmedScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.close_outlined,
                   size: 30,
                   color: KPrimaryColor,

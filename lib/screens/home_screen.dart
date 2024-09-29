@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               "Carry your Funk",
-              style: const TextStyle(
+              style: TextStyle(
                   color: KPrimaryColor,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 "Trendy handbags collection for your party animal",
-                style: const TextStyle(
+                style: TextStyle(
                     color: KPrimaryColor,
                     fontSize: 12,
                     fontFamily: KTextFont))),
@@ -109,16 +109,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontFamily: KTextFont),
               ),
               subTitle: Container(
-                margin: EdgeInsets.only(top: 10),
-                padding: EdgeInsets.all(10),
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: KBrightOrangeColor,
                     borderRadius: BorderRadius.circular(KBorderRadius)),
-                child: Text(
+                child: const Text(
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     "UPTO 20% OFF",
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: KDarkRedColor,
                         fontSize: 12,
                         fontFamily: KTextFont)),

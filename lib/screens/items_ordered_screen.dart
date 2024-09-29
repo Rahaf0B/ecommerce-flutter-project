@@ -118,7 +118,7 @@ class _ItemsOrderedScreenState extends State<ItemsOrderedScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_new_outlined,
             color: KPrimaryColor,
           ),

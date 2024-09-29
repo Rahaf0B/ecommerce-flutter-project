@@ -51,7 +51,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
         title: "Add Review",
       ),
       bottomSheet: Padding(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(
           btn_text: "Submit Review",
           onTap: () {

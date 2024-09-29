@@ -36,7 +36,7 @@ class _InputTextFieldComponentState extends State<InputTextFieldComponent> {
           widget.label==null ? const SizedBox() :
           Text( widget.label!,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
           widget.label==null ? const SizedBox() : const SizedBox(height: 10,),
-          TextField(
+          TextFormField(
               maxLines: 1,
               obscureText: widget.secureInput==null ?  false : widget.secureInput!,
               enableSuggestions: widget.secureInput==null ?  true : widget.secureInput!,

@@ -168,10 +168,10 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios_new_outlined)),
+            icon: const Icon(Icons.arrow_back_ios_new_outlined)),
       ),
       bottomSheet: Padding(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(
           btn_text: "Pay Now",
           onTap: () {

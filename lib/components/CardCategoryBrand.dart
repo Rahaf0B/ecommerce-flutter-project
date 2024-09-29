@@ -54,7 +54,7 @@ class _CardCategoryBrandState extends State<CardCategoryBrand> {
             child: SvgPicture.asset(widget.img_url),
           ),
         ),
-        widget.showTitle! ? Text(widget.title!) : Container(),
+        widget.showTitle! ? Text(widget.title) : Container(),
       ],
     );
   }

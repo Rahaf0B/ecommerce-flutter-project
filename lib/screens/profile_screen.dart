@@ -4,7 +4,6 @@ import 'package:ecommerce/Constants/Enums.dart';
 import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
-import 'package:ecommerce/screens/account_login_option_screen_screen.dart';
 import 'package:ecommerce/screens/cart_screen.dart';
 import 'package:ecommerce/screens/orders_screen.dart';
 import 'package:ecommerce/screens/welcome_screen.dart';
@@ -102,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             for (Map<String, String> item in btn_text)
               TitleArrowNavigator(
                 onTap: () {
-                  var arguments = null;
+                  CartScreenArguments arguments;
                   if (item.keys.first == "cart") {
                     arguments = CartScreenArguments(
                         previousNavigatorType: PreviousNavigatorType.navigator);

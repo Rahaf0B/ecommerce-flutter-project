@@ -30,10 +30,10 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios_new_outlined)),
+            icon: const Icon(Icons.arrow_back_ios_new_outlined)),
       ),
       bottomSheet: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: BottomSheetOptionButtons(
           btn_text: "Save Address",
           onTap: () {

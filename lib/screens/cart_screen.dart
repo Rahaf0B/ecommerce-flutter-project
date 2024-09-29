@@ -136,7 +136,7 @@ print(args);
       appBar: PagesAppBar(
         leadingWidget: previousNavigatorType == PreviousNavigatorType.navigator
             ? appBarLeadingWidget
-            : SizedBox(width: 0,),
+            : const SizedBox(width: 0,),
         title: "My Bag",
       ),
       body: Container(

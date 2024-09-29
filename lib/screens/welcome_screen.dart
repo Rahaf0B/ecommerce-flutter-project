@@ -88,7 +88,7 @@ class WelcomeScreen extends StatelessWidget {
                                       PagesContainerWithNavigator.route);
                                 },
                                 child: const Text(
-                                  "I already have an account",
+                                  "Continue Without Account",
                                   style: TextStyle(
                                       color: KTextDarkColor,
                                       fontWeight: FontWeight.bold,

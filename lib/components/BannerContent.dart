@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
-import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
 
 class BannerContent extends StatelessWidget {
@@ -30,9 +29,9 @@ class BannerContent extends StatelessWidget {
           color:
               showBackground! ? KBannerUpperComponentColor : Colors.transparent,
           borderRadius: direction == Direction.right
-              ? BorderRadius.only(
+              ? const BorderRadius.only(
                   bottomLeft: Radius.circular(15), topLeft: Radius.circular(15))
-              : BorderRadius.only(
+              : const BorderRadius.only(
                   bottomRight: Radius.circular(15),
                   topRight: Radius.circular(15)),
         ),

@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Constants/ScreensArguments.dart';
-import 'order_summary_screen.dart';
 
 class OrdersScreen extends StatefulWidget {
   static String route = "orders";
@@ -42,7 +41,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new_outlined,
               color: KPrimaryColor,
             )),

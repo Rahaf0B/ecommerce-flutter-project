@@ -188,7 +188,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
         title: "Order Summary",
       ),
       bottomSheet: Padding(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(
           btn_text: "Proceed to Payments",
           onTap: () {
