@@ -4,6 +4,7 @@ import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
+import 'package:ecommerce/screens/items_ordered_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'order_summary_screen.dart';
@@ -108,8 +109,8 @@ class _ConfirmedScreenState extends State<ConfirmedScreen> {
                       btn_backgroundColor: KBrightColor,
                       text_color: KPrimaryColor,
                       onTap: () {
-                        Navigator.pushNamed(context, OrderSummaryScreen.route,
-                            arguments: OrderSummaryScreenArguments(
+                        Navigator.pushNamed(context, ItemsOrderedScreen.route,
+                            arguments: ItemOrderedScreenArguments(
                                 order_id: order_id));
                       },
                     ),
