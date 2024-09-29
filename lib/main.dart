@@ -1,3 +1,4 @@
+import 'package:ecommerce/Constants/Enums.dart';
 import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
 import 'package:ecommerce/screens/add_new_address_screen.dart';
 import 'package:ecommerce/screens/add_review_screen.dart';
@@ -37,12 +38,12 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: PagesContainerWithNavigator.route,
+      initialRoute: WelcomeScreen.route,
       debugShowCheckedModeBanner: false,
       routes: {
         PagesContainerWithNavigator.route: (context) =>
             const PagesContainerWithNavigator(),
-        HomeScreen.route: (context) => const HomeScreen(),
+        // HomeScreen.route: (context) => const HomeScreen(),
         SearchScreen.route: (context) => const SearchScreen(),
         SubCategoriesScreen.route: (context) => const SubCategoriesScreen(),
         ProductScreen.route: (context) => const ProductScreen(),

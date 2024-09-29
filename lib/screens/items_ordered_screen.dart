@@ -1,4 +1,5 @@
 import 'package:ecommerce/Constants/Constant.dart';
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
@@ -21,6 +22,18 @@ class _ItemsOrderedScreenState extends State<ItemsOrderedScreen> {
   int numberOfProducts = 2;
   final List<Cart> _productItems = [];
   List<Product> _productsData = [];
+
+  late int order_id;
+
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)!.settings.arguments
+        as ItemOrderedScreenArguments;
+
+    order_id = args.order_id;
+
+    super.didChangeDependencies();
+  }
 
   @override
   void initState() {
@@ -99,11 +112,16 @@ class _ItemsOrderedScreenState extends State<ItemsOrderedScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: const PagesAppBar(
+      appBar: PagesAppBar(
         title: "Items Ordered",
-        leadingWidget: Icon(
-          Icons.arrow_back_ios_new_outlined,
-          color: KPrimaryColor,
+        leadingWidget: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new_outlined,
+            color: KPrimaryColor,
+          ),
         ),
       ),
       body: Container(

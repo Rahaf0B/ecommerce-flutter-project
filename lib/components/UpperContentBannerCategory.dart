@@ -11,7 +11,12 @@ class UpperContentBannerCategory extends StatelessWidget {
       required this.btnColor,
       required this.containerWidth,
       required this.direction,
-      this.title});
+      this.onTap,
+      this.id,
+      this.dealType,
+      this.pageType,
+      this.title,
+      this.pageTitle});
   final String? title;
   final String subTitle;
   final Color textIconColor;
@@ -19,6 +24,11 @@ class UpperContentBannerCategory extends StatelessWidget {
   final Alignment containerAlignment;
   final double containerWidth;
   final Direction direction;
+  final Function? onTap;
+  final PageType? pageType;
+  final int? id;
+  final SubPageType? dealType;
+  final String? pageTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +68,19 @@ class UpperContentBannerCategory extends StatelessWidget {
             const SizedBox(height: 20),
             IconButton(
                 padding: const EdgeInsets.all(0),
-                onPressed: () {},
+                onPressed: onTap == null
+                    ? () {}
+                    : () {
+                        if (dealType != null &&
+                            pageType != null &&
+                            pageTitle != null) {
+                          onTap!(
+                              pageType: pageType,
+                              id: 0,
+                              subPageType: dealType,
+                              pageName: pageTitle);
+                        }
+                      },
                 icon: Icon(
                   Icons.arrow_forward_outlined,
                   color: textIconColor,
@@ -66,7 +88,8 @@ class UpperContentBannerCategory extends StatelessWidget {
                 ),
                 color: const Color(0xFF97451F),
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(const Color(0x2297451F)),
+                  backgroundColor:
+                      WidgetStateProperty.all(const Color(0x2297451F)),
                 ))
           ],
         ),

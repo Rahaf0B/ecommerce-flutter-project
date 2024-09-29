@@ -1,5 +1,7 @@
 import 'package:ecommerce/Constants/Constant.dart';
+import 'package:ecommerce/Constants/ControllerKeys.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
+import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import '../Constants/Colors.dart';
@@ -10,7 +12,8 @@ class AccountLoginOptionScreen extends StatefulWidget {
   const AccountLoginOptionScreen({super.key});
 
   @override
-  State<AccountLoginOptionScreen> createState() => _AccountLoginOptionScreenState();
+  State<AccountLoginOptionScreen> createState() =>
+      _AccountLoginOptionScreenState();
 }
 
 class _AccountLoginOptionScreenState extends State<AccountLoginOptionScreen> {
@@ -20,7 +23,6 @@ class _AccountLoginOptionScreenState extends State<AccountLoginOptionScreen> {
         child: Scaffold(
       resizeToAvoidBottomInset: true,
       body: Container(
-        // height: screenHeight-keyboardHeight,
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
@@ -72,142 +74,184 @@ class _AccountLoginOptionScreenState extends State<AccountLoginOptionScreen> {
                       height: MediaQuery.of(context).size.height,
                       child: TabBarView(
                         children: [
-                          Padding(
-                              padding: const EdgeInsets.symmetric(
-                                      horizontal: KPageHorizontalPadding)
-                                  .copyWith(
-                                      bottom: MediaQuery.of(context)
-                                          .viewInsets
-                                          .bottom),
-                              child: SingleChildScrollView(
-                                  physics: const ClampingScrollPhysics(),
-                                  child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minWidth:
-                                            MediaQuery.of(context).size.width,
-                                        minHeight:
-                                            MediaQuery.of(context).size.height,
-                                      ),
-                                      child: IntrinsicHeight(
-                                          child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        children: [
-                                          const Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Expanded(
-                                                child: InputTextFieldComponent(
-                                                  label: "First Name",
+                          Form(
+                            key: SignUpScreenformKey,
+                            child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                        horizontal: KPageHorizontalPadding)
+                                    .copyWith(
+                                        bottom: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom),
+                                child: SingleChildScrollView(
+                                    physics: const ClampingScrollPhysics(),
+                                    child: ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                          minWidth:
+                                              MediaQuery.of(context).size.width,
+                                          minHeight: MediaQuery.of(context)
+                                              .size
+                                              .height,
+                                        ),
+                                        child: IntrinsicHeight(
+                                            child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            const Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child:
+                                                      InputTextFieldComponent(
+                                                    label: "First Name",
+                                                    height: 80,
+                                                    width: 100,
+                                                    hintText: "",
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Expanded(
+                                                    child:
+                                                        InputTextFieldComponent(
+                                                  label: "Last Name",
                                                   height: 80,
                                                   width: 100,
                                                   hintText: "",
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Expanded(
-                                                  child:
-                                                      InputTextFieldComponent(
-                                                label: "Last Name",
-                                                height: 80,
-                                                width: 100,
-                                                hintText: "",
-                                              )),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          const InputTextFieldComponent(
-                                            label: "Email",
-                                            height: 80,
-                                            width: 100,
-                                            hintText: "",
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          const InputTextFieldComponent(
-                                            label: "Password",
-                                            height: 80,
-                                            width: 100,
-                                            hintText: "",
-                                            secureInput: true,
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          const BottomSheetOptionButtons(
-                                            btn_text: "Create Account",
-                                          ),
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: const Text(
-                                                "Enter as a Guest",
-                                                style: TextStyle(
-                                                    color: KPrimaryColor,
-                                                    fontSize: 18),
-                                              ))
-                                        ],
-                                      ))))),
-                          Padding(
-                              padding: const EdgeInsets.symmetric(
-                                      horizontal: KPageHorizontalPadding)
-                                  .copyWith(
-                                      bottom: MediaQuery.of(context)
-                                          .viewInsets
-                                          .bottom),
-                              child: SingleChildScrollView(
-                                  physics: const ClampingScrollPhysics(),
-                                  child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minWidth:
-                                            MediaQuery.of(context).size.width,
-                                        minHeight:
-                                            MediaQuery.of(context).size.height,
-                                      ),
-                                      child: IntrinsicHeight(
-                                          child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        children: [
-                                          const InputTextFieldComponent(
-                                            label: "Email",
-                                            height: 80,
-                                            width: 100,
-                                            hintText: "",
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          const InputTextFieldComponent(
-                                            label: "Password",
-                                            height: 80,
-                                            width: 100,
-                                            hintText: "",
-                                            secureInput: true,
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          const BottomSheetOptionButtons(
-                                            btn_text: "Login",
-                                          ),
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: const Text(
-                                                "Enter as a Guest",
-                                                style: TextStyle(
-                                                    color: KPrimaryColor,
-                                                    fontSize: 18),
-                                              ))
-                                        ],
-                                      ))))),
+                                                )),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            const InputTextFieldComponent(
+                                              label: "Email",
+                                              height: 80,
+                                              width: 100,
+                                              hintText: "",
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            const InputTextFieldComponent(
+                                              label: "Password",
+                                              height: 80,
+                                              width: 100,
+                                              hintText: "",
+                                              secureInput: true,
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            BottomSheetOptionButtons(
+                                              btn_text: "Create Account",
+                                              onTap: () {
+                                                if (SignUpScreenformKey
+                                                    .currentState!
+                                                    .validate()) {
+                                                  print("validate");
+                                                }
+                                                Navigator.pushNamed(
+                                                    context,
+                                                    PagesContainerWithNavigator
+                                                        .route);
+                                              },
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pushNamed(
+                                                      context,
+                                                      PagesContainerWithNavigator
+                                                          .route);
+                                                },
+                                                child: const Text(
+                                                  "Enter as a Guest",
+                                                  style: TextStyle(
+                                                      color: KPrimaryColor,
+                                                      fontSize: 18),
+                                                ))
+                                          ],
+                                        ))))),
+                          ),
+                          Form(
+                            key: LoginScreenformKey,
+                            child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                        horizontal: KPageHorizontalPadding)
+                                    .copyWith(
+                                        bottom: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom),
+                                child: SingleChildScrollView(
+                                    physics: const ClampingScrollPhysics(),
+                                    child: ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                          minWidth:
+                                              MediaQuery.of(context).size.width,
+                                          minHeight: MediaQuery.of(context)
+                                              .size
+                                              .height,
+                                        ),
+                                        child: IntrinsicHeight(
+                                            child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            const InputTextFieldComponent(
+                                              label: "Email",
+                                              height: 80,
+                                              width: 100,
+                                              hintText: "",
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            const InputTextFieldComponent(
+                                              label: "Password",
+                                              height: 80,
+                                              width: 100,
+                                              hintText: "",
+                                              secureInput: true,
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            BottomSheetOptionButtons(
+                                              btn_text: "Login",
+                                              onTap: () {
+                                                if (LoginScreenformKey
+                                                    .currentState!
+                                                    .validate()) {
+                                                  print("validate");
+                                                }
+                                                Navigator.pushNamed(
+                                                    context,
+                                                    PagesContainerWithNavigator
+                                                        .route);
+                                              },
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pushNamed(
+                                                      context,
+                                                      PagesContainerWithNavigator
+                                                          .route);
+                                                },
+                                                child: const Text(
+                                                  "Enter as a Guest",
+                                                  style: TextStyle(
+                                                      color: KPrimaryColor,
+                                                      fontSize: 18),
+                                                ))
+                                          ],
+                                        ))))),
+                          ),
                         ],
                       ),
                     )

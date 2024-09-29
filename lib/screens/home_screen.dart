@@ -1,6 +1,9 @@
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/Models/Brand.dart';
 import 'package:ecommerce/Models/Category.dart';
 import 'package:ecommerce/Models/Product.dart';
+import 'package:ecommerce/screens/profile_screen.dart';
+import 'package:ecommerce/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -23,6 +26,7 @@ import '../components/SectionCardBannerCategory.dart';
 import '../components/SectionTitle.dart';
 import '../components/SliderView.dart';
 import '../components/TitleComponentContainer.dart';
+import 'categories_brands_products_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String route = "home";
@@ -42,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         isScrollControlled: true,
         builder: (context) => SingleChildScrollView(
                 child: BottomSheetProductSubInfoComponent(
+              product_id: product.product_id,
               title: product.name,
               img_url: product.images.firstWhere((img) => img.type == true).url,
               price: product.price,
@@ -66,17 +71,58 @@ class _HomeScreenState extends State<HomeScreen> {
         image_url: "${KImagesPath}shoulderGirl.png",
         upperComponent: BannerContent(
             width: 0.93,
-            title: "Carry your Funk",
-            subTitle: "Trendy handbags collection for your party animal"),
+            title: Text(
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              "Carry your Funk",
+              style: const TextStyle(
+                  color: KPrimaryColor,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: KTextFont),
+            ),
+            subTitle: Text(
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                "Trendy handbags collection for your party animal",
+                style: const TextStyle(
+                    color: KPrimaryColor,
+                    fontSize: 12,
+                    fontFamily: KTextFont))),
       ),
-      const CardBanner(
+      CardBanner(
 
           // height: 150,
-          image_url: "${KImagesPath}shoulderGirl.png",
+          image_url: "${KImagesPath}idk.png",
           upperComponent: BannerContent(
+              showBackground: false,
+              direction: Direction.left,
               width: 0.93,
-              title: "Carry your Funk",
-              subTitle: "Trendy handbags collection for your party animal"))
+              title: const Text(
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                "Spring Summer Collection",
+                style: TextStyle(
+                    color: KDarkRedColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: KTextFont),
+              ),
+              subTitle: Container(
+                margin: EdgeInsets.only(top: 10),
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: KBrightOrangeColor,
+                    borderRadius: BorderRadius.circular(KBorderRadius)),
+                child: Text(
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    "UPTO 20% OFF",
+                    style: const TextStyle(
+                        color: KDarkRedColor,
+                        fontSize: 12,
+                        fontFamily: KTextFont)),
+              )))
     ];
     _productsData = [
       Product(
@@ -208,45 +254,25 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
     _cardCategoryData = [
       Category(
-          name: "Handbags",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
+          name: "Skincare",
+          image: Figure(image_id: 1, url: "${KIconsPath}skincareIcon.svg"),
           category_id: 1),
       Category(
-          name: "Watches",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
-          category_id: 1),
-      Category(
-          name: "Handbags",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
-          category_id: 1),
-      Category(
-          name: "Watches",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
-          category_id: 1),
+          name: "Jewellery",
+          image: Figure(image_id: 1, url: "${KIconsPath}jewelleryIcon.svg"),
+          category_id: 2),
       Category(
           name: "Handbags",
           image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
-          category_id: 1),
+          category_id: 3),
       Category(
           name: "Watches",
           image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
-          category_id: 1),
+          category_id: 4),
       Category(
-          name: "Handbags",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
-          category_id: 1),
-      Category(
-          name: "Watches",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
-          category_id: 1),
-      Category(
-          name: "Handbags",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-bag.svg"),
-          category_id: 1),
-      Category(
-          name: "Watches",
-          image: Figure(image_id: 1, url: "${KIconsPath}icon-watch.svg"),
-          category_id: 1),
+          name: "Eyewear",
+          image: Figure(image_id: 1, url: "${KIconsPath}skincareIcon.svg"),
+          category_id: 5),
     ];
 
     super.initState();
@@ -255,16 +281,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String userName = "Tina";
 
   String user_img_url = "${KImagesPath}userImg.png";
-
-  List<Map<int, String>> topCategoriesElement = [
-    {1: "Skincare"},
-    {2: "Apparels"},
-    {3: "Jwellery"},
-    {4: "Handbags"},
-    {5: "Eyeware"},
-    {6: "Fragrance"},
-    {7: "Watches"}
-  ];
 
   List<Map<int, String>> contactElement = [
     {1: "Help & Support"},
@@ -296,7 +312,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     List<Widget> appBarActions = [
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, SearchScreen.route);
+        },
         icon: SvgPicture.asset(
           "${KIconsPath}search.svg",
           width: 30,
@@ -306,7 +324,9 @@ class _HomeScreenState extends State<HomeScreen> {
         highlightColor: Colors.transparent,
       ),
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, ProfileScreen.route);
+        },
         icon: SvgPicture.asset(
           "${KIconsPath}ProfileIcon.svg",
           width: 30,
@@ -317,9 +337,50 @@ class _HomeScreenState extends State<HomeScreen> {
       )
     ];
 
+    void changePageOnTap(
+        {required PageType pageType,
+        required int id,
+        required String pageName,
+        SubPageType? subPageType = SubPageType.None}) {
+      switch (pageType) {
+        case PageType.category:
+          Navigator.pushNamed(context, CategoriesBrandsProductsScreen.route,
+              arguments: CategoryBrandScreenArguments(
+                  id: id, pageType: pageType, pageTitle: pageName));
+          break;
+
+        case PageType.subCategory:
+          Navigator.pushNamed(context, "sub-category",
+              arguments: SubCategoryScreenArguments(
+                  id: id, type: pageType, pageTitle: pageName));
+          break;
+        case PageType.brand:
+          Navigator.pushNamed(context, "cat-brand-products",
+              arguments: CategoryBrandScreenArguments(
+                  id: id, pageType: pageType, pageTitle: pageName));
+          break;
+        case PageType.trendingDeals:
+          Navigator.pushNamed(context, "sub-category",
+              arguments: SubCategoryScreenArguments(
+                  id: id,
+                  type: pageType,
+                  subPageType: subPageType,
+                  pageTitle: pageName));
+          break;
+
+        default:
+          break;
+      }
+    }
+
     return Scaffold(
       key: _scaffoldKey,
-      drawer: HomeScreenDrawer(user_img_url: user_img_url, userName: userName, topCategoriesElement: topCategoriesElement, contactElement: contactElement),
+      drawer: HomeScreenDrawer(
+          onTap: changePageOnTap,
+          user_img_url: user_img_url,
+          userName: userName,
+          topCategoriesElement: _cardCategoryData,
+          contactElement: contactElement),
       appBar: PagesAppBar(
         title: "Home",
         actionsWidgets: appBarActions,
@@ -350,7 +411,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: MediaQuery.of(context).size.height * 0.5 * 0.35,
                         children: [
                           const SectionTitle(
-                            text: 'Top Categories',
+                            title: 'Top Categories',
                             showView: false,
                           ),
                           const SizedBox(
@@ -360,12 +421,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             number_of_items: _cardCategoryData.length,
                             height:
                                 MediaQuery.of(context).size.height * 0.5 * 0.4 -
-                                    70,
+                                    (KMiniCardCategoryHeight - 10),
                             children: [
                               for (var item in _cardCategoryData)
                                 CardCategoryBrand(
+                                  type: PageType.category,
+                                  onTap: changePageOnTap,
                                   img_url: item.image.url,
-                                  text: item.name,
+                                  title: item.name,
                                   id: item.category_id,
                                   containerHeight: KMiniCardCategoryHeight,
                                   containerWidth: KMiniCardCategoryWidth,
@@ -380,8 +443,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       TitleComponentContainer(
                         height: MediaQuery.of(context).size.height * 0.5 * 0.7,
                         children: [
-                          const SectionTitle(
-                            text: "New Arrivals",
+                          SectionTitle(
+                            onTap: changePageOnTap,
+                            pageType: PageType.subCategory,
+                            subPageType: SubPageType.newArrivals,
+                            title: "New Arrivals",
                             showView: true,
                           ),
                           SliderView(
@@ -420,7 +486,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 30,
               ),
-              const Handpicked(),
+              Handpicked(
+                onTap: changePageOnTap,
+              ),
               const SizedBox(
                 height: 24,
               ),
@@ -433,7 +501,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: MediaQuery.of(context).size.height * 0.5 * 0.8,
                         children: [
                           const SectionTitle(
-                              text: "Shop by Brands", showView: true),
+                              title: "Shop by Brands", showView: false),
+                          const SizedBox(
+                            height: 15,
+                          ),
                           Gridviewcreator(
                             height:
                                 MediaQuery.of(context).size.height * 0.5 * 0.8 -
@@ -443,6 +514,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               for (var item in _cardBrandData)
                                 CardCategoryBrand(
+                                    title: item.name,
+                                    showTitle: false,
+                                    onTap: changePageOnTap,
+                                    type: PageType.brand,
                                     id: item.brand_id,
                                     img_url: item.image.url,
                                     containerWidth: KMiniCardBrandWidth,
@@ -455,13 +530,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     TitleComponentContainer(
                       height: MediaQuery.of(context).size.height * 0.5 * 1,
-                      children: const [
-                        SectionTitle(
-                            text: "Makeup & Skincare", showView: false),
-                        SizedBox(
+                      children: [
+                        const SectionTitle(
+                            title: "Trending Deals", showView: false),
+                        const SizedBox(
                           height: 19,
                         ),
-                        SectionCardBannerCategory(),
+                        SectionCardBannerCategory(
+                          onTap: changePageOnTap,
+                          type: PageType.trendingDeals,
+                        ),
                       ],
                     ),
                     const SizedBox(
@@ -480,4 +558,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

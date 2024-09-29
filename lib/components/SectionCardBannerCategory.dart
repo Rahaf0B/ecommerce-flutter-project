@@ -5,11 +5,14 @@ import 'CardBanner.dart';
 import 'UpperContentBannerCategory.dart';
 
 class SectionCardBannerCategory extends StatelessWidget {
-  const SectionCardBannerCategory({super.key});
+  const SectionCardBannerCategory({super.key, required this.type, this.onTap});
+
+  final PageType type;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 350,
       child: Column(
         children: [
@@ -18,15 +21,19 @@ class SectionCardBannerCategory extends StatelessWidget {
               height: 180,
               image_url: "${KImagesPath}lifestyle.png",
               upperComponent: UpperContentBannerCategory(
+                onTap: onTap!,
+                pageType: type,
+                dealType: SubPageType.limited,
+                pageTitle: "Limited Edition",
                 direction: Direction.left,
                 title: "LIFESTYLE",
-                subTitle: "Makeup Accessories from Top Brands",
-                btnColor: Color(0x2297451F),
-                textIconColor: Color(0xFF97451F),
+                subTitle: "limited edition products",
+                btnColor: const Color(0x2297451F),
+                textIconColor: const Color(0xFF97451F),
                 containerWidth: 180,
                 containerAlignment: Alignment.centerLeft,
               )),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Flex(
@@ -40,10 +47,14 @@ class SectionCardBannerCategory extends StatelessWidget {
                     height: 150,
                     image_url: "${KImagesPath}skincare.png",
                     upperComponent: UpperContentBannerCategory(
+                      onTap: onTap!,
+                      dealType: SubPageType.discount,
                       direction: Direction.right,
-                      subTitle: "Skincare Essentials",
-                      btnColor: Color(0x22A53F64),
-                      textIconColor: Color(0xFFA53F64),
+                      pageTitle: "15% Discount",
+                      pageType: type,
+                      subTitle: "15% Off And More!",
+                      btnColor: const Color(0x22A53F64),
+                      textIconColor: const Color(0xFFA53F64),
                       containerWidth: 80,
                       containerAlignment: Alignment.topRight,
                     )),
@@ -53,12 +64,16 @@ class SectionCardBannerCategory extends StatelessWidget {
                 child: CardBanner(
                     width: 190,
                     height: 150,
-                    image_url: "${KImagesPath}skincare.png",
+                    image_url: "${KImagesPath}facepacks.png",
                     upperComponent: UpperContentBannerCategory(
+                      onTap: onTap!,
+                      dealType: SubPageType.popular,
+                      pageTitle: "Popular Products",
+                      pageType: type,
                       direction: Direction.right,
-                      subTitle: "Skincare Essentials",
-                      btnColor: Color(0x22A53F64),
-                      textIconColor: Color(0xFFA53F64),
+                      subTitle: "Popular On The Community!",
+                      btnColor: const Color(0x22A53F64),
+                      textIconColor: const Color(0xFFA53F64),
                       containerWidth: 80,
                       containerAlignment: Alignment.topRight,
                     )),

@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
+import '../Constants/ScreensArguments.dart';
 
 class AvgRatingComponent extends StatefulWidget {
   const AvgRatingComponent(
       {super.key,
       required this.show_icon,
       required this.rating,
-      required this.numberOfReviews});
+      required this.numberOfReviews,
+      required this.product_id});
   final bool show_icon;
   final double rating;
   final int numberOfReviews;
+  final int product_id;
 
   @override
   State<AvgRatingComponent> createState() => _AvgRatingComponentState();
@@ -41,7 +44,8 @@ class _AvgRatingComponentState extends State<AvgRatingComponent> {
                 children: [
                   Text(
                     widget.rating.toString(),
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(width: 5),
                   const Icon(
@@ -72,7 +76,13 @@ class _AvgRatingComponentState extends State<AvgRatingComponent> {
           ]),
           widget.show_icon
               ? IconButton(
-                  onPressed: () {},
+                  onPressed: widget.show_icon == false
+                      ? () {}
+                      : () {
+                          Navigator.pushNamed(context, "reviews",
+                              arguments: ReviewsScreenArguments(
+                                  product_id: widget.product_id));
+                        },
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   icon: SvgPicture.asset("${KIconsPath}arrowRight.svg"))

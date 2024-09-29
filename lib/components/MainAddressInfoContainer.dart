@@ -25,47 +25,46 @@ class Mainaddressinfocontainer extends StatefulWidget {
 class _MainaddressinfocontainerState extends State<Mainaddressinfocontainer> {
   @override
   Widget build(BuildContext context) {
-    return TitleComponentContainer(
-        children: [
-          const SectionTitle(
-            text: "Deliver To",
-            showView: false,
-            textColor: KGreyColor,
-            titleFontSize: 18,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-                color: KGreyBackGroundColor,
-                borderRadius: BorderRadius.circular(KBorderRadius)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(
-                    widget.selectedUserNameForAddress,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: KTextDarkColor, fontSize: 15),
-                  ),
-                  Text(widget.selectedAddress,
-                      style: const TextStyle(color: KGreyColor, fontSize: 15)),
-                ]),
-                Container(
-                    decoration: BoxDecoration(
-                        color: KPrimaryColor,
-                        borderRadius: BorderRadius.circular(KBorderRadius)),
-                    child: IconButton(
-                        onPressed: () {
-                          widget.ChageAddressOnTap();
-                        },
-                        icon: SvgPicture.asset("${KIconsPath}edit.svg")))
-              ],
-            ),
-          )
-        ]);
+    return TitleComponentContainer(children: [
+      const SectionTitle(
+        title: "Deliver To",
+        showView: false,
+        textColor: KGreyColor,
+        titleFontSize: 18,
+      ),
+      const SizedBox(
+        height: 15,
+      ),
+      Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            color: KGreyBackGroundColor,
+            borderRadius: BorderRadius.circular(KBorderRadius)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                widget.selectedUserNameForAddress,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(color: KTextDarkColor, fontSize: 15),
+              ),
+              Text(widget.selectedAddress,
+                  style: const TextStyle(color: KGreyColor, fontSize: 15)),
+            ]),
+            Container(
+                decoration: BoxDecoration(
+                    color: KPrimaryColor,
+                    borderRadius: BorderRadius.circular(KBorderRadius)),
+                child: IconButton(
+                    onPressed: () {
+                      widget.ChageAddressOnTap();
+                    },
+                    icon: SvgPicture.asset("${KIconsPath}edit.svg")))
+          ],
+        ),
+      )
+    ]);
   }
 }

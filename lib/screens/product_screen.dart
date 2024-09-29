@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
+import '../Constants/ScreensArguments.dart';
 import '../Models/Figure.dart';
 import '../components/AvgRatingComponent.dart';
 import '../components/BottomSheetOptionButtons.dart';
@@ -33,6 +34,7 @@ class _ProductScreenState extends State<ProductScreen> {
         isScrollControlled: true,
         builder: (context) => SingleChildScrollView(
                 child: BottomSheetProductSubInfoComponent(
+              product_id: product.product_id,
               title: product.name,
               img_url: product.images.firstWhere((img) => img.type == true).url,
               price: product.price,
@@ -43,6 +45,18 @@ class _ProductScreenState extends State<ProductScreen> {
   }
 
   late Product _productInfo;
+
+  late int product_id;
+  @override
+  void didChangeDependencies() {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ProductScreenArguments;
+
+    product_id = args.product_id;
+
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -178,9 +192,14 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     ScrollController scrollController = ScrollController();
-    Widget leadAppBarWidget = const Icon(
-      Icons.arrow_back_ios_new_outlined,
-      color: KPrimaryColor,
+    Widget leadAppBarWidget = IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      icon: Icon(
+        Icons.arrow_back_ios_new_outlined,
+        color: KPrimaryColor,
+      ),
     );
     return SafeArea(
         child: Scaffold(
@@ -240,7 +259,8 @@ class _ProductScreenState extends State<ProductScreen> {
                       const SizedBox(
                         height: 15,
                       ),
-                      const AvgRatingComponent(
+                      AvgRatingComponent(
+                        product_id: _productInfo.product_id,
                         show_icon: false,
                         rating: 4.5,
                         numberOfReviews: 24,
@@ -285,7 +305,11 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "reviews",
+                          arguments:
+                              ReviewsScreenArguments(product_id: product_id));
+                    },
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     icon: SvgPicture.asset("${KIconsPath}arrowRight.svg"),
@@ -305,7 +329,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 height: MediaQuery.of(context).size.height * 0.5 * 0.65,
                 children: [
                   const SectionTitle(
-                    text: "You Might Also Like",
+                    title: "You Might Also Like",
                     showView: false,
                   ),
                   const SizedBox(

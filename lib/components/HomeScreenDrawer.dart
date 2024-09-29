@@ -1,3 +1,6 @@
+import 'package:ecommerce/Constants/Enums.dart';
+import 'package:ecommerce/Models/Category.dart';
+import 'package:ecommerce/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -6,18 +9,19 @@ import '../Constants/Constant.dart';
 import 'TitleArrowNavigator.dart';
 
 class HomeScreenDrawer extends StatelessWidget {
-  const HomeScreenDrawer({
-    super.key,
-    required this.user_img_url,
-    required this.userName,
-    required this.topCategoriesElement,
-    required this.contactElement,
-  });
+  const HomeScreenDrawer(
+      {super.key,
+      required this.user_img_url,
+      required this.userName,
+      required this.topCategoriesElement,
+      required this.contactElement,
+      this.onTap});
 
   final String user_img_url;
   final String userName;
-  final List<Map<int, String>> topCategoriesElement;
+  final List<Category> topCategoriesElement;
   final List<Map<int, String>> contactElement;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,8 @@ class HomeScreenDrawer extends StatelessWidget {
                       ),
                       Text(
                         "Hello, $userName",
-                        style: const TextStyle(fontSize: 16, color: KTextDarkColor),
+                        style: const TextStyle(
+                            fontSize: 16, color: KTextDarkColor),
                       )
                     ],
                   ),
@@ -62,9 +67,11 @@ class HomeScreenDrawer extends StatelessWidget {
                       width: 20,
                       child: IconButton(
                           padding: const EdgeInsets.all(0),
-                          onPressed: () {},
-                          icon: SvgPicture.asset(
-                              "${KIconsPath}arrowRight.svg")))
+                          onPressed: () {
+                            Navigator.pushNamed(context, ProfileScreen.route);
+                          },
+                          icon:
+                              SvgPicture.asset("${KIconsPath}arrowRight.svg")))
                 ],
               ),
             ),
@@ -73,8 +80,8 @@ class HomeScreenDrawer extends StatelessWidget {
               thickness: 8,
             ),
             Container(
-              padding:
-              const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: KPageHorizontalPadding),
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,9 +94,12 @@ class HomeScreenDrawer extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) => TitleArrowNavigator(
-                        title: topCategoriesElement[index].values.first,
-                        marginTop: 10,
-                      ),
+                            title: topCategoriesElement[index].name,
+                            marginTop: 10,
+                            id: topCategoriesElement[index].category_id,
+                            onTap: onTap,
+                            pageType: PageType.category,
+                          ),
                       itemCount: topCategoriesElement.length)
                 ],
               ),
@@ -99,8 +109,8 @@ class HomeScreenDrawer extends StatelessWidget {
               thickness: 8,
             ),
             Container(
-              padding:
-              const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: KPageHorizontalPadding),
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,9 +123,9 @@ class HomeScreenDrawer extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) => TitleArrowNavigator(
-                        title: contactElement[index].values.first,
-                        marginTop: 10,
-                      ),
+                            title: contactElement[index].values.first,
+                            marginTop: 10,
+                          ),
                       itemCount: contactElement.length),
                   const SizedBox(
                     height: 30,

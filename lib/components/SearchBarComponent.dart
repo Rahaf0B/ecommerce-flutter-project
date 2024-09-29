@@ -15,22 +15,32 @@ class SearchBarComponent extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _SearchBarComponentState extends State<SearchBarComponent> {
+  final double iconSize = 30;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: KPageHorizontalPadding),
+      padding: const EdgeInsets.symmetric(
+          vertical: 12, horizontal: KPageHorizontalPadding),
       height: 100,
       // color: KPageBackGroundColor,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Flexible(
             flex: 1,
-            child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.arrow_back_ios_new_outlined,
-                  size: 30,
-                )),
+            child: Container(
+              width: iconSize,
+              height: iconSize,
+              child: IconButton(
+                  padding: EdgeInsets.all(0),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios_new_outlined,
+                    size: iconSize,
+                  )),
+            ),
           ),
           Flexible(
             flex: 7,

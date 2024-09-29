@@ -34,6 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
         useSafeArea: true,
         builder: (context) => SingleChildScrollView(
                 child: BottomSheetProductSubInfoComponent(
+              product_id: product.product_id,
               title: product.name,
               img_url: product.images.firstWhere((img) => img.type == true).url,
               price: product.price,
@@ -171,14 +172,15 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Scaffold(
       appBar: const SearchBarComponent(),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding)
+            .copyWith(top: 15),
         child: ListView(
           children: [
             TitleComponentContainer(
               height: MediaQuery.of(context).size.height * 0.5 * 0.4,
               children: [
                 const SectionTitle(
-                  text: "Recent Searchs",
+                  title: "Recent Searchs",
                   showView: false,
                 ),
                 const SizedBox(
@@ -197,7 +199,7 @@ class _SearchScreenState extends State<SearchScreen> {
               height: MediaQuery.of(context).size.height * 0.5 * 0.7,
               children: [
                 const SectionTitle(
-                  text: "New Arrivals",
+                  title: "New Arrivals",
                   showView: false,
                 ),
                 const SizedBox(

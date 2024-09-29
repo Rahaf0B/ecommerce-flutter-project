@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Constants/Constant.dart';
+import '../Constants/Enums.dart';
 
 class Collectioncard extends StatefulWidget {
   const Collectioncard(
@@ -7,11 +8,13 @@ class Collectioncard extends StatefulWidget {
       required this.title,
       required this.img_url,
       this.onTap,
+      required this.type,
       required this.id});
   final String img_url;
   final String title;
   final Function? onTap;
   final int id;
+  final PageType type;
   @override
   State<Collectioncard> createState() => _CollectioncardState();
 }
@@ -24,7 +27,10 @@ class _CollectioncardState extends State<Collectioncard> {
         onTap: widget.onTap == null
             ? () {}
             : () {
-                widget.onTap!();
+                widget.onTap!(
+                    pageType: widget.type,
+                    id: widget.id,
+                    pageName: widget.title);
               },
         child: SizedBox(
           child: Card(
@@ -42,7 +48,8 @@ class _CollectioncardState extends State<Collectioncard> {
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     widget.title,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
                   ))
             ]),
           ),

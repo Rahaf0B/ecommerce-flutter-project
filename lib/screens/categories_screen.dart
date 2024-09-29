@@ -1,8 +1,11 @@
 import 'package:ecommerce/Constants/Colors.dart';
 import 'package:ecommerce/Constants/Constant.dart';
+import 'package:ecommerce/Constants/Enums.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/categories_brands_products_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../Constants/ScreensArguments.dart';
 import '../components/CardBanner.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -29,7 +32,6 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
         child: Scaffold(
       appBar: const PagesAppBar(
@@ -40,12 +42,22 @@ class CategoriesScreen extends StatelessWidget {
         child: ListView(
           children: [
             for (var item in cards) ...[
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                child: CardCatComponent(
-                  id: item.keys.first,
-                  title: item.values.first.entries.first.key,
-                  img_url: item.values.first.entries.first.value,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                      context, CategoriesBrandsProductsScreen.route,
+                      arguments: CategoryBrandScreenArguments(
+                          id: item.keys.first,
+                          pageTitle: item.values.first.entries.first.key,
+                          pageType: PageType.category));
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: CardCatComponent(
+                    id: item.keys.first,
+                    title: item.values.first.entries.first.key,
+                    img_url: item.values.first.entries.first.value,
+                  ),
                 ),
               ),
             ]

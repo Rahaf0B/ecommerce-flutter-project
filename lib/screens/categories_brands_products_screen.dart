@@ -1,5 +1,9 @@
 import 'package:ecommerce/Constants/Colors.dart';
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/cart_screen.dart';
+import 'package:ecommerce/screens/search_screen.dart';
+import 'package:ecommerce/screens/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../Constants/Constant.dart';
@@ -22,51 +26,28 @@ class CategoriesBrandsProductsScreen extends StatefulWidget {
 
 class _CategoriesBrandsProductsScreenState
     extends State<CategoriesBrandsProductsScreen> {
-  Widget appBarLeadingWidget = IconButton(
-    icon: const Icon(Icons.arrow_back_ios_new_outlined),
-    onPressed: () {},
-  );
-
-  List<Widget> appBarActions = [
-    IconButton(
-      onPressed: () {},
-      icon: SvgPicture.asset(
-        "${KIconsPath}wishlistHeaderIcon.svg",
-        width: 30,
-        fit: BoxFit.cover,
-      ),
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-    ),
-    IconButton(
-      onPressed: () {},
-      icon: SvgPicture.asset(
-        "${KIconsPath}search.svg",
-        width: 30,
-        fit: BoxFit.cover,
-      ),
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      style: const ButtonStyle(iconColor: WidgetStatePropertyAll(KPrimaryColor)),
-    ),
-    IconButton(
-      onPressed: () {},
-      icon: SvgPicture.asset(
-        "${KIconsPath}bagHeaderIcon.svg",
-        width: 30,
-        fit: BoxFit.cover,
-      ),
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-    )
-  ];
-
   late List<Product> _productsData;
   int productCount = 255;
+
+  late int id;
+  late PageType pageType;
+  late String pageTitle;
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)!.settings.arguments
+        as CategoryBrandScreenArguments;
+
+    id = args.id;
+    pageType = args.pageType;
+    pageTitle = args.pageTitle;
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
     _productsData = [
       Product(
         product_id: 1,
@@ -193,6 +174,56 @@ class _CategoriesBrandsProductsScreenState
 
   @override
   Widget build(BuildContext context) {
+    Widget appBarLeadingWidget = IconButton(
+      icon: const Icon(Icons.arrow_back_ios_new_outlined),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    List<Widget> appBarActions = [
+      IconButton(
+        onPressed: () {
+          Navigator.pushNamed(context, WishlistScreen.route);
+        },
+        icon: SvgPicture.asset(
+          "${KIconsPath}wishlistHeaderIcon.svg",
+          width: 30,
+          fit: BoxFit.cover,
+        ),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      IconButton(
+        onPressed: () {
+          Navigator.pushNamed(context, SearchScreen.route);
+        },
+        icon: SvgPicture.asset(
+          "${KIconsPath}search.svg",
+          width: 30,
+          fit: BoxFit.cover,
+        ),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        style:
+            const ButtonStyle(iconColor: WidgetStatePropertyAll(KPrimaryColor)),
+      ),
+      IconButton(
+        onPressed: () {
+          Navigator.pushNamed(context, CartScreen.route,
+              arguments: CartScreenArguments(
+                  previousNavigatorType: PreviousNavigatorType.navigator));
+        },
+        icon: SvgPicture.asset(
+          "${KIconsPath}bagHeaderIcon.svg",
+          width: 30,
+          fit: BoxFit.cover,
+        ),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      )
+    ];
+
     void productItemOnTap(Product product) {
       showModalBottomSheet(
           backgroundColor: KPageBackGroundColor,
@@ -201,6 +232,7 @@ class _CategoriesBrandsProductsScreenState
           useSafeArea: true,
           builder: (context) => SingleChildScrollView(
                   child: BottomSheetProductSubInfoComponent(
+                product_id: product.product_id,
                 title: product.name,
                 img_url:
                     product.images.firstWhere((img) => img.type == true).url,
@@ -214,7 +246,7 @@ class _CategoriesBrandsProductsScreenState
     return SafeArea(
         child: Scaffold(
             appBar: PagesAppBar(
-              title: "Handbags",
+              title: pageTitle,
               leadingWidget: appBarLeadingWidget,
               actionsWidgets: appBarActions,
             ),
