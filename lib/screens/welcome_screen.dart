@@ -1,5 +1,7 @@
 import 'package:ecommerce/Constants/Colors.dart';
 import 'package:ecommerce/Constants/Constant.dart';
+import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
+import 'package:ecommerce/screens/account_login_option_screen_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -57,10 +59,14 @@ class WelcomeScreen extends StatelessWidget {
                             height: 50,
                             width: MediaQuery.of(context).size.width,
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, AccountLoginOptionScreen.route);
+                                },
                                 style: ButtonStyle(
                                     backgroundColor:
-                                        const WidgetStatePropertyAll(KPrimaryColor),
+                                        const WidgetStatePropertyAll(
+                                            KPrimaryColor),
                                     shape: WidgetStatePropertyAll(
                                         RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
@@ -77,7 +83,10 @@ class WelcomeScreen extends StatelessWidget {
                             height: 50,
                             width: MediaQuery.of(context).size.width,
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context,
+                                      PagesContainerWithNavigator.route);
+                                },
                                 child: const Text(
                                   "I already have an account",
                                   style: TextStyle(

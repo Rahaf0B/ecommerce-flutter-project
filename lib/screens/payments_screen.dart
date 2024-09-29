@@ -1,11 +1,13 @@
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/CollapsibleComponent.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/confirmed_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
+import '../Constants/ScreensArguments.dart';
 import '../components/MainAddressInfoContainer.dart';
 import 'order_summary_screen.dart';
 
@@ -22,6 +24,19 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
   String selectedAddress = "1460  Jenric Lane, Ashmor Drive";
   List<AddressDataContainer> address = [];
   final ScrollController _scrollController = ScrollController();
+
+  late int order_id;
+  late int address_id;
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)!.settings.arguments
+        as PaymentSummaryScreenArguments;
+
+    order_id = args.order_id;
+    address_id = args.address_id;
+
+    super.didChangeDependencies();
+  }
 
   @override
   void initState() {
@@ -147,13 +162,23 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
 
     return SafeArea(
         child: Scaffold(
-      appBar: const PagesAppBar(
+      appBar: PagesAppBar(
         title: "Payments",
-        leadingWidget: Icon(Icons.arrow_back_ios_new_outlined),
+        leadingWidget: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_outlined)),
       ),
-      bottomSheet: const Padding(
+      bottomSheet: Padding(
         padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-        child: BottomSheetOptionButtons(btn_text: "Pay Now"),
+        child: BottomSheetOptionButtons(
+          btn_text: "Pay Now",
+          onTap: () {
+            Navigator.pushNamed(context, ConfirmedScreen.route,
+                arguments: ConfirmScreenArguments(order_id: order_id));
+          },
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(

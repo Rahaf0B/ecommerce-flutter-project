@@ -1,27 +1,53 @@
 import 'package:ecommerce/Constants/Colors.dart';
 import 'package:ecommerce/Constants/Constant.dart';
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/PagesContainerWithNavigator.dart';
 import 'package:flutter/material.dart';
 
-class ConfirmedScreen extends StatelessWidget {
+import 'order_summary_screen.dart';
+
+class ConfirmedScreen extends StatefulWidget {
   static String route = "confirm";
   const ConfirmedScreen({super.key});
+
+  @override
+  State<ConfirmedScreen> createState() => _ConfirmedScreenState();
+}
+
+class _ConfirmedScreenState extends State<ConfirmedScreen> {
+  late int order_id;
+  @override
+  void didChangeDependencies() {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ConfirmScreenArguments;
+
+    order_id = args.order_id;
+
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            appBar: const PagesAppBar(
+            appBar: PagesAppBar(
               title: "Order Placed",
-              leadingWidget: Icon(
-                Icons.close_outlined,
-                size: 30,
-                color: KPrimaryColor,
+              leadingWidget: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.close_outlined,
+                  size: 30,
+                  color: KPrimaryColor,
+                ),
               ),
             ),
             body: Container(
-              padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: KPageHorizontalPadding),
               child: ListView(
                 children: [
                   Container(
@@ -72,17 +98,28 @@ class ConfirmedScreen extends StatelessWidget {
               builder: (context) => Container(
                 height: MediaQuery.of(context).size.height * 0.5 * 0.4,
                 width: MediaQuery.of(context).size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-                child: const Column(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: KPageHorizontalPadding),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     BottomSheetOptionButtons(
                       btn_text: "View Order",
                       btn_backgroundColor: KBrightColor,
                       text_color: KPrimaryColor,
+                      onTap: () {
+                        Navigator.pushNamed(context, OrderSummaryScreen.route,
+                            arguments: OrderSummaryScreenArguments(
+                                order_id: order_id));
+                      },
                     ),
-                    BottomSheetOptionButtons(btn_text: "Continue Shopping"),
+                    BottomSheetOptionButtons(
+                      btn_text: "Continue Shopping",
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, PagesContainerWithNavigator.route);
+                      },
+                    ),
                   ],
                 ),
               ),

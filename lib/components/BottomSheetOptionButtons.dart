@@ -10,14 +10,16 @@ class BottomSheetOptionButtons extends StatefulWidget {
       this.right_btn_img_url,
       required this.btn_text,
       this.btn_backgroundColor,
-      this.text_color, 
-        this.border_color});
+      this.text_color,
+      this.border_color,
+      this.onTap});
   final String? left_btn_img_url;
   final String? right_btn_img_url;
   final String btn_text;
   final Color? btn_backgroundColor;
   final Color? text_color;
   final Color? border_color;
+  final VoidCallback? onTap;
 
   @override
   State<BottomSheetOptionButtons> createState() =>
@@ -66,10 +68,15 @@ class _BottomSheetOptionButtonsState extends State<BottomSheetOptionButtons> {
                             widget.right_btn_img_url == null ? 0 : 20),
                         backgroundColor: WidgetStateProperty.all(
                             widget.btn_backgroundColor ?? KPrimaryColor),
-                        side: WidgetStatePropertyAll( widget.text_color ==null ? BorderSide.none : BorderSide(color: widget.text_color!,width: 2)),
+                        side: WidgetStatePropertyAll(widget.text_color == null
+                            ? BorderSide.none
+                            : BorderSide(color: widget.text_color!, width: 2)),
                         shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(KBorderRadius)))),
-                    onPressed: () {},
+                            borderRadius:
+                                BorderRadius.circular(KBorderRadius)))),
+                    onPressed: () {
+                      widget.onTap!();
+                    },
                     label: Text(
                       widget.btn_text,
                       style: TextStyle(

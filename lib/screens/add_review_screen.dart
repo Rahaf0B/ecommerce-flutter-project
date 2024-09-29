@@ -1,8 +1,10 @@
+import 'package:ecommerce/Constants/ControllerKeys.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
+import '../Constants/ScreensArguments.dart';
 import '../components/BottomSheetOptionButtons.dart';
 import '../components/SectionTitle.dart';
 import '../components/TitleComponentContainer.dart';
@@ -18,24 +20,45 @@ class AddReviewScreen extends StatefulWidget {
 class _AddReviewScreenState extends State<AddReviewScreen> {
   TextEditingController textarea = TextEditingController();
 
-  Widget appBarLeading = const Icon(
-    Icons.close_outlined,
-    size: 40,
-    color: KPrimaryColor,
-  );
+  late int product_id;
+  @override
+  void didChangeDependencies() {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as AddReviewScreenArguments;
+
+    product_id = args.product_id;
+
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
+    Widget appBarLeading = IconButton(
+      icon: const Icon(
+        Icons.close_outlined,
+        size: 40,
+        color: KPrimaryColor,
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
     return SafeArea(
         child: Scaffold(
       appBar: PagesAppBar(
         leadingWidget: appBarLeading,
         title: "Add Review",
       ),
-      bottomSheet: const Padding(
+      bottomSheet: Padding(
         padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(
           btn_text: "Submit Review",
+          onTap: () {
+            if (AddReviewScreenformKey.currentState!.validate()) {
+              print("validate");
+            }
+          },
         ),
       ),
       body: Container(
@@ -45,7 +68,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
             height: MediaQuery.of(context).size.height * 0.5 * 0.2,
             children: [
               const SectionTitle(
-                text: "Product Rating",
+                title: "Product Rating",
                 showView: false,
               ),
               const SizedBox(
@@ -78,7 +101,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
               height: MediaQuery.of(context).size.height * 0.5 * 0.5,
               children: [
                 const SectionTitle(
-                  text: "Review Description",
+                  title: "Review Description",
                   showView: false,
                 ),
                 const SizedBox(

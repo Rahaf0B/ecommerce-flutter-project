@@ -1,3 +1,5 @@
+import 'package:ecommerce/Constants/ScreensArguments.dart';
+import 'package:ecommerce/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
@@ -14,7 +16,8 @@ class BottomSheetProductSubInfoComponent extends StatefulWidget {
       required this.price,
       required this.img_url,
       required this.rating,
-      required this.numberOfReviews});
+      required this.numberOfReviews,
+      required this.product_id});
 
   final String img_url;
   final String title;
@@ -22,6 +25,8 @@ class BottomSheetProductSubInfoComponent extends StatefulWidget {
   final double price;
   final double rating;
   final int numberOfReviews;
+  final int product_id;
+
   @override
   State<BottomSheetProductSubInfoComponent> createState() =>
       _BottomSheetProductSubInfoComponentState();
@@ -45,39 +50,42 @@ class _BottomSheetProductSubInfoComponentState
             .copyWith(top: 30, bottom: 10),
         child: Column(
           children: [
-            Container(
-              child: Row(children: [
-                Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(KBorderRadius),
-                    child: Image.asset(
-                      widget.img_url,
-                      width: 120,
-                      height: 120,
-                    ),
+            Row(children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, ProductScreen.route,
+                      arguments: ProductScreenArguments(
+                          product_id: widget.product_id));
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(KBorderRadius),
+                  child: Image.asset(
+                    widget.img_url,
+                    width: 120,
+                    height: 120,
                   ),
-                  // width: double.infinity,
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                ProductSubInfo(
-                  elementType: ElementType.page,
-                  marginTop: 5,
-                  title: widget.title,
-                  subTitle: widget.subTitle,
-                  price: widget.price,
-                )
-              ]),
-            ),
+                // width: double.infinity,
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              ProductSubInfo(
+                elementType: ElementType.page,
+                marginTop: 5,
+                title: widget.title,
+                subTitle: widget.subTitle,
+                price: widget.price,
+              )
+            ]),
             const SizedBox(
               height: 30,
             ),
             AvgRatingComponent(
-              show_icon: true,
-              numberOfReviews: widget.numberOfReviews,
-              rating: widget.rating,
-            ),
+                show_icon: true,
+                numberOfReviews: widget.numberOfReviews,
+                rating: widget.rating,
+                product_id: widget.product_id),
             const SizedBox(
               height: 30,
             ),

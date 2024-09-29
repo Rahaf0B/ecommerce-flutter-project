@@ -21,7 +21,8 @@ class CardBanner extends StatelessWidget {
           maxWidth: width == null
               ? MediaQuery.of(context).size.width * (50 / 100) * 1.6
               : width!,
-          maxHeight: height == null ? double.infinity : height!),
+          maxHeight:
+              height == null ? MediaQuery.of(context).size.height : height!),
       child: Card(
         color: Colors.transparent,
         clipBehavior: Clip.antiAlias,
@@ -32,7 +33,7 @@ class CardBanner extends StatelessWidget {
           children: [
             Image.asset(
               image_url,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
               width: double.infinity,
               height: double.infinity,
             ),

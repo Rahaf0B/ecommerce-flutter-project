@@ -1,8 +1,12 @@
 import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/cart_screen.dart';
+import 'package:ecommerce/screens/items_ordered_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
+import '../Constants/ScreensArguments.dart';
+import 'order_summary_screen.dart';
 
 class OrdersScreen extends StatefulWidget {
   static String route = "orders";
@@ -14,11 +18,19 @@ class OrdersScreen extends StatefulWidget {
 
 class _OrdersScreenState extends State<OrdersScreen> {
   int _selectedTap = 0;
-  List<List<String>> orders = [
-    ["September 5, 2020", "874522648", "218.50"],
-    ["September 5, 2020", "874522648", "218.50"],
-    ["September 5, 2020", "874522648", "218.50"],
-    ["September 5, 2020", "874522648", "218.50"]
+  List<Map<int, List<String>>> orders = [
+    {
+      1: ["September 5, 2020", "874522648", "218.50"]
+    },
+    {
+      2: ["September 5, 2020", "874522648", "218.50"]
+    },
+    {
+      3: ["September 5, 2020", "874522648", "218.50"]
+    },
+    {
+      4: ["September 5, 2020", "874522648", "218.50"]
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -26,13 +38,19 @@ class _OrdersScreenState extends State<OrdersScreen> {
         child: Scaffold(
       appBar: PagesAppBar(
         title: "My Orders",
-        leadingWidget: const Icon(
-          Icons.arrow_back_ios_new_outlined,
-          color: KPrimaryColor,
-        ),
+        leadingWidget: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: KPrimaryColor,
+            )),
         actionsWidgets: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, CartScreen.route);
+            },
             icon: SvgPicture.asset(
               "${KIconsPath}bagHeaderIcon.svg",
               width: 30,
@@ -46,7 +64,8 @@ class _OrdersScreenState extends State<OrdersScreen> {
       body: DefaultTabController(
         length: 3,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+          padding:
+              const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
           height: MediaQuery.of(context).size.height,
           child: ListView(
             shrinkWrap: true,
@@ -58,7 +77,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     borderRadius: BorderRadius.circular(KBorderRadius)),
                 child: TabBar(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
-
                   padding: const EdgeInsets.all(0),
                   tabAlignment: TabAlignment.fill,
                   indicatorWeight: 0.1,
@@ -110,9 +128,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                         ),
                         for (var item in orders) ...[
                           OrderDataContainer(
-                            date: item[0],
-                            number: int.parse(item[1]),
-                            price: double.parse(item[2]),
+                            order_id: item.keys.first,
+                            date: item.values.first[0],
+                            number: int.parse(item.values.first[1]),
+                            price: double.parse(item.values.first[2]),
                           ),
                         ],
                       ]),
@@ -154,11 +173,13 @@ class OrderDataContainer extends StatelessWidget {
     required this.date,
     required this.number,
     required this.price,
+    required this.order_id,
   });
 
   final String date;
   final int number;
   final double price;
+  final int order_id;
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +211,10 @@ class OrderDataContainer extends StatelessWidget {
             ],
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, ItemsOrderedScreen.route,
+                    arguments: ItemOrderedScreenArguments(order_id: order_id));
+              },
               icon: SvgPicture.asset("${KIconsPath}arrowRight.svg"))
         ],
       ),

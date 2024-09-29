@@ -1,3 +1,4 @@
+import 'package:ecommerce/Constants/Enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../Constants/Colors.dart';
@@ -10,14 +11,18 @@ class CardCategoryBrand extends StatefulWidget {
       required this.containerHeight,
       required this.containerWidth,
       required this.id,
-      this.text,
+      required this.type,
+      required this.title,
+      this.showTitle = true,
       this.onTap});
   final String img_url;
-  final String? text;
+  final String title;
   final double containerHeight;
   final double containerWidth;
   final Function? onTap;
   final int id;
+  final PageType type;
+  final bool? showTitle;
   @override
   State<CardCategoryBrand> createState() => _CardCategoryBrandState();
 }
@@ -31,7 +36,10 @@ class _CardCategoryBrandState extends State<CardCategoryBrand> {
           onTap: widget.onTap == null
               ? () {}
               : () {
-                  widget.onTap!();
+                  widget.onTap!(
+                      pageType: widget.type,
+                      id: widget.id,
+                      pageName: widget.title);
                 },
           child: Container(
             width: widget.containerWidth,
@@ -42,11 +50,11 @@ class _CardCategoryBrandState extends State<CardCategoryBrand> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(KBorderRadius),
                 )),
-            margin: EdgeInsets.only(bottom: widget.text != null ? 5 : 0),
+            margin: EdgeInsets.only(bottom: widget.title != null ? 5 : 0),
             child: SvgPicture.asset(widget.img_url),
           ),
         ),
-        widget.text != null ? Text(widget.text!) : Container(),
+        widget.showTitle! ? Text(widget.title!) : Container(),
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,18 @@ class ReviewsScreen extends StatefulWidget {
 }
 
 class _ReviewsScreenState extends State<ReviewsScreen> {
+  late int product_id;
+
+  @override
+  void didChangeDependencies() {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ReviewsScreenArguments;
+
+    product_id = args.product_id;
+
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     //TODO get these data from page parameters
@@ -75,7 +88,10 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
 
     /***/
     Widget appBarLeadingWidget = IconButton(
-        onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new_outlined));
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: const Icon(Icons.arrow_back_ios_new_outlined));
     return SafeArea(
         child: Scaffold(
       appBar: PagesAppBar(
@@ -83,9 +99,13 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
       ),
       bottomSheet: Container(
         padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-        child: const BottomSheetOptionButtons(
+        child: BottomSheetOptionButtons(
           btn_text: "Write a Review",
           right_btn_img_url: "${KIconsPath}Pluswhite.svg",
+          onTap: () {
+            Navigator.pushNamed(context, "add-review",
+                arguments: AddReviewScreenArguments(product_id: product_id));
+          },
         ),
       ),
       body: Container(

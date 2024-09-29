@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
+import '../Constants/ScreensArguments.dart';
 import '../Constants/SubCatergoryScreenData.dart';
 import '../Models/Figure.dart';
 import '../Models/Product.dart';
@@ -22,6 +23,22 @@ class SubCategoriesScreen extends StatefulWidget {
 
 class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   late List<Product> _productsData;
+
+  late int id;
+  late PageType pageType;
+  late SubPageType dealType;
+  late String pageTitle;
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)!.settings.arguments
+        as SubCategoryScreenArguments;
+
+    id = args.id!;
+    pageType = args.type;
+    dealType = args.subPageType!;
+    pageTitle = args.pageTitle;
+    super.didChangeDependencies();
+  }
 
   @override
   void initState() {
@@ -162,6 +179,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
           useSafeArea: true,
           builder: (context) => SingleChildScrollView(
                   child: BottomSheetProductSubInfoComponent(
+                product_id: product.product_id,
                 title: product.name,
                 img_url:
                     product.images.firstWhere((img) => img.type == true).url,
@@ -172,19 +190,21 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
               )));
     }
 
-    Widget appBarLeadingWidget = const Icon(
-      Icons.arrow_back_ios_new_outlined,
-      color: KPrimaryColor,
+    Widget appBarLeadingWidget = IconButton(
+      icon: const Icon(Icons.arrow_back_ios_new_outlined),
+      onPressed: () {
+        Navigator.pop(context);
+      },
     );
 
     //TODO get these from the page parameters
-    String appBarTitle = "Handbags";
+
     int productCount = 255;
     return SafeArea(
       child: Scaffold(
           appBar: PagesAppBar(
             leadingWidget: appBarLeadingWidget,
-            title: appBarTitle,
+            title: pageTitle,
           ),
           bottomSheet: SearchPageBottomBarOption(
             Parentcontext: context,
@@ -258,50 +278,50 @@ class _SearchPageBottomBarOptionState extends State<SearchPageBottomBarOption> {
                   builder: (BuildContext context, StateSetter widgetState) {
                 return SingleChildScrollView(
                     child: Container(
-                      height: 360,
-                      color: KshowModalBottomSheetBackgroundColor,
-
-                    child: Container(
-                  height: 360,
-                  decoration: BoxDecoration(
-                      color: KPageBackGroundColor,
-                      borderRadius: BorderRadius.circular(KBorderRadius)),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 20, horizontal: KPageHorizontalPadding),
-                  child: ListView(
-shrinkWrap: true,
-                    children: [
-                      const Text(
-                        "Sort By",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: KGreyColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const Divider(
-                        color: KGreyColor,
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: Column(
-                          children: [
-                            for (var i = 0; i < SortOption.length; i++)
-                              RadioListTile(
-                                activeColor: KPrimaryColor,
-                                  title: Text(SortOption[i]),
-                                  value: i,
-                                  groupValue: SelectedSortOption,
-                                  onChanged: (value) {
-                                    widgetState(() {
-                                      SelectedSortOption = value!;
-                                    });
-                                  })
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                    )));
+                        height: 360,
+                        color: KshowModalBottomSheetBackgroundColor,
+                        child: Container(
+                          height: 360,
+                          decoration: BoxDecoration(
+                              color: KPageBackGroundColor,
+                              borderRadius:
+                                  BorderRadius.circular(KBorderRadius)),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20, horizontal: KPageHorizontalPadding),
+                          child: ListView(
+                            shrinkWrap: true,
+                            children: [
+                              const Text(
+                                "Sort By",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: KGreyColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const Divider(
+                                color: KGreyColor,
+                                thickness: 0.5,
+                              ),
+                              Container(
+                                child: Column(
+                                  children: [
+                                    for (var i = 0; i < SortOption.length; i++)
+                                      RadioListTile(
+                                          activeColor: KPrimaryColor,
+                                          title: Text(SortOption[i]),
+                                          value: i,
+                                          groupValue: SelectedSortOption,
+                                          onChanged: (value) {
+                                            widgetState(() {
+                                              SelectedSortOption = value!;
+                                            });
+                                          })
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        )));
               }));
     }
 

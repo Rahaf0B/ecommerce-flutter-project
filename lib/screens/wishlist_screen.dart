@@ -11,7 +11,7 @@ import '../components/GridViewCreator.dart';
 import '../components/ProductContainer.dart';
 
 class WishlistScreen extends StatefulWidget {
-  static String route = "cat-brand-products";
+  static String route = "wishlist";
   const WishlistScreen({super.key});
 
   @override
@@ -19,11 +19,6 @@ class WishlistScreen extends StatefulWidget {
 }
 
 class _WishlistScreenState extends State<WishlistScreen> {
-  Widget appBarLeadingWidget = IconButton(
-    icon: const Icon(Icons.arrow_back_ios_new_outlined),
-    onPressed: () {},
-  );
-
   late List<Product> _productsData;
   int productCount = 255;
   @override
@@ -96,6 +91,12 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Widget appBarLeadingWidget = IconButton(
+      icon: const Icon(Icons.arrow_back_ios_new_outlined),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
     void productItemOnTap(Product product) {
       showModalBottomSheet(
           backgroundColor: KPageBackGroundColor,
@@ -104,6 +105,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
           useSafeArea: true,
           builder: (context) => SingleChildScrollView(
                   child: BottomSheetProductSubInfoComponent(
+                product_id: product.product_id,
                 title: product.name,
                 img_url:
                     product.images.firstWhere((img) => img.type == true).url,

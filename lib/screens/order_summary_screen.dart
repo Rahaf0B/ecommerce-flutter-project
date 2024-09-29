@@ -1,5 +1,8 @@
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/add_new_address_screen.dart';
+import 'package:ecommerce/screens/payments_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../Constants/Colors.dart';
@@ -26,6 +29,17 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
   double deliveryFeeValue = 0.0;
   String selectedUserNameForAddress = "Ruby S Snively";
   String selectedAddress = "1460  Jenric Lane, Ashmor Drive";
+  late int order_id;
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)!.settings.arguments
+        as OrderSummaryScreenArguments;
+
+    order_id = args.order_id;
+
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -90,7 +104,10 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
                             style: TextStyle(color: KGreyColor),
                           ),
                           TextButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, AddNewAddressScreen.route);
+                            },
                             label: const Text(
                               "Add Address",
                               style: TextStyle(color: KPrimaryColor),
@@ -162,13 +179,26 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: KPageBackGroundColor,
-      appBar: const PagesAppBar(
-        leadingWidget: Icon(Icons.arrow_back_ios_new_outlined),
+      appBar: PagesAppBar(
+        leadingWidget: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_new_outlined)),
         title: "Order Summary",
       ),
-      bottomSheet: const Padding(
+      bottomSheet: Padding(
         padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
-        child: BottomSheetOptionButtons(btn_text: "Proceed to Payments"),
+        child: BottomSheetOptionButtons(
+          btn_text: "Proceed to Payments",
+          onTap: () {
+            Navigator.pushNamed(context, PaymentsScreen.route,
+                arguments: PaymentSummaryScreenArguments(
+                    //TODO Change address_id
+                    address_id: 1,
+                    order_id: order_id));
+          },
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -178,14 +208,18 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  Mainaddressinfocontainer(ChageAddressOnTap:ChageAddressOnTap,selectedAddress: selectedAddress,selectedUserNameForAddress: selectedUserNameForAddress ,),
+                  Mainaddressinfocontainer(
+                    ChageAddressOnTap: ChageAddressOnTap,
+                    selectedAddress: selectedAddress,
+                    selectedUserNameForAddress: selectedUserNameForAddress,
+                  ),
                   const SizedBox(
                     height: 40,
                   ),
                   Container(
                       child: TitleComponentContainer(children: [
                     const SectionTitle(
-                      text: "Expected Delivery",
+                      title: "Expected Delivery",
                       showView: false,
                       textColor: KGreyColor,
                       titleFontSize: 18,

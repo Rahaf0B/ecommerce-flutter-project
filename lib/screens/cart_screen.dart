@@ -1,5 +1,9 @@
+import 'package:ecommerce/Constants/Enums.dart';
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/Models/Cart.dart';
 import 'package:ecommerce/Models/Product.dart';
+import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/order_summary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import '../Constants/Colors.dart';
@@ -22,6 +26,22 @@ class _CartScreenState extends State<CartScreen> {
   double subTotalValue = 0.0;
   double discountValue = 0.0;
   double deliveryFeeValue = 0.0;
+
+  late PreviousNavigatorType previousNavigatorType;
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)!.settings.arguments;
+print(args);
+    if (args != null) {
+      var argument = args as CartScreenArguments;
+      previousNavigatorType = argument.previousNavigatorType;
+    } else {
+      previousNavigatorType = PreviousNavigatorType.tap;
+    }
+
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -100,21 +120,24 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Widget appBarLeadingWidget = IconButton(
+      icon: const Icon(Icons.arrow_back_ios_new_outlined),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
     return SafeArea(
         child: Scaffold(
       bottomSheet: const CartBottomSheet(
+        //Todo Change This
+        order_id: 1,
         totalBagAmount: 106.29,
       ),
-      appBar: AppBar(
-        toolbarHeight: 60,
-        leading: const Icon(
-          Icons.close_outlined,
-          size: 30,
-        ),
-        title: const Text(
-          "My Bag",
-          style: TextStyle(color: KPrimaryColor, fontWeight: FontWeight.bold),
-        ),
+      appBar: PagesAppBar(
+        leadingWidget: previousNavigatorType == PreviousNavigatorType.navigator
+            ? appBarLeadingWidget
+            : SizedBox(width: 0,),
+        title: "My Bag",
       ),
       body: Container(
         child: ListView(children: [
@@ -162,8 +185,15 @@ class _CartScreenState extends State<CartScreen> {
 }
 
 class CartBottomSheet extends StatelessWidget {
-  const CartBottomSheet({super.key, required this.totalBagAmount});
+  const CartBottomSheet({
+    super.key,
+    required this.totalBagAmount,
+    required this.order_id,
+  });
   final double totalBagAmount;
+
+  //TODO Change this
+  final int order_id;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -205,7 +235,11 @@ class CartBottomSheet extends StatelessWidget {
                           const WidgetStatePropertyAll(KPrimaryColor),
                       shape: WidgetStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(KBorderRadius)))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, OrderSummaryScreen.route,
+                        arguments:
+                            OrderSummaryScreenArguments(order_id: order_id));
+                  },
                   child: const Text(
                     "Place Order",
                     style: TextStyle(color: KBrightColor),

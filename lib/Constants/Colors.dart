@@ -12,3 +12,6 @@ const KGreyBackGroundColor = Color(0xFFF1F1F1);
 const KOrangeColor = Color(0xFFFF8C4B);
 const KSubTextColor = Color(0xFFB6B6B6);
 const KshowModalBottomSheetBackgroundColor =Color(0xff757575);
+const KBannerUpperComponentColor=Color(0xDEDEDEDE);
+const KDarkRedColor = Color(0xFF9C1C00);
+const KBrightOrangeColor = Color(0xFFFFDD9D);

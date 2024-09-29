@@ -1,7 +1,14 @@
 import 'package:ecommerce/Constants/Colors.dart';
 import 'package:ecommerce/Constants/Constant.dart';
+import 'package:ecommerce/Constants/Enums.dart';
+import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
+import 'package:ecommerce/screens/account_login_option_screen_screen.dart';
+import 'package:ecommerce/screens/cart_screen.dart';
+import 'package:ecommerce/screens/orders_screen.dart';
+import 'package:ecommerce/screens/welcome_screen.dart';
+import 'package:ecommerce/screens/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,13 +22,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  List<String> btn_text = [
-    "Personal Information",
-    "My Orders",
-    "My Wishlist",
-    "My Reviews",
-    "My Address Book",
-    "My Saved Cards"
+  List<Map<String, String>> btn_text = [
+    {OrdersScreen.route: "My Orders"},
+    {WishlistScreen.route: "My Wishlist"},
+    {CartScreen.route: "My Bag"}
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,13 +34,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: PagesAppBar(
         title: "Profile",
         leadingWidget: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: const Icon(Icons.arrow_back_ios_new_outlined)),
       ),
-      bottomSheet: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(
           btn_text: "Logout",
+          onTap: () {
+            Navigator.pushNamed(context, WelcomeScreen.route);
+          },
           right_btn_img_url: "${KIconsPath}logout.svg",
           text_color: KPrimaryColor,
           btn_backgroundColor: KBrightColor,
@@ -90,8 +99,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            for (String item in btn_text)
-              TitleArrowNavigator(title: item,marginTop: 25,)
+            for (Map<String, String> item in btn_text)
+              TitleArrowNavigator(
+                onTap: () {
+                  var arguments = null;
+                  if (item.keys.first == "cart") {
+                    arguments = CartScreenArguments(
+                        previousNavigatorType: PreviousNavigatorType.navigator);
+                  }
+
+                  Navigator.pushNamed(context, item.keys.first,
+                      arguments: arguments);
+                },
+                title: item.values.first,
+                marginTop: 25,
+              )
           ],
         ),
       ),
