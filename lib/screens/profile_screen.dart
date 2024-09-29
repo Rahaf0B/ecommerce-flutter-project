@@ -101,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             for (Map<String, String> item in btn_text)
               TitleArrowNavigator(
                 onTap: () {
-                  CartScreenArguments arguments;
+                  CartScreenArguments ?arguments;
                   if (item.keys.first == "cart") {
                     arguments = CartScreenArguments(
                         previousNavigatorType: PreviousNavigatorType.navigator);
