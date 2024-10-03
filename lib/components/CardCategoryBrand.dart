@@ -51,7 +51,10 @@ class _CardCategoryBrandState extends State<CardCategoryBrand> {
                   Radius.circular(KBorderRadius),
                 )),
             margin: EdgeInsets.only(bottom: widget.title != null ? 5 : 0),
-            child: SvgPicture.asset(widget.img_url),
+            child: SvgPicture.asset(
+              widget.img_url,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         widget.showTitle! ? Text(widget.title) : Container(),

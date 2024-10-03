@@ -169,9 +169,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      appBar: const SearchBarComponent(),
-      body: Container(
+      child: Container(
         padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding)
             .copyWith(top: 15),
         child: ListView(
@@ -206,9 +204,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   height: 15,
                 ),
                 SliderView(
-                  number_of_items:
-                      _productsData == null ? 0 : _productsData.length,
-                  height: MediaQuery.of(context).size.height * 0.5 * 0.7 - 60,
                   children: _productsData == null
                       ? []
                       : [
@@ -233,6 +228,6 @@ class _SearchScreenState extends State<SearchScreen> {
           ],
         ),
       ),
-    ));
+    );
   }
 }

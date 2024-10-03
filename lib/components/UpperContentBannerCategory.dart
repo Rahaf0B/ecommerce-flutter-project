@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Constants/Enums.dart';
+import 'Devices.dart';
 
 class UpperContentBannerCategory extends StatelessWidget {
   const UpperContentBannerCategory(
@@ -9,7 +11,7 @@ class UpperContentBannerCategory extends StatelessWidget {
       required this.containerAlignment,
       required this.textIconColor,
       required this.btnColor,
-      required this.containerWidth,
+      this.containerWidth,
       required this.direction,
       this.onTap,
       this.id,
@@ -22,7 +24,7 @@ class UpperContentBannerCategory extends StatelessWidget {
   final Color textIconColor;
   final Color btnColor;
   final Alignment containerAlignment;
-  final double containerWidth;
+  final double? containerWidth;
   final Direction direction;
   final Function? onTap;
   final PageType? pageType;
@@ -40,30 +42,34 @@ class UpperContentBannerCategory extends StatelessWidget {
       padding: EdgeInsets.only(
           left: direction == Direction.left ? 15 : 0,
           right: direction == Direction.right ? 15 : 0),
-      child: SizedBox(
-        width: containerWidth,
+      child: Container(
+        constraints:
+            BoxConstraints(maxWidth: containerWidth ?? Size.infinite.width),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: direction == Direction.left
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             title != null
                 ? Text(
                     title!,
-                    style: const TextStyle(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
                         fontWeight: FontWeight.w300,
-                        color: Color(0xFF97451F),
-                        fontSize: 10),
+                        color: textIconColor,
+                        fontSize: Devices.IsDesktop(context) ? 7.sp : 10.sp),
                   )
-                : Container(),
+                : SizedBox(),
             const SizedBox(height: 2),
             Text(
               subTitle,
-              style: const TextStyle(
-                  color: Color(0xFF97451F),
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  color: textIconColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16),
+                  fontSize: Devices.IsDesktop(context) ? 7.sp : 15.sp),
             ),
             const SizedBox(height: 20),
             IconButton(
@@ -84,12 +90,11 @@ class UpperContentBannerCategory extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_forward_outlined,
                   color: textIconColor,
-                  size: 25,
+                  size: Devices.IsDesktop(context) ? 12.w : 25.w,
                 ),
-                color: const Color(0xFF97451F),
+                color: textIconColor,
                 style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStateProperty.all(const Color(0x2297451F)),
+                  backgroundColor: WidgetStateProperty.all(btnColor),
                 ))
           ],
         ),

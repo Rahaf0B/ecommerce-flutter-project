@@ -1,4 +1,6 @@
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 const KTextFont = "Salsa";
 const KBorderRadius = 15.0;
 
@@ -11,3 +13,6 @@ const String KImagesPath="utils/images/";
 const String KIconsPath="utils/icons/";
 
 const double KPageHorizontalPadding=20;
+
+ double KMobileAppBarHeight=60.h;
+const double KDesktopAppBarHeight=100;

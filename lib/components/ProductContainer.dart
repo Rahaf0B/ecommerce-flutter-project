@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
 import '../Models/Product.dart';
@@ -37,7 +38,7 @@ class _ProductcontainerState extends State<Productcontainer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.5 * widget.widthPercentage,
+      width: widget.widthPercentage,
       child: Flex(
         direction: widget.containerAxis == ComponentDirection.vertical
             ? Axis.vertical
@@ -56,12 +57,13 @@ class _ProductcontainerState extends State<Productcontainer> {
                   borderRadius: BorderRadius.circular(KBorderRadius),
                   child: Image.asset(
                     widget.img_url,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                   )),
             ),
           ),
           SizedBox(
-            width: widget.containerAxis == ComponentDirection.vertical ? 0 : 20,
+            width:
+                widget.containerAxis == ComponentDirection.vertical ? 0 : 20.w,
           ),
           ProductSubInfo(
             elementType: ElementType.card,
@@ -69,8 +71,7 @@ class _ProductcontainerState extends State<Productcontainer> {
             title: widget.title,
             subTitle: widget.subTitle,
             price: widget.price,
-            discountValue:
-                widget.discountValue,
+            discountValue: widget.discountValue,
             liked: widget.liked == null ? false : widget.liked!,
           )
         ],

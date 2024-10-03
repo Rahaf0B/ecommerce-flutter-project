@@ -24,7 +24,7 @@ class BannerContent extends StatelessWidget {
           : Alignment.centerLeft,
       margin: const EdgeInsets.only(top: 10, bottom: 10),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         decoration: BoxDecoration(
           color:
               showBackground! ? KBannerUpperComponentColor : Colors.transparent,
@@ -35,11 +35,14 @@ class BannerContent extends StatelessWidget {
                   bottomRight: Radius.circular(15),
                   topRight: Radius.circular(15)),
         ),
-        width: MediaQuery.of(context).size.width * (50 / 100) * width,
+        width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [title, subTitle],
+          children: [
+            FittedBox(fit: BoxFit.scaleDown, child: title),
+            FittedBox(fit: BoxFit.scaleDown, child: subTitle)
+          ],
         ),
       ),
     );

@@ -1,11 +1,13 @@
 import 'package:ecommerce/Constants/Enums.dart';
 import 'package:ecommerce/components/GridViewCreator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Models/Category.dart';
 import '../Models/Figure.dart';
 import 'CollectionCard.dart';
+import 'Devices.dart';
 
 class Handpicked extends StatefulWidget {
   const Handpicked({super.key, this.onTap});
@@ -53,17 +55,21 @@ class _HandpickedState extends State<Handpicked> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Handpicked Collections",
             style: TextStyle(
-                fontWeight: FontWeight.w500, fontSize: 14, color: KBrightColor),
+                fontWeight: FontWeight.w500,
+                fontSize: Devices.IsDesktop(context) ? 5.sp : 13.sp,
+                color: KBrightColor),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: Devices.IsDesktop(context) ? 25 : 15,
           ),
           Gridviewcreator(
-            numberOfColumns: 2,
-            numberOfRows: _cardCollectionData.length ~/ 2,
+            numberOfColumns:
+                Devices.IsMobile(context) ? 2 : _cardCollectionData.length,
+            numberOfRows:
+                Devices.IsMobile(context) ? _cardCollectionData.length ~/ 2 : 1,
             children: [
               for (var item in _cardCollectionData)
                 Collectioncard(
