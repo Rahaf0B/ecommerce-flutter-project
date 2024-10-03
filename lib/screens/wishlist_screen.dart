@@ -1,4 +1,5 @@
 import 'package:ecommerce/Constants/Colors.dart';
+import 'package:ecommerce/components/DesktopPagesAppBar.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,6 +8,7 @@ import '../Constants/Enums.dart';
 import '../Models/Figure.dart';
 import '../Models/Product.dart';
 import '../components/BottomSheetProductSubInfoComponent.dart';
+import '../components/Devices.dart';
 import '../components/GridViewCreator.dart';
 import '../components/ProductContainer.dart';
 
@@ -118,10 +120,17 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
     return SafeArea(
         child: Scaffold(
-            appBar: PagesAppBar(
-              title: "My Wishlist",
-              leadingWidget: appBarLeadingWidget,
-            ),
+            appBar: PreferredSize(
+                preferredSize: Size.fromHeight(Devices.IsMobile(context)
+                    ? KMobileAppBarHeight
+                    : KDesktopAppBarHeight),
+                child: Devices(
+                  mobile: PagesAppBar(
+                    title: "My Wishlist",
+                    leadingWidget: appBarLeadingWidget,
+                  ),
+                  desktop: DesktopPagesAppBar(),
+                )),
             body: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: KPageHorizontalPadding,

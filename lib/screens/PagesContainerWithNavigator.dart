@@ -1,3 +1,4 @@
+import 'package:ecommerce/components/Devices.dart';
 import 'package:ecommerce/screens/cart_screen.dart';
 import 'package:ecommerce/screens/categories_screen.dart';
 import 'package:flutter/material.dart';
@@ -52,13 +53,15 @@ class _HomeScreenState extends State<PagesContainerWithNavigator> {
 
     return SafeArea(
       child: Scaffold(
-        body: _children[_currentIndexPage],
-        bottomNavigationBar: BottomNavigator(
-          currentIndexPage: _currentIndexPage,
-          navigatorTaps: _bottomNavigatorChildren,
-          onPress: changePageIndex,
-        ),
-      ),
+          body: _children[_currentIndexPage],
+          bottomNavigationBar: Devices(
+            mobile: BottomNavigator(
+              currentIndexPage: _currentIndexPage,
+              navigatorTaps: _bottomNavigatorChildren,
+              onPress: changePageIndex,
+            ),
+            desktop: SizedBox(),
+          )),
     );
   }
 }

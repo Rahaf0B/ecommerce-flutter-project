@@ -18,9 +18,8 @@ class CardBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-          maxWidth: width == null
-              ? MediaQuery.of(context).size.width * (50 / 100) * 1.6
-              : width!,
+          maxWidth:
+              MediaQuery.of(context).size.width - (KPageHorizontalPadding * 2),
           maxHeight:
               height == null ? MediaQuery.of(context).size.height : height!),
       child: Card(

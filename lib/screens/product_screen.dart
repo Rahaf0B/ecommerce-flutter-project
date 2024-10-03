@@ -1,4 +1,5 @@
 import 'package:ecommerce/Models/Product.dart';
+import 'package:ecommerce/components/DesktopPagesAppBar.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +13,7 @@ import '../components/AvgRatingComponent.dart';
 import '../components/BottomSheetOptionButtons.dart';
 import '../components/BottomSheetProductSubInfoComponent.dart';
 import '../components/CollapsibleComponent.dart';
+import '../components/Devices.dart';
 import '../components/ProductContainer.dart';
 import '../components/ProductSubInfo.dart';
 import '../components/SectionTitle.dart';
@@ -203,7 +205,14 @@ class _ProductScreenState extends State<ProductScreen> {
     );
     return SafeArea(
         child: Scaffold(
-      appBar: PagesAppBar(leadingWidget: leadAppBarWidget),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(Devices.IsMobile(context)
+              ? KMobileAppBarHeight
+              : KDesktopAppBarHeight),
+          child: Devices(
+            mobile: PagesAppBar(leadingWidget: leadAppBarWidget),
+            desktop: DesktopPagesAppBar(),
+          )),
       bottomSheet: Container(
         padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: const BottomSheetOptionButtons(
@@ -229,10 +238,6 @@ class _ProductScreenState extends State<ProductScreen> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15)),
                         child: SliderView(
-                          number_of_items: _productInfo.images.length,
-                          height: MediaQuery.of(context).size.height *
-                              (50 / 100) *
-                              0.9,
                           children: _productInfo == null
                               ? []
                               : [
@@ -336,9 +341,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     height: 10,
                   ),
                   SliderView(
-                    number_of_items:
-                        _productsData == null ? 0 : _productsData.length,
-                    height: MediaQuery.of(context).size.height * 0.5 * 0.7 - 60,
+
                     children: _productsData == null
                         ? []
                         : [

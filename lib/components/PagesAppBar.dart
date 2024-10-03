@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
@@ -23,8 +24,8 @@ class PagesAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         title: Text(
           title ?? "",
-          style: const TextStyle(
-              fontFamily: KTextFont, fontSize: 24, color: KPrimaryColor),
+          style: TextStyle(
+              fontFamily: KTextFont, fontSize: 24.sp, color: KPrimaryColor),
         ),
         actions: actionsWidgets,
         leading: leadingWidget,
@@ -33,5 +34,5 @@ class PagesAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(80);
+  Size get preferredSize => Size.fromHeight(KMobileAppBarHeight);
 }

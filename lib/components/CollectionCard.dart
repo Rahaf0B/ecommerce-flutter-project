@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
+import 'Devices.dart';
 
 class Collectioncard extends StatefulWidget {
   const Collectioncard(
@@ -41,6 +43,8 @@ class _CollectioncardState extends State<Collectioncard> {
                   borderRadius: BorderRadius.circular(KBorderRadius),
                   child: Image.asset(
                     widget.img_url,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
                   )),
               Container(
                   padding: const EdgeInsets.only(left: 10, bottom: 10),
@@ -48,8 +52,9 @@ class _CollectioncardState extends State<Collectioncard> {
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     widget.title,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: Devices.IsDesktop(context) ?  5.sp : 12.sp),
                   ))
             ]),
           ),

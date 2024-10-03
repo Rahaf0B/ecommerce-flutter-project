@@ -2,11 +2,12 @@ import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/Models/Brand.dart';
 import 'package:ecommerce/Models/Category.dart';
 import 'package:ecommerce/Models/Product.dart';
+import 'package:ecommerce/components/Devices.dart';
 import 'package:ecommerce/screens/profile_screen.dart';
 import 'package:ecommerce/screens/search_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
@@ -16,12 +17,14 @@ import '../components/BottomSheetProductSubInfoComponent.dart';
 import '../components/CardBanner.dart';
 import '../components/CardCategoryBrand.dart';
 import '../components/CollapsibleComponent.dart';
+import '../components/DesktopPagesAppBar.dart';
 import '../components/FooterComponentElement.dart';
 import '../components/GridViewCreator.dart';
 import '../components/Handpicked.dart';
 import '../components/HomeScreenDrawer.dart';
 import '../components/PagesAppBar.dart';
 import '../components/ProductContainer.dart';
+import '../components/SearchBarComponent.dart';
 import '../components/SectionCardBannerCategory.dart';
 import '../components/SectionTitle.dart';
 import '../components/SliderView.dart';
@@ -65,65 +68,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
 
-    _cardBannerData = [
-      const CardBanner(
-        // height: 150,
-        image_url: "${KImagesPath}shoulderGirl.png",
-        upperComponent: BannerContent(
-            width: 0.93,
-            title: Text(
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              "Carry your Funk",
-              style: TextStyle(
-                  color: KPrimaryColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: KTextFont),
-            ),
-            subTitle: Text(
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                "Trendy handbags collection for your party animal",
-                style: TextStyle(
-                    color: KPrimaryColor,
-                    fontSize: 12,
-                    fontFamily: KTextFont))),
-      ),
-      CardBanner(
-
-          // height: 150,
-          image_url: "${KImagesPath}idk.png",
-          upperComponent: BannerContent(
-              showBackground: false,
-              direction: Direction.left,
-              width: 0.93,
-              title: const Text(
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                "Spring Summer Collection",
-                style: TextStyle(
-                    color: KDarkRedColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: KTextFont),
-              ),
-              subTitle: Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: KBrightOrangeColor,
-                    borderRadius: BorderRadius.circular(KBorderRadius)),
-                child: const Text(
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    "UPTO 20% OFF",
-                    style: TextStyle(
-                        color: KDarkRedColor,
-                        fontSize: 12,
-                        fontFamily: KTextFont)),
-              )))
-    ];
     _productsData = [
       Product(
         product_id: 1,
@@ -278,6 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  bool showSearch = false;
   String userName = "Tina";
 
   String user_img_url = "${KImagesPath}userImg.png";
@@ -289,6 +234,65 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    _cardBannerData = [
+      CardBanner(
+        height: Devices.IsDesktop(context) ? 0.4.sh : 0.2.sh,
+        image_url: "${KImagesPath}shoulderGirl.png",
+        upperComponent: BannerContent(
+            width: 190.w,
+            title: Text(
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              "Carry your Funk",
+              style: TextStyle(
+                  color: KPrimaryColor,
+                  fontSize: Devices.IsDesktop(context) ? 10.sp : 20.sp,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: KTextFont),
+            ),
+            subTitle: Text(
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                "Trendy handbags collection for your party animal",
+                style: TextStyle(
+                    color: KPrimaryColor,
+                    fontSize: Devices.IsDesktop(context) ? 8.sp : 10.sp,
+                    fontFamily: KTextFont))),
+      ),
+      CardBanner(
+          height: Devices.IsDesktop(context) ? 0.4.sh : 0.2.sh,
+          image_url: "${KImagesPath}idk.png",
+          upperComponent: BannerContent(
+              showBackground: false,
+              direction: Direction.left,
+              width: Devices.IsMobile(context) ? 190.w : 100.sw,
+              title: Text(
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                "Spring Summer Collection",
+                style: TextStyle(
+                    color: KDarkRedColor,
+                    fontSize: Devices.IsDesktop(context) ? 10.sp : 20.sp,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: KTextFont),
+              ),
+              subTitle: Container(
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: KBrightOrangeColor,
+                    borderRadius: BorderRadius.circular(KBorderRadius)),
+                child: Text(
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    "UPTO 20% OFF",
+                    style: TextStyle(
+                        color: KDarkRedColor,
+                        fontSize: Devices.IsDesktop(context) ? 8.sp : 10.sp,
+                        fontFamily: KTextFont)),
+              )))
+    ];
+
     void toggleDrawer() {
       if (_scaffoldKey.currentState!.isDrawerOpen) {
         _scaffoldKey.currentState!.closeDrawer();
@@ -304,7 +308,7 @@ class _HomeScreenState extends State<HomeScreen> {
       icon: SvgPicture.asset(
         "${KIconsPath}leading-icon.svg",
         fit: BoxFit.cover,
-        width: 40,
+        width: 35.w,
       ),
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
@@ -313,11 +317,14 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget> appBarActions = [
       IconButton(
         onPressed: () {
-          Navigator.pushNamed(context, SearchScreen.route);
+          // Navigator.pushNamed(context, SearchScreen.route);
+          setState(() {
+            showSearch = true;
+          });
         },
         icon: SvgPicture.asset(
           "${KIconsPath}search.svg",
-          width: 30,
+          width: 25.w,
           fit: BoxFit.cover,
         ),
         splashColor: Colors.transparent,
@@ -329,7 +336,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         icon: SvgPicture.asset(
           "${KIconsPath}ProfileIcon.svg",
-          width: 30,
+          width: 25.w,
           fit: BoxFit.cover,
         ),
         splashColor: Colors.transparent,
@@ -381,180 +388,188 @@ class _HomeScreenState extends State<HomeScreen> {
           userName: userName,
           topCategoriesElement: _cardCategoryData,
           contactElement: contactElement),
-      appBar: PagesAppBar(
-        title: "Home",
-        actionsWidgets: appBarActions,
-        leadingWidget: appBarLeadingWidget,
-      ),
-      body: Container(
-        child: ListView(
-            scrollDirection: Axis.vertical,
-            controller: _scrollController,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: KPageHorizontalPadding),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SliderView(
-                        number_of_items: 2,
-                        height: MediaQuery.of(context).size.height *
-                            (50 / 100) *
-                            0.4,
-                        children: _cardBannerData,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      TitleComponentContainer(
-                        height: MediaQuery.of(context).size.height * 0.5 * 0.35,
-                        children: [
-                          const SectionTitle(
-                            title: 'Top Categories',
-                            showView: false,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          SliderView(
-                            number_of_items: _cardCategoryData.length,
-                            height:
-                                MediaQuery.of(context).size.height * 0.5 * 0.4 -
-                                    (KMiniCardCategoryHeight - 10),
-                            children: [
-                              for (var item in _cardCategoryData)
-                                CardCategoryBrand(
-                                  type: PageType.category,
-                                  onTap: changePageOnTap,
-                                  img_url: item.image.url,
-                                  title: item.name,
-                                  id: item.category_id,
-                                  containerHeight: KMiniCardCategoryHeight,
-                                  containerWidth: KMiniCardCategoryWidth,
-                                ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      TitleComponentContainer(
-                        height: MediaQuery.of(context).size.height * 0.5 * 0.7,
-                        children: [
-                          SectionTitle(
-                            onTap: changePageOnTap,
-                            pageType: PageType.subCategory,
-                            subPageType: SubPageType.newArrivals,
-                            title: "New Arrivals",
-                            showView: true,
-                          ),
-                          SliderView(
-                            number_of_items: _productsData == null
-                                ? 0
-                                : _productsData.length,
-                            height:
-                                MediaQuery.of(context).size.height * 0.5 * 0.7 -
-                                    60,
-                            children: (_productsData == null
-                                ? []
-                                : [
-                                    for (Product item in _productsData)
-                                      Productcontainer(
-                                        widthPercentage: 0.7,
-                                        title: item.name,
-                                        containerAxis:
-                                            ComponentDirection.vertical,
-                                        subTitle: item.sub_title,
-                                        img_url: item.images
-                                            .firstWhere(
-                                                (img) => img.type == true)
-                                            .url,
-                                        price: item.price,
-                                        onTap: (Product item) =>
-                                            productItemOnTap(item),
-                                        liked: item.is_liked,
-                                        product: item,
-                                      )
-                                  ]),
-                          )
-                        ],
-                      ),
-                    ]),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Handpicked(
-                onTap: changePageOnTap,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: KPageHorizontalPadding),
-                child: Column(
-                  children: [
-                    TitleComponentContainer(
-                        height: MediaQuery.of(context).size.height * 0.5 * 0.8,
-                        children: [
-                          const SectionTitle(
-                              title: "Shop by Brands", showView: false),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Gridviewcreator(
-                            height:
-                                MediaQuery.of(context).size.height * 0.5 * 0.8 -
-                                    70,
-                            numberOfColumns: 3,
-                            numberOfRows: _cardBrandData.length ~/ 3,
-                            children: [
-                              for (var item in _cardBrandData)
-                                CardCategoryBrand(
-                                    title: item.name,
-                                    showTitle: false,
-                                    onTap: changePageOnTap,
-                                    type: PageType.brand,
-                                    id: item.brand_id,
-                                    img_url: item.image.url,
-                                    containerWidth: KMiniCardBrandWidth,
-                                    containerHeight: KMiniCardBrandHeight),
-                            ],
-                          )
-                        ]),
-                    const SizedBox(
-                      height: 10,
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(Devices.IsMobile(context)
+              ? KMobileAppBarHeight
+              : KDesktopAppBarHeight),
+          child: Devices(
+              mobile: showSearch
+                  ? SearchBarComponent(
+                      toggleComponent: () => setState(() {
+                            showSearch = false;
+                          }))
+                  : PagesAppBar(
+                      title: "Home",
+                      actionsWidgets: appBarActions,
+                      leadingWidget: appBarLeadingWidget,
                     ),
-                    TitleComponentContainer(
-                      height: MediaQuery.of(context).size.height * 0.5 * 1,
+              desktop: DesktopPagesAppBar())),
+      body: showSearch
+          ? SearchScreen()
+          : Container(
+              child: ListView(controller: _scrollController, children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: KPageHorizontalPadding),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SectionTitle(
-                            title: "Trending Deals", showView: false),
-                        const SizedBox(
-                          height: 19,
+                        SliderView(
+                          children: _cardBannerData,
                         ),
-                        SectionCardBannerCategory(
-                          onTap: changePageOnTap,
-                          type: PageType.trendingDeals,
+                        SizedBox(
+                          height: 30.h,
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                  ],
+                        Devices.IsMobile(context)
+                            ? TitleComponentContainer(
+                                children: [
+                                  const SectionTitle(
+                                    title: 'Top Categories',
+                                    showView: false,
+                                  ),
+                                  SizedBox(
+                                    height: 15.h,
+                                  ),
+                                  SliderView(
+                                    children: [
+                                      for (var item in _cardCategoryData)
+                                        CardCategoryBrand(
+                                          type: PageType.category,
+                                          onTap: changePageOnTap,
+                                          img_url: item.image.url,
+                                          title: item.name,
+                                          id: item.category_id,
+                                          containerHeight:
+                                              KMiniCardCategoryHeight,
+                                          containerWidth:
+                                              KMiniCardCategoryWidth,
+                                        ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            : SizedBox(),
+                        SizedBox(
+                          height: Devices.IsDesktop(context) ? 20.h : 5.h,
+                        ),
+                        TitleComponentContainer(
+                          children: [
+                            SectionTitle(
+                              onTap: changePageOnTap,
+                              pageType: PageType.subCategory,
+                              subPageType: SubPageType.newArrivals,
+                              title: "New Arrivals",
+                              showView: true,
+                            ),
+                            SizedBox(
+                              height: Devices.IsDesktop(context) ? 40.h : 10.h,
+                            ),
+                            SliderView(
+
+                              children: (_productsData == null
+                                  ? []
+                                  : [
+                                      for (Product item in _productsData)
+                                        Productcontainer(
+                                          widthPercentage:
+                                              Devices.IsDesktop(context)
+                                                  ? 0.15.sw
+                                                  : 0.4.sw,
+                                          title: item.name,
+                                          containerAxis:
+                                              ComponentDirection.vertical,
+                                          subTitle: item.sub_title,
+                                          img_url: item.images
+                                              .firstWhere(
+                                                  (img) => img.type == true)
+                                              .url,
+                                          price: item.price,
+                                          onTap: Devices.IsMobile(context)
+                                              ? (Product item) =>
+                                                  productItemOnTap(item)
+                                              : (Product item) {},
+                                          liked: item.is_liked,
+                                          product: item,
+                                        )
+                                    ]),
+                            )
+                          ],
+                        ),
+                      ]),
                 ),
-              ),
-              CollapsibleComponent(
-                scrollController: _scrollController,
-                title: "More about CORA’L",
-                child: const FooterComponentElement(),
-              ),
-            ]),
-      ),
+                SizedBox(
+                  height: Devices.IsDesktop(context) ? 50.h : 30.h,
+                ),
+                Handpicked(
+                  onTap: changePageOnTap,
+                ),
+                SizedBox(
+                  height: Devices.IsDesktop(context) ? 40.h : 24.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: KPageHorizontalPadding),
+                  child: Column(
+                    children: [
+                      TitleComponentContainer(children: [
+                        const SectionTitle(
+                            title: "Shop by Brands", showView: false),
+                        SizedBox(
+                          height: Devices.IsDesktop(context) ? 40.h : 10.h,
+                        ),
+                        Gridviewcreator(
+                          numberOfColumns: Devices.IsMobile(context)
+                              ? 3
+                              : _cardBrandData.length,
+                          numberOfRows: Devices.IsMobile(context)
+                              ? _cardBrandData.length ~/ 3
+                              : 1,
+                          children: [
+                            for (var item in _cardBrandData)
+                              CardCategoryBrand(
+                                  title: item.name,
+                                  showTitle: false,
+                                  onTap: changePageOnTap,
+                                  type: PageType.brand,
+                                  id: item.brand_id,
+                                  img_url: item.image.url,
+                                  containerWidth: KMiniCardBrandWidth,
+                                  containerHeight: KMiniCardBrandHeight),
+                          ],
+                        )
+                      ]),
+                      SizedBox(
+                        height: Devices.IsDesktop(context) ? 50.h : 15.h,
+                      ),
+                      TitleComponentContainer(
+                        children: [
+                          const SectionTitle(
+                              title: "Trending Deals", showView: false),
+                          SizedBox(
+                            height: Devices.IsDesktop(context) ? 40.h : 10.h,
+                          ),
+                          SectionCardBannerCategory(
+                            onTap: changePageOnTap,
+                            type: PageType.trendingDeals,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: Devices.IsDesktop(context) ? 50.h : 5.h,
+                      ),
+                    ],
+                  ),
+                ),
+                Devices(
+                  mobile: CollapsibleComponent(
+                    scrollController: _scrollController,
+                    title: "More about CORA’L",
+                    child: const FooterComponentElement(),
+                  ),
+                  desktop: FooterComponentElement(),
+                )
+              ]),
+            ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
@@ -43,8 +44,10 @@ class _HomeFooterState extends State<CollapsibleComponent> {
                   Expanded(
                     child: Text(
                       widget.title,
-                      style: const TextStyle(
-                          color: KTextDarkColor, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: KTextDarkColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.sp),
                     ),
                   ),
                   IconButton(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
+import 'Devices.dart';
+
 class Gridviewcreator extends StatelessWidget {
   const Gridviewcreator(
       {super.key,
@@ -21,10 +23,11 @@ class Gridviewcreator extends StatelessWidget {
         constraints: BoxConstraints(maxHeight: height ?? double.infinity),
         color: Colors.transparent,
         child: LayoutGrid(
+
             columnSizes: columnSizes,
             rowSizes: rowSizes,
-            columnGap: 16,
-            rowGap: 16,
+            columnGap: Devices.IsDesktop(context) ? 25 : 16,
+            rowGap: Devices.IsDesktop(context) ? 25 : 16,
             children: children));
   }
 }

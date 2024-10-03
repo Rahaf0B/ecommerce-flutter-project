@@ -1,3 +1,4 @@
+import 'package:ecommerce/components/DesktopPagesAppBar.dart';
 import 'package:ecommerce/components/GridViewCreator.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import '../Constants/SubCatergoryScreenData.dart';
 import '../Models/Figure.dart';
 import '../Models/Product.dart';
 import '../components/BottomSheetProductSubInfoComponent.dart';
+import '../components/Devices.dart';
 import '../components/ProductContainer.dart';
 
 class SubCategoriesScreen extends StatefulWidget {
@@ -202,10 +204,17 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     int productCount = 255;
     return SafeArea(
       child: Scaffold(
-          appBar: PagesAppBar(
-            leadingWidget: appBarLeadingWidget,
-            title: pageTitle,
-          ),
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(Devices.IsMobile(context)
+                  ? KMobileAppBarHeight
+                  : KDesktopAppBarHeight),
+              child: Devices(
+                mobile: PagesAppBar(
+                  leadingWidget: appBarLeadingWidget,
+                  title: pageTitle,
+                ),
+                desktop: DesktopPagesAppBar(),
+              )),
           bottomSheet: SearchPageBottomBarOption(
             Parentcontext: context,
           ),

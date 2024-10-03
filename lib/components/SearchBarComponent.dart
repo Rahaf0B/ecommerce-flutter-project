@@ -4,7 +4,9 @@ import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 
 class SearchBarComponent extends StatefulWidget implements PreferredSizeWidget {
-  const SearchBarComponent({super.key});
+  const SearchBarComponent({super.key, required this.toggleComponent});
+
+  final VoidCallback toggleComponent;
 
   @override
   State<SearchBarComponent> createState() => _SearchBarComponentState();
@@ -22,7 +24,6 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
       padding: const EdgeInsets.symmetric(
           vertical: 12, horizontal: KPageHorizontalPadding),
       height: 100,
-      // color: KPageBackGroundColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -34,7 +35,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
               child: IconButton(
                   padding: const EdgeInsets.all(0),
                   onPressed: () {
-                    Navigator.pop(context);
+                    widget.toggleComponent();
                   },
                   icon: Icon(
                     Icons.arrow_back_ios_new_outlined,

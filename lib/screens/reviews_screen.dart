@@ -1,10 +1,12 @@
 import 'package:ecommerce/Constants/ScreensArguments.dart';
 import 'package:ecommerce/components/BottomSheetOptionButtons.dart';
+import 'package:ecommerce/components/DesktopPagesAppBar.dart';
 import 'package:ecommerce/components/PagesAppBar.dart';
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
 import '../Constants/Constant.dart';
 import '../Models/Review.dart';
+import '../components/Devices.dart';
 import '../components/ProductRatingInfoContainer.dart';
 import '../components/UserReviewContainer.dart';
 
@@ -94,9 +96,16 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
         icon: const Icon(Icons.arrow_back_ios_new_outlined));
     return SafeArea(
         child: Scaffold(
-      appBar: PagesAppBar(
-        leadingWidget: appBarLeadingWidget,
-      ),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(Devices.IsMobile(context)
+              ? KMobileAppBarHeight
+              : KDesktopAppBarHeight),
+          child: Devices(
+            mobile: PagesAppBar(
+              leadingWidget: appBarLeadingWidget,
+            ),
+            desktop: DesktopPagesAppBar(),
+          )),
       bottomSheet: Container(
         padding: const EdgeInsets.symmetric(horizontal: KPageHorizontalPadding),
         child: BottomSheetOptionButtons(

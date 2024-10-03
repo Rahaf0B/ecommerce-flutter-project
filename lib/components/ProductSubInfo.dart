@@ -1,8 +1,11 @@
+import 'package:ecommerce/components/CollectionCard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../Constants/Constant.dart';
 import '../Constants/Enums.dart';
 import '../Constants/TextStyle.dart';
+import 'Devices.dart';
 
 class ProductSubInfo extends StatefulWidget {
   const ProductSubInfo(
@@ -39,7 +42,7 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
         ? 0.0
         : (widget.discountValue! * widget.price).roundToDouble();
 
-    double favIconSize = 20;
+    double favIconSize = Devices.IsDesktop(context) ? 6.w : 20.w;
     return Container(
       margin: EdgeInsets.only(top: widget.marginTop),
       child: Row(
@@ -49,51 +52,93 @@ class _ProductSubInfoState extends State<ProductSubInfo> {
           SizedBox(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                widget.title,
-                style: widget.elementType == ElementType.page
-                    ? productSubInfoTitleStylePage
-                    : productSubInfoTitleStyleCard,
-              ),
-              Text(
-                widget.subTitle,
-                style: widget.elementType == ElementType.page
-                    ? productSubInfoSubTitleStylePage
-                    : productSubInfoSubTitleStyleCard,
-              ),
+              FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    widget.title,
+                    style: widget.elementType == ElementType.page
+                        ? productSubInfoTitleStylePage.copyWith(
+                            fontSize: Devices.IsDesktop(context) ? 4.sp : 20.sp)
+                        : productSubInfoTitleStyleCard.copyWith(
+                            fontSize:
+                                Devices.IsDesktop(context) ? 4.sp : 12.sp),
+                  )),
+              Devices(
+                  mobile: SizedBox(),
+                  desktop: SizedBox(
+                    height: 10,
+                  )),
+              FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    widget.subTitle,
+                    style: widget.elementType == ElementType.page
+                        ? productSubInfoSubTitleStylePage.copyWith(
+                            fontSize: Devices.IsDesktop(context) ? 4.sp : 20.sp)
+                        : productSubInfoSubTitleStyleCard.copyWith(
+                            fontSize:
+                                Devices.IsDesktop(context) ? 4.sp : 12.sp),
+                  )),
+              Devices(
+                  mobile: SizedBox(),
+                  desktop: SizedBox(
+                    height: 10,
+                  )),
               widget.subComponent == null
                   ? const SizedBox()
-                  : widget.subComponent!,
+                  : Column(children: [
+                      widget.subComponent!,
+                      Devices(
+                          mobile: SizedBox(),
+                          desktop: SizedBox(
+                            height: 10.h,
+                          )),
+                    ]),
               Container(
-
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "\$${widget.discountValue == null ? widget.price.toString() : priceAfterDiscount.toString()}",
-                        style: widget.elementType == ElementType.page
-                            ? productSubInfoPriceStylePage
-                            : productSubInfoPriceStyleCard,
-                      ),
-                      widget.discountValue == null ? const SizedBox() : const SizedBox(width: 10,),
+                      FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            "\$${widget.discountValue == null ? widget.price.toString() : priceAfterDiscount.toString()}",
+                            style: widget.elementType == ElementType.page
+                                ? productSubInfoPriceStylePage.copyWith(
+                                    fontSize: Devices.IsDesktop(context)
+                                        ? 4.sp
+                                        : 20.sp)
+                                : productSubInfoPriceStyleCard.copyWith(
+                                    fontSize: Devices.IsDesktop(context)
+                                        ? 4.sp
+                                        : 12.sp),
+                          )),
                       widget.discountValue == null
                           ? const SizedBox()
-                          : Text(
-                              "\$${widget.price}",
-                              style: widget.elementType == ElementType.card
-                                  ? productSubInfoSubPriceStyleCard
-                                  : productSubInfoSubPriceStylePage,
+                          : const SizedBox(
+                              width: 10,
                             ),
-                      widget.discountValue == null ? const SizedBox() : const SizedBox(width: 10,),
                       widget.discountValue == null
                           ? const SizedBox()
-                          : Text(
-                              "${widget.discountValue!}% OFF",
-                              style: widget.elementType == ElementType.card
-                                  ? productSubInfoDiscountStyleCard
-                                  : productSubInfoDiscountStylePage,
-                            )
+                          : FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text("\$${widget.price}",
+                                  style: widget.elementType == ElementType.card
+                                      ? productSubInfoSubPriceStyleCard
+                                      : productSubInfoSubPriceStylePage)),
+                      widget.discountValue == null
+                          ? const SizedBox()
+                          : const SizedBox(
+                              width: 10,
+                            ),
+                      widget.discountValue == null
+                          ? const SizedBox()
+                          : FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text("${widget.discountValue!}% OFF",
+                                  style: widget.elementType == ElementType.card
+                                      ? productSubInfoDiscountStyleCard
+                                      : productSubInfoDiscountStylePage))
                     ]),
               )
             ]),
