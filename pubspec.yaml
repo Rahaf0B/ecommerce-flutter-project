@@ -85,6 +85,14 @@ flutter:
       fonts:
         - asset: utils/fonts/Stylish-Regular.ttf
 
+    - family: Inter
+      fonts:
+        - asset: utils/fonts/InterFont/Inter_24pt-Bold.ttf
+        - asset: utils/fonts/InterFont/Inter_24pt-Light.ttf
+        - asset: utils/fonts/InterFont/Inter_24pt-Medium.ttf
+        - asset: utils/fonts/InterFont/Inter_24pt-Regular.ttf
+        - asset: utils/fonts/InterFont/Inter_24pt-Thin.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
