@@ -31,6 +31,14 @@ class _TextLoginFormInputFieldState extends State<TextLoginFormInputField> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailTextEditingController.dispose();
+    passwordTextEditingController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
         key: widget.formKey,

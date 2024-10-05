@@ -99,6 +99,17 @@ class _TextSignupFormInputFieldState extends State<TextSignupFormInputField> {
     });
   }
 
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    firstNameTextEditingController.dispose();
+    lastNameTextEditingController.dispose();
+    emailTextEditingController.dispose();
+    passwordTextEditingController.dispose();
+    confirmPasswordTextEditingController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Form(
