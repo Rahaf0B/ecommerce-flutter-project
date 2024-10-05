@@ -1,3 +1,4 @@
+
 import 'package:ecommerce/app.dart';
 import 'package:ecommerce/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
@@ -10,4 +11,5 @@ void main() async {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await ScreenUtil.ensureScreenSize();
   runApp(App(route: AppRouter()));
+
 }
